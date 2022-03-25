@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook", "MyBook\MyBook.csproj", "{1B6D4D89-A071-4482-9E4E-810F293933A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook.DataAccess", "MyBook.DataAccess\MyBook.DataAccess.csproj", "{9E092752-9231-4170-B813-EBDEBFE8C0E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook.Entity", "MyBook.Entity\MyBook.Entity.csproj", "{30C732DF-2214-43C7-A04C-1CD7638FFB36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{1B6D4D89-A071-4482-9E4E-810F293933A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B6D4D89-A071-4482-9E4E-810F293933A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B6D4D89-A071-4482-9E4E-810F293933A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E092752-9231-4170-B813-EBDEBFE8C0E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E092752-9231-4170-B813-EBDEBFE8C0E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E092752-9231-4170-B813-EBDEBFE8C0E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E092752-9231-4170-B813-EBDEBFE8C0E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30C732DF-2214-43C7-A04C-1CD7638FFB36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30C732DF-2214-43C7-A04C-1CD7638FFB36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30C732DF-2214-43C7-A04C-1CD7638FFB36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30C732DF-2214-43C7-A04C-1CD7638FFB36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
