@@ -26592,12 +26592,8 @@ footer .widget select.custom-select,
     transform: translate(0, -50%)
 }
 
-.site-header__white-text .site-title a {
-    color: #fff
-}
-
-.site-header__white-text .nav-link {
-    color: #fff
+.header-text-color {
+    color: #b34d00
 }
 
 .u-sidebar[aria-labelledby] {

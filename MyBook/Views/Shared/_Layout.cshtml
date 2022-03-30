@@ -1,15 +1,16 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     @await Html.PartialAsync("_MetatagsPartial")
     
-    <title>@ViewBag.Title - MyBook</title>
+    <title>@ViewBag.Title | MyBook — электронная библиотека</title>
     
     @await Html.PartialAsync("_StylesheetsPartial")
 </head>
 
 <body>
 @await Html.PartialAsync("_HeaderPartial")
+@await Html.PartialAsync("_SidebarPartial")
 
 @RenderBody()
 
