@@ -3845,6 +3845,14 @@ fieldset:disabled a.btn {
     box-shadow: 0 0 0 .2rem rgba(214, 215, 216, .5)
 }
 
+.btn-gradient {
+    background-image: linear-gradient(rgb(255, 215, 84), rgb(255, 199, 44));
+}
+
+.btn-gradient-2 {
+    background-image: linear-gradient(rgb(255, 129, 0), rgb(228, 75, 3))
+}
+
 .btn-dark {
     color: #fff;
     background-color: #161619;
@@ -7694,7 +7702,7 @@ footer .widget .input-group-sm>select,
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: #f6f5f3;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem
@@ -11232,6 +11240,10 @@ button.bg-red-1:focus {
 
 .border-tangerine {
     border-color: #f79400 !important
+}
+
+.border-sunglow {
+    border-color: #ffc72c !important
 }
 
 .border-tangerine-light {
@@ -26103,6 +26115,10 @@ footer .widget select.custom-select,
     height: 3.125rem
 }
 
+.height-55 {
+    height: 3.25rem
+}
+
 .height-60 {
     height: 3.75rem
 }
@@ -26203,6 +26219,10 @@ footer .widget select.custom-select,
     border-radius: .5rem !important
 }
 
+.rounded-hg {
+    border-radius: .75rem !important
+}
+
 .border-width-2 {
     border-width: 2px !important
 }
@@ -26299,7 +26319,7 @@ footer .widget select.custom-select,
 }
 
 .border-sh-hover:hover {
-    border-color: #161619 !important;
+    border-color: #ffc72c !important;
     box-shadow: 0 0 40px 0 rgba(22, 22, 25, .1);
     position: relative;
     z-index: 1
