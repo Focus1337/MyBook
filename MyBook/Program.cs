@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
+using MyBook.Entity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationContext>(opts =>
     opts.UseNpgsql(builder.Configuration.GetConnectionString("sqlConnection")));
+
+builder.Services.AddDefaultIdentity<User>(
+    options =>
+        options.SignIn.RequireConfirmedEmail = false
+).AddEntityFrameworkStores<ApplicationContext>();
 
 var app = builder.Build();
 
