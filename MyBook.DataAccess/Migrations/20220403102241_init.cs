@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MyBook.DataAccess.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -244,6 +244,31 @@ namespace MyBook.DataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Authors",
+                columns: new[] { "Id", "Description", "FullName", "Image" },
+                values: new object[] { new Guid("320852a1-b75b-4b89-b286-873c80d11727"), " английская писательница. Автор более двух десятков книг, носитель множества почётных учёных степеней различных университетов и лауреат многочисленных литературных наград и премий.", "Антония Сьюзен Байетт", new byte[0] });
+
+            migrationBuilder.InsertData(
+                table: "Subs",
+                columns: new[] { "Id", "Description", "Duration", "Name", "Price" },
+                values: new object[,]
+                {
+                    { 1, "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка", 43200, "Месяц", 349m },
+                    { 2, "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка", 259200, "Полгода", 1794m },
+                    { 3, "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка", 525600, "Год", 2988m }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "Image", "LastName", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "SubDateStart", "SubId", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "4bee3a36-db98-4071-ad61-a61db810decb", 0, "784e7067-3603-4e5e-97ce-b70957a864ae", "1@mail.ru", false, new byte[0], "LastName", true, null, "Name", null, null, "AQAAAAEAACcQAAAAEBYiodokZsZRb23HmsOebO9xUQixijVwVPzaOSiF9yKPiVUTUBkr6WkcMsCaN9qsvQ", null, false, "6XN27C5W5ARJZESDVSRBUS4NMCN5XCPR", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "S1mple" });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "Id", "AuthorId", "Description", "Genre", "Image", "Price", "SubType", "Title", "Year" },
+                values: new object[] { new Guid("3cb92c37-ec67-4720-af23-d7f4d4096109"), new Guid("320852a1-b75b-4b89-b286-873c80d11727"), "«Рагнарёк» – книга из серии древних мифов, переосмысленных современными писателями из разных стран", "Мифы", new byte[0], 549m, 1, "Рагнарёк", 2022 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

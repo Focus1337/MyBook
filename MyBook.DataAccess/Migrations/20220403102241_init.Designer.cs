@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyBook.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220403061054_Init")]
-    partial class Init
+    [Migration("20220403102241_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -196,6 +196,15 @@ namespace MyBook.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("320852a1-b75b-4b89-b286-873c80d11727"),
+                            Description = " английская писательница. Автор более двух десятков книг, носитель множества почётных учёных степеней различных университетов и лауреат многочисленных литературных наград и премий.",
+                            FullName = "Антония Сьюзен Байетт",
+                            Image = new byte[0]
+                        });
                 });
 
             modelBuilder.Entity("MyBook.Entity.Book", b =>
@@ -237,6 +246,20 @@ namespace MyBook.DataAccess.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("3cb92c37-ec67-4720-af23-d7f4d4096109"),
+                            AuthorId = new Guid("320852a1-b75b-4b89-b286-873c80d11727"),
+                            Description = "«Рагнарёк» – книга из серии древних мифов, переосмысленных современными писателями из разных стран",
+                            Genre = "Мифы",
+                            Image = new byte[0],
+                            Price = 549m,
+                            SubType = 1,
+                            Title = "Рагнарёк",
+                            Year = 2022
+                        });
                 });
 
             modelBuilder.Entity("MyBook.Entity.Subscription", b =>
@@ -264,6 +287,32 @@ namespace MyBook.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Subs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
+                            Duration = 43200,
+                            Name = "Месяц",
+                            Price = 349m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
+                            Duration = 259200,
+                            Name = "Полгода",
+                            Price = 1794m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
+                            Duration = 525600,
+                            Name = "Год",
+                            Price = 2988m
+                        });
                 });
 
             modelBuilder.Entity("MyBook.Entity.User", b =>
@@ -348,6 +397,27 @@ namespace MyBook.DataAccess.Migrations
                     b.HasIndex("SubId");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "4bee3a36-db98-4071-ad61-a61db810decb",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "784e7067-3603-4e5e-97ce-b70957a864ae",
+                            Email = "1@mail.ru",
+                            EmailConfirmed = false,
+                            Image = new byte[0],
+                            LastName = "LastName",
+                            LockoutEnabled = true,
+                            Name = "Name",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBYiodokZsZRb23HmsOebO9xUQixijVwVPzaOSiF9yKPiVUTUBkr6WkcMsCaN9qsvQ",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "6XN27C5W5ARJZESDVSRBUS4NMCN5XCPR",
+                            SubDateStart = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SubId = 1,
+                            TwoFactorEnabled = false,
+                            UserName = "S1mple"
+                        });
                 });
 
             modelBuilder.Entity("BookUser", b =>
