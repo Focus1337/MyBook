@@ -6,7 +6,8 @@ namespace MyBook.DataAccess;
 
 
 //dotnet ef migrations add [Название комита] -s .\MyBook\ -p .\MyBook.DataAccess\
-//dotnet ef database update
+//dotnet ef database update -s .\MyBook\ -p .\MyBook.DataAccess\
+
 public class ApplicationContext : IdentityDbContext<User>
 {
     public ApplicationContext(DbContextOptions options)
