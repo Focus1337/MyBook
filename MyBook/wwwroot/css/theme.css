@@ -92,7 +92,7 @@ body {
     line-height: 1.5;
     color: #161619;
     text-align: left;
-    background-color: #fff
+    background-color: #f5f5f5;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -7702,7 +7702,7 @@ footer .widget .input-group-sm>select,
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #f6f5f3;
+    background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem
@@ -26050,6 +26050,10 @@ footer .widget .sub-menu a:focus {
 
 .height-100 {
     height: 6.25rem
+}
+
+.height-25 {
+    height: 2.5rem
 }
 
 .height-38 {

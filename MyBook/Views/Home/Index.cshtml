@@ -10,28 +10,20 @@
                 <div class="d-flex align-items-center justify-content-center position-relative">
                     <div class="site-navigation mr-auto d-none d-xl-block">
                         <ul class="nav pl-xl-4">
-                            <li class="nav-item bg-chili-light rounded-hg mr-2">
-                                <a asp-controller="Home" asp-action="Index" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">📖 Книги</a>
+                            <li class="nav-item bg-white rounded-hg mr-2 height-25">
+                                <a asp-controller="Home" asp-action="Index" class="nav-link link-black-100 mx-3 px-0 font-size-2 font-weight-medium header-text-color">📖 Книги</a>
+                            </li>
+                            
+                             <li class="nav-item bg-white rounded-hg mr-2 height-25">
+                                <a href="#" class="nav-link link-black-100 mx-3 px-0 font-size-2 font-weight-medium header-text-color">👌 Бесплатные книги</a>
                             </li>
                                     
-                            <li class="nav-item bg-chili-light rounded-hg mr-2">
-                                <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">🎧 Аудиокниги</a>
-                            </li>
-        
-                            <li class="nav-item bg-chili-light rounded-hg mr-2">
-                                <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">👌 Бесплатные книги</a>
+                              <li class="nav-item bg-white rounded-hg mr-2 height-25">
+                                <a href="#" class="nav-link link-black-100 mx-3 px-0 font-size-2 font-weight-medium header-text-color">🔥 Новинки</a>
                             </li>
                                     
-                            <li class="nav-item bg-chili-light rounded-hg mr-2">
-                                <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">🔥 Новинки</a>
-                            </li>
-                                    
-                            <li class="nav-item bg-chili-light rounded-hg mr-2">
-                                <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">❤ Топ книг</a>
-                            </li>
-                                    
-                            <li class="nav-item bg-chili-light rounded-hg mr-2">
-                                <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">🎙 Топ аудиокниг</a>
+                             <li class="nav-item bg-white rounded-hg mr-2 height-25">
+                                <a href="#" class="nav-link link-black-100 mx-3 px-0 font-size-2 font-weight-medium header-text-color">❤ Топ книг</a>
                             </li>
                         </ul>
                     </div>
@@ -44,7 +36,7 @@
 <section class="mb-8">
     <div class="container">
         <div class="pt-5 pb-5">
-            <div class="bg-img-hero img-fluid rounded-hg" style="background-image: url(img/1400x530/img1.jpg);">
+            <div class="bg-img-hero img-fluid rounded-hg" style="background-image: url(img/1400x530/promo.jpg);">
                 <div class="js-slick-carousel u-slick" data-pagi-classes="d-lg-none text-center u-slick__pagination mt-5 position-absolute left-0 right-0" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow--v4 u-slick__arrow-centered--y" data-arrow-left-classes="flaticon-back u-slick__arrow-inner u-slick__arrow-inner--left text-gray-360 ml-lg-3"
                      data-arrow-right-classes="flaticon-next u-slick__arrow-inner u-slick__arrow-inner--right text-dark mr-lg-3">
                     <div class="px-4 px-md-6 px-lg-7 px-xl-10 d-flex min-height-530">
@@ -54,7 +46,7 @@
                                     <h2 class="font-size-15 mb-3 pb-1" data-scs-animation-in="fadeInUp" data-scs-animation-delay="300">
                                         <span class="hero__title-line-1 font-weight-normal d-block"><b>MyBook — читайте и слушайте по одной подписке</b></span>
                                     </h2>
-                                    <a href="#" class="banner_btn btn btn-wide bg-primary text-white rounded-xs" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="400">14 дней бесплатно</a>
+                                    <a asp-controller="Home" asp-action="Subscription" class="banner_btn btn btn-wide btn-gradient rounded-xs font-weight-bold" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="400">Оформить сейчас</a>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +60,7 @@
 
 <section class="space-bottom-1">
     <div class="container">
-        <div class="bg-punch-light rounded-hg mb-4 mb-xl-0">
+        <div class="bg-white rounded-hg mb-4 mb-xl-0">
             <div class="pr-4 pl-5 py-4 position-relative">
                
                 <header class="d-md-flex justify-content-between align-items-center">
@@ -76,7 +68,7 @@
                     <a href="#" class="d-flex align-items-center h-primary">Еще<span class="flaticon-next font-size-3 ml-2"></span></a>
                 </header>
                 <p>Деловая и научно-популярная литература издательств «Манн, Иванов и Фербер», «Альпина Паблишер», «Олимп-Бизнес» и других</p>
-                <ul class="js-slick-carousel products list-unstyled u-slick--gutters-3 my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
+                <ul class="js-slick-carousel products list-unstyled my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
                     data-arrow-left-classes="fas flaticon-back u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas flaticon-next u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="6" data-responsive='[{
                        "breakpoint": 1500,
                        "settings": {
@@ -98,146 +90,89 @@
                          "slidesToShow": 1
                        }
                     }]'>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img1.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img1.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                    
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="far fa-star"></small>
                                             <small class="far fa-star"></small>
                                         </div>
-                                        <div class="">(3,714)</div>
                                     </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>Вот оно, счастье</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Найлл Уильямз</b></a></div>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Вот оно, счастье</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Найлл Уильямз</b></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img2.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                                        
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                        </div>
+                                    </div>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Путь: как ускорить продвижение к финансовой свободе</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Тони Роббинс</b></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img3.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                                        
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                        </div>
+                                    </div>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>12 железных принципов успеха</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Боб Проктор</b></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
 
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img4.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img4.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                    
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="far fa-star"></small>
                                             <small class="far fa-star"></small>
                                         </div>
-                                        <div class="">(3,714)</div>
                                     </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>Путь: как ускорить продвижение к финансовой свободе</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Тони Роббинс</b></a></div>
-                    
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img3.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                        <div class="">(3,714)</div>
-                                    </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>12 железных принципов успеха</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Боб Проктор</b></a></div>
-                    
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img2.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                        <div class="">(3,714)</div>
-                                    </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>Думай и богатей: как прожить достойную жизнь</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Наполеон Хилл</b></a></div>
-                    
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#" tabindex="0"><b>Думай и богатей: как прожить достойную жизнь</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1" tabindex="0"><b>Наполеон Хилл</b></a></div>
                                 </div>
                             </div>
                         </div>
@@ -251,7 +186,7 @@
 
 <section class="space-bottom-1">
     <div class="container">
-        <div class="bg-punch-light rounded-hg mb-4 mb-xl-0">
+        <div class="bg-white rounded-hg mb-4 mb-xl-0">
             <div class="pr-4 pl-5 py-4 position-relative">
                 
                 <header class="d-md-flex justify-content-between align-items-center">
@@ -259,7 +194,7 @@
                     <a href="#" class="d-flex align-items-center h-primary">Еще<span class="flaticon-next font-size-3 ml-2"></span></a>
                 </header>
                 <p>Добавьте лучшее в «Мои книги», чтобы ничего не упустить</p>
-                <ul class="js-slick-carousel products list-unstyled u-slick--gutters-3 my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
+               <ul class="js-slick-carousel products list-unstyled my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
                     data-arrow-left-classes="fas flaticon-back u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas flaticon-next u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="6" data-responsive='[{
                        "breakpoint": 1500,
                        "settings": {
@@ -281,146 +216,89 @@
                          "slidesToShow": 1
                        }
                     }]'>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img9.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img1.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                    
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="far fa-star"></small>
                                             <small class="far fa-star"></small>
                                         </div>
-                                        <div class="">(3,714)</div>
                                     </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>Стеклянный человек</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Валерий Печейкин</b></a></div>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Вот оно, счастье</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Найлл Уильямз</b></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img2.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                                        
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                        </div>
+                                    </div>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Путь: как ускорить продвижение к финансовой свободе</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Тони Роббинс</b></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img3.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                                        
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                        </div>
+                                    </div>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>12 железных принципов успеха</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Боб Проктор</b></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
 
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img4.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img4.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                    
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="far fa-star"></small>
                                             <small class="far fa-star"></small>
                                         </div>
-                                        <div class="">(3,714)</div>
                                     </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>Путь: как ускорить продвижение к финансовой свободе</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Тони Роббинс</b></a></div>
-                    
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img3.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                        <div class="">(3,714)</div>
-                                    </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>12 железных принципов успеха</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Боб Проктор</b></a></div>
-                    
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img2.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                        <div class="">(3,714)</div>
-                                    </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>Думай и богатей: как прожить достойную жизнь</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Наполеон Хилл</b></a></div>
-                    
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#" tabindex="0"><b>Думай и богатей: как прожить достойную жизнь</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1" tabindex="0"><b>Наполеон Хилл</b></a></div>
                                 </div>
                             </div>
                         </div>
@@ -432,9 +310,9 @@
 </section>
 
 
-<section class="space-bottom-3">
+<section class="space-bottom-2">
     <div class="container">
-        <div class="bg-punch-light rounded-hg mb-4 mb-xl-0">
+        <div class="bg-white rounded-hg mb-4 mb-xl-0">
             <div class="pr-4 pl-5 py-4 position-relative">
 
                 <header class="d-md-flex justify-content-between align-items-center">
@@ -442,7 +320,7 @@
                     <a href="#" class="d-flex align-items-center h-primary">Еще<span class="flaticon-next font-size-3 ml-2"></span></a>
                 </header>
                 <p>Родная классика и проверенные временем бестселлеры</p>
-                <ul class="js-slick-carousel products list-unstyled u-slick--gutters-3 my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
+               <ul class="js-slick-carousel products list-unstyled my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
                     data-arrow-left-classes="fas flaticon-back u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas flaticon-next u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="6" data-responsive='[{
                        "breakpoint": 1500,
                        "settings": {
@@ -464,146 +342,89 @@
                          "slidesToShow": 1
                        }
                     }]'>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img9.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img1.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                    
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="far fa-star"></small>
                                             <small class="far fa-star"></small>
                                         </div>
-                                        <div class="">(3,714)</div>
                                     </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>Стеклянный человек</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Валерий Печейкин</b></a></div>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Вот оно, счастье</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Найлл Уильямз</b></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img2.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                                        
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                        </div>
+                                    </div>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Путь: как ускорить продвижение к финансовой свободе</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Тони Роббинс</b></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img3.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                                        
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                        </div>
+                                    </div>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>12 железных принципов успеха</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Боб Проктор</b></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
 
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img4.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img4.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                    
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="far fa-star"></small>
                                             <small class="far fa-star"></small>
                                         </div>
-                                        <div class="">(3,714)</div>
                                     </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>Путь: как ускорить продвижение к финансовой свободе</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Тони Роббинс</b></a></div>
-                    
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img3.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                        <div class="">(3,714)</div>
-                                    </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>12 железных принципов успеха</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Боб Проктор</b></a></div>
-                    
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img2.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                        <div class="">(3,714)</div>
-                                    </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>Думай и богатей: как прожить достойную жизнь</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Наполеон Хилл</b></a></div>
-                    
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#" tabindex="0"><b>Думай и богатей: как прожить достойную жизнь</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1" tabindex="0"><b>Наполеон Хилл</b></a></div>
                                 </div>
                             </div>
                         </div>
@@ -615,30 +436,28 @@
 </section>
     
 
-<section class="space-bottom-3">
+<section class="space-bottom-2">
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="bg-tangerine-light rounded-hg mb-4 mb-xl-0">
-                    <div class="pr-4 pl-5 py-8 position-relative">
+                <div class="bg-soft-yellow-darker rounded-hg">
+                    <div class="pr-4 pl-5 py-3 position-relative">
                         <div class="font-size-4 font-weight-medium position-relative z-index-2"><b>Все книги доступны одновременно</b></div>
                         <p>Пользуйтесь подпиской - безлимитным абонементом на весь каталог</p>
                     </div>
                 </div>
             </div>
-                
             <div class="col">
-                <div class="bg-tangerine-light rounded-hg mb-4 mb-xl-0">
-                    <div class="pr-4 pl-5 py-8 position-relative">
+                <div class="bg-soft-yellow-darker rounded-hg">
+                    <div class="pr-4 pl-5 py-3 position-relative">
                         <div class="font-size-4 font-weight-medium position-relative z-index-2"><b>Персональные рекомендации</b></div>
                         <p>Подбираем книги по вашему вкусу на основе того, что вы прочитали</p>
                     </div>
                 </div>
             </div>
-                                
             <div class="col">
-                <div class="bg-tangerine-light rounded-hg mb-4 mb-xl-0">
-                    <div class="pr-4 pl-5 py-8 position-relative">
+                <div class="bg-soft-yellow-darker rounded-hg">
+                    <div class="pr-4 pl-5 py-3 position-relative">
                         <div class="font-size-4 font-weight-medium position-relative z-index-2"><b>Статистика чтения</b></div>
                         <p>Показываем время, скорость и прогресс вашего чтения в приложении</p>
                     </div>
@@ -650,7 +469,7 @@
 
 <section class="space-bottom-3">
     <div class="container">
-        <div class="bg-punch-light rounded-hg mb-4 mb-xl-0">
+        <div class="bg-white rounded-hg mb-4 mb-xl-0">
             <div class="pr-4 pl-5 py-4 position-relative">
 
                 <header class="d-md-flex justify-content-between align-items-center">
@@ -658,7 +477,7 @@
                     <a href="#" class="d-flex align-items-center h-primary">Еще<span class="flaticon-next font-size-3 ml-2"></span></a>
                 </header>
                 <p>Подбираем книги по темам и рейтингам, держим в курсе книжных новостей</p>
-                <ul class="js-slick-carousel products list-unstyled u-slick--gutters-3 my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
+               <ul class="js-slick-carousel products list-unstyled my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
                     data-arrow-left-classes="fas flaticon-back u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas flaticon-next u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="6" data-responsive='[{
                        "breakpoint": 1500,
                        "settings": {
@@ -680,146 +499,89 @@
                          "slidesToShow": 1
                        }
                     }]'>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img9.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img1.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                    
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="far fa-star"></small>
                                             <small class="far fa-star"></small>
                                         </div>
-                                        <div class="">(3,714)</div>
                                     </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>Стеклянный человек</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Валерий Печейкин</b></a></div>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Вот оно, счастье</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Найлл Уильямз</b></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img2.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                                        
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                        </div>
+                                    </div>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Путь: как ускорить продвижение к финансовой свободе</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Тони Роббинс</b></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img3.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                                        
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="fas fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                            <small class="far fa-star"></small>
+                                        </div>
+                                    </div>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>12 железных принципов успеха</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Боб Проктор</b></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
 
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img4.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
+                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                        <div class="overflow-hidden px-sm-4d75">
+                            <div class="d-block position-relative">
+                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img4.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
+                                                    
+                                <div class="pt-2 bg-white px-lg-2">
+                                    <div class="d-flex font-size-3">
+                                        <div class="text-yellow-darker pl-4">
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="fas fa-star"></small>
                                             <small class="far fa-star"></small>
                                             <small class="far fa-star"></small>
                                         </div>
-                                        <div class="">(3,714)</div>
                                     </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>Путь: как ускорить продвижение к финансовой свободе</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Тони Роббинс</b></a></div>
-                    
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img3.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                        <div class="">(3,714)</div>
-                                    </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>12 железных принципов успеха</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Боб Проктор</b></a></div>
-                    
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="product product__space product__space-primary border rounded-hg bg-white">
-                        <div class="product__inner overflow-hidden p-4d875">
-                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-                                <div class="woocommerce-loop-product__thumbnail">
-                                    <a href="#" class="d-block"><img src="~/img/120x180/img2.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
-                                </div>
-                                <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                                    <div class="product__rating d-flex align-items-center font-size-2">
-                                        <div class="text-yellow-darker mr-2">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                        <div class="">(3,714)</div>
-                                    </div>
-                                    <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="#"><b>Думай и богатей: как прожить достойную жизнь</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate"><a href="#" class="text-red-1"><b>Наполеон Хилл</b></a></div>
-                    
-                                </div>
-                                <div class="product__hover d-flex align-items-center">
-                                    <a href="#" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
-                                        <span class="product__add-to-cart">ADD TO CART</span>
-                                        <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
-                                    </a>
-                                    <a href="#" class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-switch"></i>
-                                    </a>
-                                    <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-                                        <i class="flaticon-heart"></i>
-                                    </a>
+                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#" tabindex="0"><b>Думай и богатей: как прожить достойную жизнь</b></a></h2>
+                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1" tabindex="0"><b>Наполеон Хилл</b></a></div>
                                 </div>
                             </div>
                         </div>

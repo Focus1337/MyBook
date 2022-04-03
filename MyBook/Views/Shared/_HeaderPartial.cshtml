@@ -39,16 +39,16 @@
                     <form class="form-inline my-2 my-xl-0">
                         <div class="input-group input-group-borderless w-100">
                             <div class="input-group-prepend border-right mr-0 d-none d-xl-block">
-                                <select class="custom-select pr-7 pl-4 rounded-right-0 height-5 shadow-none border-0 text-dark bg-gray-200" id="inputGroupSelect01">
+                                <select class="custom-select pr-7 pl-4 rounded-right-0 height-5 shadow-none border-0 text-dark" id="inputGroupSelect01">
                                     <option selected>Все</option>
                                     <option value="1">Авторы</option>
                                     <option value="2">Книги</option>
                                     <option value="3">Аудиокниги</option>
                                 </select>
                             </div>
-                            <input type="text" class="form-control px-3 bg-gray-200 bg-focus__1" placeholder="Книга или автор" aria-label="Amount (to the nearest dollar)">
+                            <input type="text" class="form-control px-3" placeholder="Книга или автор" aria-label="Amount (to the nearest dollar)">
                             <div class="input-group-append">
-                                <button class="btn btn-primary px-3 py-2" type="submit"><i class="mx-1 glph-icon flaticon-loupe text-white"></i></button>
+                                <button class="btn bg-white px-3 py-2" type="submit"><i class="mx-1 glph-icon flaticon-loupe"></i></button>
                             </div>
                         </div>
                     </form>
@@ -62,24 +62,24 @@
                                             
                                     <ul class="nav pl-xl-4">
                                         <li class="nav-item">
-                                            <a asp-controller="Home" asp-action="Index" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
+                                            <a asp-controller="Home" asp-action="Subscription" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
                                                 ♕ PREMIUM
                                             </a>
                                         </li>
                                         
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">Библиотека</a>
-                                        </li>
-                                                
                                         <li class="nav-item">
                                             <a class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color" 
                                                asp-controller="Home" asp-action="Subscription">Подписка</a>
                                         </li>
 
                                         <li class="nav-item">
+                                            <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">Мои книги</a>
+                                        </li>
+                                        
+                                        <li class="nav-item">
                                             <a asp-controller="Auth" asp-action="Login" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">
                                                 <i class="flaticon-user"></i>
-                                                    Войти
+                                                Войти
                                             </a>
                                         </li>
                                         
