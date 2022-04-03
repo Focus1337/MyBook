@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyBook.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220403102241_init")]
+    [Migration("20220403111317_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,13 @@ namespace MyBook.DataAccess.Migrations
                     b.HasIndex("UsersId");
 
                     b.ToTable("BookUser");
+
+                    b.HasData(
+                        new
+                        {
+                            FavoriteBooksId = new Guid("3cb92c37-ec67-4720-af23-d7f4d4096109"),
+                            UsersId = "4bee3a36-db98-4071-ad61-a61db810decb"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
