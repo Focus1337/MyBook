@@ -270,6 +270,11 @@ namespace MyBook.DataAccess.Migrations
                 columns: new[] { "Id", "AuthorId", "Description", "Genre", "Image", "Price", "SubType", "Title", "Year" },
                 values: new object[] { new Guid("3cb92c37-ec67-4720-af23-d7f4d4096109"), new Guid("320852a1-b75b-4b89-b286-873c80d11727"), "«Рагнарёк» – книга из серии древних мифов, переосмысленных современными писателями из разных стран", "Мифы", new byte[0], 549m, 1, "Рагнарёк", 2022 });
 
+            migrationBuilder.InsertData(
+                table: "BookUser",
+                columns: new[] { "FavoriteBooksId", "UsersId" },
+                values: new object[] { new Guid("3cb92c37-ec67-4720-af23-d7f4d4096109"), "4bee3a36-db98-4071-ad61-a61db810decb" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",

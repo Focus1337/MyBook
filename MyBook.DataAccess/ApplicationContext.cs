@@ -31,7 +31,8 @@ public class ApplicationContext : IdentityDbContext<User>
                 Id = 1,
                 Name = "Месяц",
                 Duration = 60 * 24 * 30,
-                Description = "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
+                Description =
+                    "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
                 Price = 349m
             },
             new
@@ -39,7 +40,8 @@ public class ApplicationContext : IdentityDbContext<User>
                 Id = 2,
                 Name = "Полгода",
                 Duration = 60 * 24 * 180,
-                Description = "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
+                Description =
+                    "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
                 Price = 299m * 6
             },
             new
@@ -47,13 +49,14 @@ public class ApplicationContext : IdentityDbContext<User>
                 Id = 3,
                 Name = "Год",
                 Duration = 60 * 24 * 365,
-                Description = "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
+                Description =
+                    "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
                 Price = 249m * 12
             }
         );
 
         #endregion
-        
+
         #region Users
 
         modelBuilder.Entity<User>(b =>
@@ -80,7 +83,7 @@ public class ApplicationContext : IdentityDbContext<User>
         });
 
         #endregion
-        
+
         #region Authors
 
         modelBuilder.Entity<Author>().HasData(
@@ -94,7 +97,7 @@ public class ApplicationContext : IdentityDbContext<User>
             });
 
         #endregion
-        
+
         #region Books
 
         modelBuilder.Entity<Book>().HasData(
@@ -113,5 +116,21 @@ public class ApplicationContext : IdentityDbContext<User>
             });
 
         #endregion
+        
+        #region BookUser
+        
+        modelBuilder.Entity<Book>()
+            .HasMany(p => p.Users)
+            .WithMany(p => p.FavoriteBooks)
+            .UsingEntity(j => j.HasData(
+                new
+                {
+                    FavoriteBooksId = new Guid("3cb92c37-ec67-4720-af23-d7f4d4096109"),
+                    UsersId = "4bee3a36-db98-4071-ad61-a61db810decb"
+                }
+            ));
+        
+        #endregion
     }
+    
 }

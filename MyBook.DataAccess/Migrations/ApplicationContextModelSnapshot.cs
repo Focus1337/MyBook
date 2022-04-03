@@ -35,6 +35,13 @@ namespace MyBook.DataAccess.Migrations
                     b.HasIndex("UsersId");
 
                     b.ToTable("BookUser");
+
+                    b.HasData(
+                        new
+                        {
+                            FavoriteBooksId = new Guid("3cb92c37-ec67-4720-af23-d7f4d4096109"),
+                            UsersId = "4bee3a36-db98-4071-ad61-a61db810decb"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
