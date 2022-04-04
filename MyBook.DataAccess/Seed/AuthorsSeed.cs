@@ -10,6 +10,7 @@ public partial class Seeds
         modelBuilder.Entity<Author>().HasData(
             new
             {
+                //https://mybook.ru/author/antoniya-bajett/
                 Id = new Guid("320852a1-b75b-4b89-b286-873c80d11727"),
                 FullName = "Антония Сьюзен Байетт",
                 Description =
