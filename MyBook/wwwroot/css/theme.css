@@ -26263,6 +26263,10 @@ footer .widget select.custom-select,
     border-color: #161619 !important
 }
 
+.border-windsor-tan {
+    border-color: #b34d00 !important
+}
+
 @media(min-width:992px) {
     .border-lg-0 {
         border: 0 !important

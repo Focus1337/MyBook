@@ -1,0 +1,87 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="page-header border-bottom">
+    <div class="container">
+        <div class="d-md-flex justify-content-between align-items-center py-4">
+            <nav class="font-size-2 header-text-color">
+                <a asp-controller="Home" asp-action="Index" class="header-text-color">MyBook — Электронная библиотека</a>
+                <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>
+                <a asp-controller="Catalog" asp-action="Index" class="header-text-color">Каталог</a>
+                <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>"Вий"
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div id="primary" class="bg-white">
+    <div class="background-image"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 d-flex justify-content-end">
+                <div class="space-top-1 mb-0">
+                    <img src="~/img/270x378/img1.jpg" alt="Image Description" class="mx-auto img-fluid rounded-hg border border-width-2">
+                </div>
+            </div>
+            <div class="col-md-5 pl-0 border-left">
+                <div class="space-top-1 px-4 px-xl-7 pb-5">
+                    <div class="font-size-2 mb-2">
+                        <span>
+                            <svg viewBox="0 0 16 16" fill="#000" width="24" height="24">
+                                <path d="M11.587 2.429c0 .833.012 1.667-.007 2.5-.007.282.082.348.338.339.535-.02 1.07-.006 1.654-.006-.33.648-.725 1.258-1.178 1.821-.864 1.109-1.85 2.096-2.863 3.056a5.688 5.688 0 01-.818.625c-.34.219-.585.159-.813-.182a5.533 5.533 0 01-.335-.599c-.08-.16-.14-.218-.303-.067a18.07 18.07 0 00-1.928 2.066 2.688 2.688 0 00-.594 1.59c-.394-.623-.744-1.162-1.08-1.709-.375-.62-.737-1.244-1.115-1.858a.666.666 0 01-.055-.655c.167-.4.363-.79.652-1.111.69-.761 1.373-1.53 2.16-2.191.368-.31.798-.502 1.291-.498a.708.708 0 01.645.364c.51.813 1.021 1.625 1.545 2.43.244.375.368.752.152 1.205a.595.595 0 00.31-.656 1.54 1.54 0 00-.217-.533c-.366-.607-.724-1.22-1.093-1.821-.093-.152-.119-.252.034-.394 1.258-1.167 2.477-2.375 3.618-3.716z" fill="#B5CB50">
+                                </path>
+                            </svg>
+                            <span class="font-weight-bold">Бесплатно</span>
+                        </span>
+
+                        <span class="text-yellow-darker">
+                            <span class="fas fa-star ml-3"></span>
+                        </span>
+                        <span>4,31</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <h1 class="font-weight-bold">Вий</h1>
+                        <a class="font-size-3 header-text-color" href="#">Николай Гоголь</a>
+                    </div>
+
+                    <div class="mb-2 font-size-2 text-gray-600 mb-4">
+                        <span class="font-weight-medium ">2008 год</span>
+                        <span class="ml-2 text-gray-600">12+</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <a type="button" href="https://mybook.ru/author/nikolaj-vasilevich-gogol/vij-2/reader/"
+                           class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать онлайн</a>
+                    </div>
+
+                    <div class="mb-5 border-bottom">
+                        <h4 class="font-weight-bold">О книге</h4>
+                        <p class="font-size-2">«…Раздался петуший крик. Это был уже второй крик; первый прослышали гномы. Испуганные духи бросились, кто как попало, в окна и двери, чтобы поскорее вылететь, но не тут-то было: так и остались они там, завязнувши в дверях и окнах. Вошедший священник остановился при виде такого посрамления божьей святыни и не посмел служить панихиду в таком месте. Так навеки и осталась церковь с завязнувшими в дверях и окнах чудовищами, обросла лесом, корнями, бурьяном, диким терновником; и никто не найдет теперь к ней дороги…»</p>
+                    </div>
+
+                    <div class="mb-5 font-size-3">
+                        <h5 class="font-weight-bold">Жанры</h5>
+                        <span class="badge header-text-color border border-windsor-tan">Литература 19 века</span>
+                        <span class="badge header-text-color border border-windsor-tan">Мистика</span>
+                    </div>
+
+                    <div class="py-5 d-flex align-items-center border-top">
+                        <ul class="list-unstyled nav">
+                            <li class="mr-6 mb-4 mb-md-0">
+                                <a href="#" class="h-primary"><i class="flaticon-heart mr-2"></i>Мои книги</a>
+                            </li>
+                            <li class="mr-6">
+                                <a href="#" class="h-primary"><i class="flaticon-share mr-2"></i>Поделиться</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
