@@ -39,47 +39,47 @@
                     <form class="form-inline my-2 my-xl-0">
                         <div class="input-group input-group-borderless w-100">
                             <div class="input-group-prepend border-right mr-0 d-none d-xl-block">
-                                <select class="custom-select pr-7 pl-4 rounded-right-0 height-5 shadow-none border-0 text-dark bg-gray-200" id="inputGroupSelect01">
+                                <select class="custom-select pr-7 pl-4 rounded-right-0 height-5 shadow-none border-0 text-dark" id="inputGroupSelect01">
                                     <option selected>Все</option>
                                     <option value="1">Авторы</option>
                                     <option value="2">Книги</option>
                                     <option value="3">Аудиокниги</option>
                                 </select>
                             </div>
-                            <input type="text" class="form-control px-3 bg-gray-200 bg-focus__1" placeholder="Книга или автор" aria-label="Amount (to the nearest dollar)">
+                            <input type="text" class="form-control px-3" placeholder="Книга или автор" aria-label="Amount (to the nearest dollar)">
                             <div class="input-group-append">
-                                <button class="btn btn-primary px-3 py-2" type="submit"><i class="mx-1 glph-icon flaticon-loupe text-white"></i></button>
+                                <button class="btn bg-white px-3 py-2" type="submit"><i class="mx-1 glph-icon flaticon-loupe"></i></button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="d-flex align-items-center mt-lg-3 mt-xl-0">
-                    
-                    
+
                     <div class="container">
-                        <div class="rounded-md d-none d-md-block">
+                        <div class="rounded-hg d-none d-md-block">
                             <div class="d-flex align-items-center justify-content-center position-relative">
                                 <div class="site-navigation mr-auto d-none d-xl-block">
                                             
                                     <ul class="nav pl-xl-4">
                                         <li class="nav-item">
-                                            <a asp-controller="Home" asp-action="Index" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color"><b>Что выбрать</b></a>
+                                            <a asp-controller="Home" asp-action="Subscription" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
+                                                ♕ PREMIUM
+                                            </a>
                                         </li>
                                         
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color"><b>Библиотека</b></a>
-                                        </li>
-                                                
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color"><b>Подписка</b></a>
+                                            <a class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color" 
+                                               asp-controller="Home" asp-action="Subscription">Подписка</a>
                                         </li>
 
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">
-                                                <b>
-                                                    <i class="flaticon-user"></i>
-                                                    Войти
-                                                </b>
+                                            <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">Мои книги</a>
+                                        </li>
+                                        
+                                        <li class="nav-item">
+                                            <a asp-controller="Auth" asp-action="Login" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">
+                                                <i class="flaticon-user"></i>
+                                                Войти
                                             </a>
                                         </li>
                                         
@@ -88,101 +88,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="rounded-md d-none d-md-block">
-                <div class="d-flex align-items-center justify-content-center position-relative">
-                    <div class="site-navigation mr-auto d-none d-xl-block">
-                        
-                        <ul class="nav pl-xl-4">
-                            <li class="nav-item bg-chili-light rounded-md mr-2">
-                                <a asp-controller="Home" asp-action="Index" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">📖 Книги</a>
-                            </li>
-                            
-                            <li class="nav-item bg-chili-light rounded-md mr-2">
-                                <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">🎧 Аудиокниги</a>
-                            </li>
-
-                            <li class="nav-item bg-chili-light rounded-md mr-2">
-                                <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">👌 Бесплатные книги</a>
-                            </li>
-                            
-                            <li class="nav-item bg-chili-light rounded-md mr-2">
-                                <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">🔥 Новинки</a>
-                            </li>
-                            
-                            <li class="nav-item bg-chili-light rounded-md mr-2">
-                                <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">❤ Топ книг</a>
-                            </li>
-                            
-                            <li class="nav-item bg-chili-light rounded-md mr-2">
-                                <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">🎙 Топ аудиокниг</a>
-                            </li>
-                            
-                            <li class="nav-item bg-chili-light rounded-md mr-2">
-                                <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium header-text-color">🎙 Загрузи свой подкаст</a>
-                            </li>
-                        </ul>
-                        
-                        
-                        @* <ul class="nav pl-xl-4"> *@
-                        @*     <li class="nav-item bg-secondary rounded-md mr-2"> *@
-                        @*         <a asp-controller="Home" asp-action="Index" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium">Главная</a> *@
-                        @*     </li> *@
-                        @*     <li class="nav-item bg-secondary rounded-md mr-2"> *@
-                        @*         <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium">Категории</a> *@
-                        @*     </li> *@
-                        @*     <li class="nav-item dropdown bg-secondary rounded-md mr-2"> *@
-                        @*         <a id="shopDropdownInvoker" href="#" class="dropdown-toggle nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium d-flex align-items-center" aria-haspopup="true" aria-expanded="false" data-unfold-event="hover" data-unfold-target="#shopDropdownMenu" *@
-                        @*            data-unfold-type="css-animation" data-unfold-duration="200" data-unfold-delay="50" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp" data-unfold-animation-out="fadeOut"> *@
-                        @*             Магазин *@
-                        @*         </a> *@
-                        @*         <ul id="shopDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900" aria-labelledby="shopDropdownInvoker"> *@
-                        @*             <li><a href="../shop/shop/v1.html" class="dropdown-item link-black-100">Shop list</a></li> *@
-                        @*             <li><a href="../shop/single-product-v1.html" class="dropdown-item link-black-100">Shop single</a></li> *@
-                        @*             <li><a href="../shop/cart.html" class="dropdown-item link-black-100">Shop cart</a></li> *@
-                        @*             <li><a href="../shop/checkout.html" class="dropdown-item link-black-100">Shop checkout</a></li> *@
-                        @*             <li><a href="../shop/my-account.html" class="dropdown-item link-black-100">Shop My Account</a></li> *@
-                        @*             <li><a href="../shop/order-received.html" class="dropdown-item link-black-100">Shop Order Received</a></li> *@
-                        @*             <li><a href="../shop/order-tracking.html" class="dropdown-item link-black-100">Shop Order Tracking</a></li> *@
-                        @*             <li><a href="../shop/store-location.html" class="dropdown-item link-black-100">Shop Store Location</a></li> *@
-                        @*         </ul> *@
-                        @*     </li> *@
-                        @* *@
-                        @*     <li class="nav-item bg-secondary rounded-md mr-2"> *@
-                        @*         <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium">Блог</a> *@
-                        @*     </li> *@
-                        @* *@
-                        @*     <li class="nav-item dropdown bg-secondary rounded-md mr-2"> *@
-                        @*         <a id="pagesDropdownInvoker" href="#" class="dropdown-toggle nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-medium d-flex align-items-center" aria-haspopup="true" aria-expanded="false" data-unfold-event="hover" data-unfold-target="#pagesDropdownMenu" *@
-                        @*            data-unfold-type="css-animation" data-unfold-duration="200" data-unfold-delay="50" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp" data-unfold-animation-out="fadeOut"> *@
-                        @*             Others *@
-                        @*         </a> *@
-                        @*         <ul id="pagesDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900" aria-labelledby="pagesDropdownInvoker"> *@
-                        @*             <li><a href="../others/404.html" class="dropdown-item link-black-100">404</a></li> *@
-                        @*             <li><a href="../others/about.html" class="dropdown-item link-black-100">About Us</a></li> *@
-                        @*             <li><a href="../others/authors-list.html" class="dropdown-item link-black-100">Authors List</a></li> *@
-                        @*             <li><a href="../others/authors-single.html" class="dropdown-item link-black-100">Authors Single</a></li> *@
-                        @*             <li><a href="../others/coming-soon.html" class="dropdown-item link-black-100">Coming Soon</a></li> *@
-                        @*             <li><a href="../others/contact.html" class="dropdown-item link-black-100">Contact Us</a></li> *@
-                        @*             <li><a href="../others/faq.html" class="dropdown-item link-black-100">FAQ</a></li> *@
-                        @*             <li><a href="../others/pricing-table.html" class="dropdown-item link-black-100">Pricing Table</a></li> *@
-                        @*             <li><a href="../others/terms-conditions.html" class="dropdown-item link-black-100">Terms Conditions</a></li> *@
-                        @*         </ul> *@
-                        @*     </li> *@
-                        @* </ul> *@
-                        
-                    </div>
-                    @* <div class="secondary-navigation"> *@
-                    @*     <ul class="nav pr-xl-4"> *@
-                    @*         <li class="nav-item bg-secondary rounded-md mr-2"><a href="#" class="nav-link text-white mx-2 px-0 py-3 font-size-2 font-weight-medium">Today's Deals</a></li> *@
-                    @*         <li class="nav-item bg-secondary rounded-md mr-2"><a href="#" class="nav-link text-white mx-2 px-0 py-3 font-size-2 font-weight-medium">Best Seller</a></li> *@
-                    @*         <li class="nav-item bg-secondary rounded-md mr-2"><a href="#" class="nav-link text-white mx-2 px-0 py-3 font-size-2 font-weight-medium">Trending Books</a></li> *@
-                    @*         <li class="nav-item bg-secondary rounded-md mr-2"><a href="#" class="nav-link text-white mx-2 px-0 py-3 font-size-2 font-weight-medium">Gift Cards</a></li> *@
-                    @*     </ul> *@
-                    @* </div> *@
                 </div>
             </div>
         </div>

@@ -92,7 +92,7 @@ body {
     line-height: 1.5;
     color: #161619;
     text-align: left;
-    background-color: #fff
+    background-color: #f5f5f5;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -3843,6 +3843,14 @@ fieldset:disabled a.btn {
 .btn-light:not(:disabled):not(.disabled).active:focus,
 .show>.btn-light.dropdown-toggle:focus {
     box-shadow: 0 0 0 .2rem rgba(214, 215, 216, .5)
+}
+
+.btn-gradient {
+    background-image: linear-gradient(rgb(255, 215, 84), rgb(255, 199, 44));
+}
+
+.btn-gradient-2 {
+    background-image: linear-gradient(rgb(255, 129, 0), rgb(228, 75, 3))
 }
 
 .btn-dark {
@@ -11232,6 +11240,10 @@ button.bg-red-1:focus {
 
 .border-tangerine {
     border-color: #f79400 !important
+}
+
+.border-sunglow {
+    border-color: #ffc72c !important
 }
 
 .border-tangerine-light {
@@ -26040,6 +26052,10 @@ footer .widget .sub-menu a:focus {
     height: 6.25rem
 }
 
+.height-25 {
+    height: 2.5rem
+}
+
 .height-38 {
     height: 2.375rem
 }
@@ -26101,6 +26117,10 @@ footer .widget select.custom-select,
 
 .height-50 {
     height: 3.125rem
+}
+
+.height-55 {
+    height: 3.25rem
 }
 
 .height-60 {
@@ -26203,6 +26223,10 @@ footer .widget select.custom-select,
     border-radius: .5rem !important
 }
 
+.rounded-hg {
+    border-radius: .75rem !important
+}
+
 .border-width-2 {
     border-width: 2px !important
 }
@@ -26299,7 +26323,7 @@ footer .widget select.custom-select,
 }
 
 .border-sh-hover:hover {
-    border-color: #161619 !important;
+    border-color: #ffc72c !important;
     box-shadow: 0 0 40px 0 rgba(22, 22, 25, .1);
     position: relative;
     z-index: 1
