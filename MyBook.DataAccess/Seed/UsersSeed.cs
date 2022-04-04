@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyBook.Entity;
 
-namespace MyBook.DataAccess;
+namespace MyBook.DataAccess.Seed;
 
 public partial class Seeds
 {

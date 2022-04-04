@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MyBook.DataAccess.Seed;
 using MyBook.Entity;
 
 namespace MyBook.DataAccess;
