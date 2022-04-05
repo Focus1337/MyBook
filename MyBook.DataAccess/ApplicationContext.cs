@@ -1,14 +1,18 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess.Seed;
 using MyBook.Entity;
+using MyBook.Entity.Identity;
 
 namespace MyBook.DataAccess;
 
 //dotnet ef migrations add [Название комита] -s .\MyBook\ -p .\MyBook.DataAccess\
 //dotnet ef database update -s .\MyBook\ -p .\MyBook.DataAccess\
 
-public class ApplicationContext : IdentityDbContext<User>
+public class ApplicationContext : IdentityDbContext<User, Role, Guid, IdentityUserClaim<Guid>,
+    UserRole, IdentityUserLogin<Guid>, IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
+
 {
     public ApplicationContext(DbContextOptions options)
         : base(options)
@@ -29,5 +33,24 @@ public class ApplicationContext : IdentityDbContext<User>
         Seeds.CreateAuthors(modelBuilder);
         Seeds.CreateBooks(modelBuilder);
         Seeds.CreateBookUser(modelBuilder);
+        modelBuilder.ApplyConfiguration(new RoleSeed());
+        modelBuilder.ApplyConfiguration(new UserRoleSeed());
+        
+        
+        modelBuilder.Entity<UserRole>(userRole =>
+        {
+            userRole.HasKey(ur => new { ur.UserId, ur.RoleId });
+
+            userRole.HasOne(ur => ur.Role)
+                .WithMany(r => r.UserRoles)
+                .HasForeignKey(ur => ur.RoleId)
+                .IsRequired();
+
+            userRole.HasOne(ur => ur.User)
+                .WithMany(r => r.UserRoles)
+                .HasForeignKey(ur => ur.UserId)
+                .IsRequired();
+
+        });
     }
 }

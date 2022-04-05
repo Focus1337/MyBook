@@ -14,7 +14,7 @@ namespace MyBook.DataAccess.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "text", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "text", nullable: true)
@@ -60,7 +60,7 @@ namespace MyBook.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    RoleId = table.Column<string>(type: "text", nullable: false),
+                    RoleId = table.Column<Guid>(type: "uuid", nullable: false),
                     ClaimType = table.Column<string>(type: "text", nullable: true),
                     ClaimValue = table.Column<string>(type: "text", nullable: true)
                 },
@@ -104,7 +104,7 @@ namespace MyBook.DataAccess.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "text", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     LastName = table.Column<string>(type: "text", nullable: false),
                     SubId = table.Column<int>(type: "integer", nullable: false),
@@ -142,7 +142,7 @@ namespace MyBook.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<string>(type: "text", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
                     ClaimType = table.Column<string>(type: "text", nullable: true),
                     ClaimValue = table.Column<string>(type: "text", nullable: true)
                 },
@@ -161,10 +161,10 @@ namespace MyBook.DataAccess.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "text", nullable: false),
+                    ProviderKey = table.Column<string>(type: "text", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "text", nullable: true),
-                    UserId = table.Column<string>(type: "text", nullable: false)
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -181,8 +181,8 @@ namespace MyBook.DataAccess.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "text", nullable: false),
-                    RoleId = table.Column<string>(type: "text", nullable: false)
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    RoleId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -205,9 +205,9 @@ namespace MyBook.DataAccess.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "text", nullable: false),
-                    LoginProvider = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
-                    Name = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    LoginProvider = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
                     Value = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -226,7 +226,7 @@ namespace MyBook.DataAccess.Migrations
                 columns: table => new
                 {
                     FavoriteBooksId = table.Column<Guid>(type: "uuid", nullable: false),
-                    UsersId = table.Column<string>(type: "text", nullable: false)
+                    UsersId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -243,6 +243,16 @@ namespace MyBook.DataAccess.Migrations
                         principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { new Guid("12d534a7-4535-4819-8704-bcfd7553ab46"), "579343d8-88e4-454f-8841-dffe590dddd8", "User", "USER" },
+                    { new Guid("6dc02633-d464-4f86-8575-4cb190d670a6"), "24c6ffb7-7f92-433c-bebf-4a90f3b9a536", "UserSub", "USERSUB" },
+                    { new Guid("6f17d951-3ad5-49f9-b333-2a37e367333d"), "1bb26b08-9504-4d58-bf23-6b230ed9d589", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -263,13 +273,14 @@ namespace MyBook.DataAccess.Migrations
                 {
                     { 1, "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка", 43200, "Месяц", 349m },
                     { 2, "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка", 259200, "Полгода", 1794m },
-                    { 3, "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка", 525600, "Год", 2988m }
+                    { 3, "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка", 525600, "Год", 2988m },
+                    { 4, "Нихуя нет у тебя браток", 0, "Нет", 0m }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "Image", "LastName", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "SubDateStart", "SubId", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "4bee3a36-db98-4071-ad61-a61db810decb", 0, "784e7067-3603-4e5e-97ce-b70957a864ae", "1@mail.ru", false, new byte[0], "LastName", true, null, "Name", null, null, "AQAAAAEAACcQAAAAEBYiodokZsZRb23HmsOebO9xUQixijVwVPzaOSiF9yKPiVUTUBkr6WkcMsCaN9qsvQ", null, false, "6XN27C5W5ARJZESDVSRBUS4NMCN5XCPR", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "S1mple" });
+                values: new object[] { new Guid("4bee3a36-db98-4071-ad61-a61db810decb"), 0, "784e7067-3603-4e5e-97ce-b70957a864ae", "1@mail.ru", false, new byte[0], "LastName", true, null, "Name", null, null, "AQAAAAEAACcQAAAAEBYiodokZsZRb23HmsOebO9xUQixijVwVPzaOSiF9yKPiVUTUBkr6WkcMsCaN9qsvQ", null, false, "6XN27C5W5ARJZESDVSRBUS4NMCN5XCPR", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "S1mple" });
 
             migrationBuilder.InsertData(
                 table: "Books",
@@ -284,9 +295,14 @@ namespace MyBook.DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { new Guid("6f17d951-3ad5-49f9-b333-2a37e367333d"), new Guid("4bee3a36-db98-4071-ad61-a61db810decb") });
+
+            migrationBuilder.InsertData(
                 table: "BookUser",
                 columns: new[] { "FavoriteBooksId", "UsersId" },
-                values: new object[] { new Guid("3cb92c37-ec67-4720-af23-d7f4d4096109"), "4bee3a36-db98-4071-ad61-a61db810decb" });
+                values: new object[] { new Guid("3cb92c37-ec67-4720-af23-d7f4d4096109"), new Guid("4bee3a36-db98-4071-ad61-a61db810decb") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

@@ -11,7 +11,7 @@ public partial class Seeds
         {
             b.HasData(new
             {
-                Id = "4bee3a36-db98-4071-ad61-a61db810decb",
+                Id = Guid.Parse("4bee3a36-db98-4071-ad61-a61db810decb"),
                 UserName = "S1mple",
                 Email = "1@mail.ru",
                 EmailConfirmed = false,
