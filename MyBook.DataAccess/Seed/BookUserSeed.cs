@@ -14,7 +14,7 @@ public partial class Seeds
                 new
                 {
                     FavoriteBooksId = new Guid("3cb92c37-ec67-4720-af23-d7f4d4096109"),
-                    UsersId = "4bee3a36-db98-4071-ad61-a61db810decb"
+                    UsersId =Guid.Parse("4bee3a36-db98-4071-ad61-a61db810decb")
                 }
             ));
     }

@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model RegisterViewModel
 
 @{
     ViewBag.Title = "Зарегистрироваться";
@@ -26,27 +26,28 @@
 		</div>
 		
 		<h1 class="font-weight-bold mb-4">Регистрация</h1>
-
+		
+		<div asp-validation-summary="ModelOnly"></div>
 		<div class="form-group">
-			<label for="name">Имя</label>
-			<input type="text" class="form-control item rounded-hg" id="name" placeholder="Александр" required>
+			<label asp-for="Name">Имя</label>
+			<input asp-for="Name" type="text" class="form-control item rounded-hg" id="name" placeholder="Александр" required>
 		</div>
 		<div class="form-group">
-			<label for="lastName">Фамилия</label>
-			<input type="text" class="form-control item rounded-hg" id="lastName" placeholder="Пушкин" required>
+			<label asp-for="Lastname">Фамилия</label>
+			<input asp-for="Lastname" type="text" class="form-control item rounded-hg" id="lastName" placeholder="Пушкин" required>
 		</div>
 		<div class="form-group">
-			<label for="password">Пароль</label>
-			<input type="password" class="form-control item rounded-hg" id="password" placeholder="Придумайте пароль" required>
+			<label asp-for="Password">Пароль</label>
+			<input asp-for="Password" type="password" class="form-control item rounded-hg" id="password" placeholder="Придумайте пароль" required>
 		</div>
 		<div class="form-group">
-			<label for="email">Почта</label>
-			<input type="text" class="form-control item rounded-hg" id="email" placeholder="example@mail.ru">
+			<label asp-for="Email">Почта</label>
+			<input asp-for="Email" type="text" class="form-control item rounded-hg" id="email" placeholder="example@mail.ru">
 		</div>
-		<div class="form-group">
-			<button type="button" class="btn btn-block btn-gradient transition-3d-hover rounded-hg create-account">Зарегистрироваться</button>
-		</div>
-		<p>Уже зарегистрированы? <a asp-controller="Auth" asp-action="Login">Войти в аккаунт</a></p>
+			<div class="form-group">
+				<button type="submit" class="btn btn-block btn-gradient transition-3d-hover rounded-hg create-account">Зарегистрироваться</button>
+			</div>
+			<p>Уже зарегистрированы? <a asp-controller="Auth" asp-action="Login">Войти в аккаунт</a></p>
 	</form>
 	<div class="social-media">
 		<h5>Или войдите с помощью соц. сети</h5>

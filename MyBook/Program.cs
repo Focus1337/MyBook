@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
 using MyBook.Entity;
+using MyBook.Entity.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +13,16 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationContext>(opts =>
     opts.UseNpgsql(builder.Configuration.GetConnectionString("sqlConnection")));
 
-builder.Services.AddDefaultIdentity<User>(
-    options =>
-        options.SignIn.RequireConfirmedEmail = false
-).AddEntityFrameworkStores<ApplicationContext>();
+builder.Services.AddIdentity<User, Role>(option=>option.SignIn.RequireConfirmedEmail=false)
+    .AddEntityFrameworkStores<ApplicationContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+        {
+            options.LoginPath = new PathString("/Auth/Login");
+        }
+    );
 
 var app = builder.Build();
 
@@ -30,6 +39,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
