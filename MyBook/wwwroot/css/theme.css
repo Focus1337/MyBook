@@ -11134,6 +11134,10 @@ button.bg-red-1:focus {
     background-color: #ff432d !important
 }
 
+.bg-main {
+    background-color: #f5f5f5;
+}
+
 .bg-white {
     background-color: #fff !important
 }

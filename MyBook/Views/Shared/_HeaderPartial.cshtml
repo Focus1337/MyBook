@@ -61,16 +61,25 @@
                                 <div class="site-navigation mr-auto d-none d-xl-block">
                                             
                                     <ul class="nav pl-xl-4">
+                                        <li class="nav-item">
+                                            @if (User.IsInRole("UserSub"))
+                                            {
+                                                <a asp-controller="Home" asp-action="Index" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
+                                                    ♕ PREMIUM
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a asp-controller="Home" asp-action="Subscription" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
+                                                    ♕ PREMIUM
+                                                </a>
+                                            }
+                                        </li>
+                                        
                                         @if (!User.Identity.IsAuthenticated)
                                         {
                                             <li class="nav-item">
-                                                <a asp-controller="Home" asp-action="Subscription" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
-                                                    ♕ PREMIUM
-                                                </a>
-                                            </li>
-                                            
-                                            <li class="nav-item">
-                                                <a asp-controller="Auth" asp-action="Login" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">
+                                                <a asp-controller="Auth" asp-action="Login" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">
                                                     <i class="flaticon-user"></i>
                                                     Войти
                                                 </a>
@@ -79,33 +88,26 @@
                                         else
                                         {
                                             <li class="nav-item">
-                                                <a asp-controller="Home" asp-action="Subscription" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
-                                                    ♕ PREMIUM
+                                                <a href="#" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">Мои книги</a>
+                                            </li>
+
+                                            <li class="nav-item dropdown">
+                                                <a id="blogDropdownInvoker" href="#" class="dropdown-toggle header-text-color nav-link mx-3 px-0 d-flex align-items-center" aria-haspopup="true" aria-expanded="false" data-unfold-event="hover" data-unfold-target="#blogDropdownMenu" data-unfold-type="css-animation" data-unfold-duration="200" data-unfold-delay="50" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp" data-unfold-animation-out="fadeOut">
+                                                    <img src="~/img/user.png" width="40" height="40" class="rounded-circle">
                                                 </a>
+                                                <ul id="blogDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-hg u-unfold--css-animation u-unfold--hidden" aria-labelledby="blogDropdownInvoker" style="animation-duration: 200ms; left: 0px;">
+                                                    <li>
+                                                        <a href="#" class="dropdown-item font-weight-bold header-text-color">Профиль</a>
+                                                    </li>
+                                                    <form asp-controller="Auth" asp-action="Logout" method="post">
+                                                        <li class="nav-item">
+                                                            <button type="submit" class="dropdown-item font-weight-bold header-text-color border-0">
+                                                                Выйти
+                                                            </button>
+                                                        </li>
+                                                    </form>
+                                                </ul>
                                             </li>
-                                            
-                                            <li class="nav-item">
-                                                <a class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color" 
-                                                   asp-controller="Home" asp-action="Subscription">Подписка</a>
-                                            </li>
-                                            
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">Мои книги</a>
-                                            </li>
-                                            
-                                            <li class="nav-item">
-                                                <a class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color" 
-                                                   href="#">@User.Identity.Name</a>
-                                            </li>
-                                            
-                                            <form asp-controller="Auth" asp-action="Logout" method="post">
-                                                <li class="nav-item">
-                                                    <button type="submit"  class="nav-link link-black-100 mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">
-                                                        <i class="flaticon-user"></i>
-                                                        Выйти
-                                                    </button>
-                                                </li>
-                                            </form>
                                         }
                                         
                                     </ul>
