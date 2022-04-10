@@ -40,10 +40,8 @@
                         <div class="input-group input-group-borderless w-100">
                             <div class="input-group-prepend border-right mr-0 d-none d-xl-block">
                                 <select class="custom-select pr-7 pl-4 rounded-right-0 height-5 shadow-none border-0 text-dark" id="inputGroupSelect01">
-                                    <option selected>Все</option>
-                                    <option value="1">Авторы</option>
-                                    <option value="2">Книги</option>
-                                    <option value="3">Аудиокниги</option>
+                                    <option selected value="1">Книги</option>
+                                    <option value="2">Авторы</option>
                                 </select>
                             </div>
                             <input type="text" class="form-control px-3" placeholder="Книга или автор" aria-label="Amount (to the nearest dollar)">
@@ -64,7 +62,7 @@
                                         <li class="nav-item">
                                             @if (User.IsInRole("UserSub"))
                                             {
-                                                <a asp-controller="Home" asp-action="Index" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
+                                                <a asp-controller="Catalog" asp-action="Premium" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
                                                     ♕ PREMIUM
                                                 </a>
                                             }

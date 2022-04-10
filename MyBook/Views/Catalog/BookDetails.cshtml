@@ -1,7 +1,7 @@
 ﻿@model dynamic
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "\"Вий\"";
     Layout = "_Layout";
 }
 
@@ -12,7 +12,9 @@
                 <a asp-controller="Home" asp-action="Index" class="header-text-color">MyBook — Электронная библиотека</a>
                 <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>
                 <a asp-controller="Catalog" asp-action="Index" class="header-text-color">Каталог</a>
-                <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>"Вий"
+                <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>
+                <a asp-controller="Catalog" asp-action="Index" class="header-text-color">Николай Гоголь</a>
+                <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>@ViewBag.Title
             </nav>
         </div>
     </div>
