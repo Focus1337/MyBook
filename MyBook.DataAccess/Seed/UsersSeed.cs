@@ -12,6 +12,7 @@ public partial class Seeds
         {
             b.HasData(new
             {
+                //passowrd: qwe123QWE_
                 Id = Guid.Parse("4bee3a36-db98-4071-ad61-a61db810decb"),
                 UserName = "Admin",
                 Email = "admin@mybook.ru",
