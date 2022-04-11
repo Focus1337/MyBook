@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Text;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyBook.Entity;
 using MyBook.Models;
@@ -29,7 +30,7 @@ public class AuthController : Controller
     {
         if(ModelState.IsValid)
         {
-            User user = new User
+            var user = new User
             {
                 SubId = 4,
                 SubDateStart = default(DateTime),
@@ -37,11 +38,11 @@ public class AuthController : Controller
                 UserName = model.Email,
                 Name = model.Name,
                 LastName = model.Lastname,
-                Image = Array.Empty<byte>(),
+                Image = Convert.ToBase64String(await System.IO.File.ReadAllBytesAsync("wwwroot/img/user.png")),
                 EmailConfirmed = true,
-                LockoutEnabled = false,
+                LockoutEnabled = false
             };
-            
+
             var result = await _userManager.CreateAsync(user, model.Password);
             
             if (result.Succeeded)

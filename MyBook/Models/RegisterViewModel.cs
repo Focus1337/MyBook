@@ -5,12 +5,15 @@ namespace MyBook.Models;
 public class RegisterViewModel
 {
     [Required(ErrorMessage = "Укажите имя")]
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
+
     [Required(ErrorMessage = "Укажите фамилию")]
-    public string Lastname { get; set; }
+    public string Lastname { get; set; } = null!;
+
     [Required(ErrorMessage = "Укажите пароль")]
-    public string Password { get; set; }
+    public string Password { get; set; } = null!;
+
     [Required(ErrorMessage = "Укажите почту")]
     [EmailAddress]
-    public string Email { get; set; }
+    public string Email { get; set; } = null!;
 }

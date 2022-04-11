@@ -7,7 +7,7 @@
 
 <div class="registration-form">
     <form asp-controller="Auth" asp-action="Login" method="post">
-        <div class="pr-7 pb-3">
+    <div class="pr-7 pb-3">
             <a asp-controller="Home" asp-action="Index" class="d-block mb-1">
                 <svg width="32" height="33" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M4.4.619C2 .825 0 2.99 0 5.362v22.276c0 2.371 2 4.537 4.4 4.743 3.8.413 7.7.619 11.6.619 3.9 0 7.8-.206 11.6-.619 2.4-.206 4.4-2.372 4.4-4.744V5.363C32 2.991 30 .825 27.7.62A111.1 111.1 0 0016.013 0C12.125 0 8.25.206 4.4.619z" fill="url(#logo_svg__paint0_linear)">
@@ -25,7 +25,11 @@
             </a>
         </div>
         
-        <h1 class="font-weight-bold mb-4">Вход</h1>
+    <h1 class="font-weight-bold mb-4">Вход</h1>
+    
+        <div class="alert alert-info alert-dismissible" asp-validation-summary="ModelOnly">
+            <a class="close" data-dismiss="alert">×</a>
+        </div>
 
         <div class="form-group">
             <label asp-for="Email">Почта</label>

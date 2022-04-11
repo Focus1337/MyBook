@@ -37,6 +37,22 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.Use(async (context, next) =>
+{
+    await next();
+    switch (context.Response.StatusCode)
+    {
+        case 404:
+            context.Request.Path = "/Home/PageNotFound";
+            await next();
+            break;
+        case 403:
+            context.Request.Path = "/Home/AccessDenied";
+            await next();
+            break;
+    }
+});
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

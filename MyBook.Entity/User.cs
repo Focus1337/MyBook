@@ -11,7 +11,7 @@ public class User : IdentityUser<Guid>
     public int SubId { get; set; }
     
     public DateTime SubDateStart { get; set; }
-    public byte[] Image { get; set; } = null!;
+    public string Image { get; set; } = null!;
     public List<Book> FavoriteBooks { get; set; } = null!;
     
     public virtual ICollection<UserRole> UserRoles { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyBook.Entity;
 
@@ -14,17 +15,17 @@ public partial class Seeds
             {
                 //passowrd: qwe123QWE_
                 Id = Guid.Parse("4bee3a36-db98-4071-ad61-a61db810decb"),
-                UserName = "Admin",
+                UserName = "admin@mybook.ru",
                 Email = "admin@mybook.ru",
                 EmailConfirmed = false,
-                PasswordHash = "AQAAAAEAACcQAAAAEBYiodokZsZRb23HmsOebO9xUQixijVwVPzaOSiF9yKPiVUTUBkr6WkcMsCaN9qsvQ",
+                PasswordHash = new PasswordHasher<User>().HashPassword(null, "qwe123QWE_"),
                 SecurityStamp = "6XN27C5W5ARJZESDVSRBUS4NMCN5XCPR",
                 ConcurrencyStamp = "784e7067-3603-4e5e-97ce-b70957a864ae",
                 PhoneNumberConfirmed = false,
                 TwoFactorEnabled = false,
                 LockoutEnabled = true,
                 AccessFailedCount = 0,
-                Image = Encoding.ASCII.GetBytes(Convert.ToBase64String(File.ReadAllBytes("wwwroot/img/user.png"))),
+                Image = Convert.ToBase64String(File.ReadAllBytes("wwwroot/img/user.png")),
                 LastName = "Admin",
                 Name = "Admin",
                 SubId = 1,
