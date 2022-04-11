@@ -7,9 +7,12 @@ public class Book
     public Author Author { get; set; } = null!;
     public string Description { get; set; } = null!;
     public string Genre { get; set; } = null!;
-    public decimal Price { get; set; }
     public int SubType { get; set; } //
-    public byte[] Image { get; set; } = null!;
+    public string Image { get; set; } = null!; //Нужно ли стандартный URL для профиля? 
     public int Year { get; set; } //
+
+    public double Rating { get; set; }
+    
+    public DateTime AddedDate { get; set; }
     public List<User> Users { get; set; } = null!;
 }

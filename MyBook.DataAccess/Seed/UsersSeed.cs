@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Text;
+using Microsoft.EntityFrameworkCore;
 using MyBook.Entity;
 
 namespace MyBook.DataAccess.Seed;
@@ -11,9 +12,10 @@ public partial class Seeds
         {
             b.HasData(new
             {
+                //passowrd: qwe123QWE_
                 Id = Guid.Parse("4bee3a36-db98-4071-ad61-a61db810decb"),
-                UserName = "S1mple",
-                Email = "1@mail.ru",
+                UserName = "Admin",
+                Email = "admin@mybook.ru",
                 EmailConfirmed = false,
                 PasswordHash = "AQAAAAEAACcQAAAAEBYiodokZsZRb23HmsOebO9xUQixijVwVPzaOSiF9yKPiVUTUBkr6WkcMsCaN9qsvQ",
                 SecurityStamp = "6XN27C5W5ARJZESDVSRBUS4NMCN5XCPR",
@@ -22,9 +24,9 @@ public partial class Seeds
                 TwoFactorEnabled = false,
                 LockoutEnabled = true,
                 AccessFailedCount = 0,
-                Image = Array.Empty<byte>(),
-                LastName = "LastName",
-                Name = "Name",
+                Image = Encoding.ASCII.GetBytes(Convert.ToBase64String(File.ReadAllBytes("wwwroot/img/user.png"))),
+                LastName = "Admin",
+                Name = "Admin",
                 SubId = 1,
                 SubDateStart = default(DateTime)
             });
