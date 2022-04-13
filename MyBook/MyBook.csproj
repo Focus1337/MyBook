@@ -26,4 +26,8 @@
       <ProjectReference Include="..\MyBook.Entity\MyBook.Entity.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\User\UserProfile.cshtml" />
+    </ItemGroup>
+
 </Project>
