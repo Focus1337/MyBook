@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MyBook.DataAccess;
 using MyBook.Entity;
 using MyBook.Models;
 
@@ -12,15 +14,18 @@ public class ProfileController : Controller
     private readonly UserManager<User> _userManager;
     private readonly ILogger<ProfileController> _logger;
     private readonly SignInManager<User> _signInManager;
+    private readonly ApplicationContext _context;
 
     public ProfileController(UserManager<User> userManager, ILogger<ProfileController> logger,
-        SignInManager<User> signInManager)
+        SignInManager<User> signInManager, ApplicationContext context)
     {
         _userManager = userManager;
         _logger = logger;
         _signInManager = signInManager;
+        _context = context;
     }
     
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
         var user = await _userManager.FindByNameAsync(User.Identity?.Name);
@@ -29,7 +34,8 @@ public class ProfileController : Controller
 
         var model = new EditProfileViewModel
         {
-            Email = user.Email, Name = user.Name, LastName = user.LastName, Image = user.Image
+            Email = user.Email, Name = user.Name, LastName = user.LastName, Image = user.Image,
+            Sub = (await _context.Subs.FirstOrDefaultAsync(x => x.Id == user.SubId))!
         };
         return View(model);
     }
@@ -120,6 +126,7 @@ public class ProfileController : Controller
     public async Task<IActionResult> EditProfile(EditProfileViewModel model)
     {
         ModelState.Remove("Image");
+        ModelState.Remove("Sub");
         if (ModelState.IsValid)
         {
             var user = await _userManager.FindByNameAsync(User.Identity?.Name);
@@ -138,6 +145,7 @@ public class ProfileController : Controller
                 user.LastName = model.LastName;
                 //roflan
                 model.Image = user.Image;
+                model.Sub = (await _context.Subs.FirstOrDefaultAsync(x => x.Id == user.SubId))!;
 
                 var result = await _userManager.UpdateAsync(user);
                 if (result.Succeeded)

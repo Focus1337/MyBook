@@ -346,21 +346,21 @@ namespace MyBook.DataAccess.Migrations
                         new
                         {
                             Id = new Guid("6f17d951-3ad5-49f9-b333-2a37e367333d"),
-                            ConcurrencyStamp = "99240539-d4d5-43d1-b051-75d2a6bf5ad3",
+                            ConcurrencyStamp = "1695d097-3075-4b6e-9ffb-6d2a323f9059",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("12d534a7-4535-4819-8704-bcfd7553ab46"),
-                            ConcurrencyStamp = "5248aae0-81eb-44fb-a745-ffb5c6354de0",
+                            ConcurrencyStamp = "2ae9495f-52b2-4ed9-8217-92d9b68dda90",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = new Guid("6dc02633-d464-4f86-8575-4cb190d670a6"),
-                            ConcurrencyStamp = "ff93766e-af9e-4eec-8e73-a13a31ae101b",
+                            ConcurrencyStamp = "7cf90289-df40-4e81-b82a-d5aa6cb4d2fc",
                             Name = "UserSub",
                             NormalizedName = "USERSUB"
                         });
@@ -423,7 +423,7 @@ namespace MyBook.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
+                            Description = "📚  Все книги\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
                             Duration = 43200,
                             Name = "Месяц",
                             Price = 349m
@@ -431,25 +431,25 @@ namespace MyBook.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            Description = "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
-                            Duration = 259200,
-                            Name = "Полгода",
-                            Price = 1794m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "📚  Все книги\n🎙️ Все аудиокниги и подкасты\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
+                            Description = "📚  Все книги\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
                             Duration = 525600,
                             Name = "Год",
                             Price = 2988m
                         },
                         new
                         {
+                            Id = 3,
+                            Description = "📚  Все книги\n💌  Персональные рекомендации\n👌  Первоклассная поддержка",
+                            Duration = 259200,
+                            Name = "Полгода",
+                            Price = 1794m
+                        },
+                        new
+                        {
                             Id = 4,
-                            Description = "Нихуя нет у тебя браток",
-                            Duration = 0,
-                            Name = "Нет",
+                            Description = "📚  Все бесплатные книги",
+                            Duration = -1,
+                            Name = "Бесплатно",
                             Price = 0m
                         });
                 });
@@ -550,7 +550,7 @@ namespace MyBook.DataAccess.Migrations
                             LastName = "Admin",
                             LockoutEnabled = true,
                             Name = "Admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEzPEzlXDGJ21zDoyY7VCr1t6ujczdkEXdsfWy3ibgzLY0Y3v0QTy1sMGM9qg1CLxg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGr2STPBRCQg6ZksRk1rElp8Vewbn3qxjsLUKWmkWlV4aWVyhsVJCA2rL5+ChQxw+g==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "6XN27C5W5ARJZESDVSRBUS4NMCN5XCPR",
                             SubDateStart = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),

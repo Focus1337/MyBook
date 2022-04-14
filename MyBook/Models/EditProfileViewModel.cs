@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using MyBook.Entity;
 
 namespace MyBook.Models;
 
@@ -12,4 +13,6 @@ public class EditProfileViewModel
     public string Email { get; set; } = null!;
 
     public string Image { get; set; } = null!;
+    
+    public Subscription Sub { get; set; } = null!;
 }
