@@ -79,7 +79,7 @@
                                             }
                                         </li>
                                         
-                                        @if (!User.Identity.IsAuthenticated)
+                                        @if (!User.Identity!.IsAuthenticated)
                                         {
                                             <li class="nav-item">
                                                 <a asp-controller="Auth" asp-action="Login" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">
@@ -98,11 +98,11 @@
 
                                             <li class="nav-item dropdown">
                                                 <a id="blogDropdownInvoker" href="#" class="dropdown-toggle header-text-color nav-link mx-3 py-md-2d75 px-0 d-flex align-items-center" aria-haspopup="true" aria-expanded="false" data-unfold-event="hover" data-unfold-target="#blogDropdownMenu" data-unfold-type="css-animation" data-unfold-duration="200" data-unfold-delay="50" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp" data-unfold-animation-out="fadeOut">
-                                                    <img src="data:image/png;base64,@user!.Image" alt="img" width="30" height="30" class="rounded-md border border-windsor-tan border-width-2">
+                                                    <img src="data:image/png;base64,@(user?.Image)" alt="img" width="30" height="30" style="object-fit: cover" class="rounded-md border border-windsor-tan border-width-2">
                                                 </a>
                                                 <ul id="blogDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-hg u-unfold--css-animation u-unfold--hidden" aria-labelledby="blogDropdownInvoker" style="animation-duration: 200ms; left: 0px;">
                                                     <li>
-                                                        <a href="#" class="dropdown-item font-weight-bold header-text-color">Профиль</a>
+                                                        <a asp-controller="Profile" asp-action="Index" class="dropdown-item font-weight-bold header-text-color">Профиль</a>
                                                     </li>
                                                     <form asp-controller="Auth" asp-action="Logout" method="post">
                                                         <li class="nav-item">

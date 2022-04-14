@@ -24,8 +24,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         }
     );
 
-var app = builder.Build();
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
+var app = builder.Build();
 
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
