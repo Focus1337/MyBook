@@ -4,8 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
 using MyBook.Entity;
 using MyBook.Entity.Identity;
+using MyBook.Services.EmailServices;
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton(builder.Configuration.
+    GetSection("EmailConfiguration").Get<EmailConfiguration>());
+
+builder.Services.AddScoped<IEmailService,EmailService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -13,7 +20,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationContext>(opts =>
     opts.UseNpgsql(builder.Configuration.GetConnectionString("sqlConnection")));
 
-builder.Services.AddIdentity<User, Role>(option=>option.SignIn.RequireConfirmedEmail=false)
+builder.Services.AddIdentity<User, Role>(option=>option.SignIn.RequireConfirmedEmail=true)
     .AddEntityFrameworkStores<ApplicationContext>()
     .AddDefaultTokenProviders();
 

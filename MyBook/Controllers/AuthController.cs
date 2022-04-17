@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyBook.Entity;
 using MyBook.Models;
+using MyBook.Services.EmailServices;
 
 namespace MyBook.Controllers;
 
@@ -9,11 +10,12 @@ public class AuthController : Controller
 {
     private readonly UserManager<User> _userManager;
     private readonly SignInManager<User> _signInManager;
-
-    public AuthController(UserManager<User> userManager, SignInManager<User> signInManager)
+    private IEmailService _emailService;
+    public AuthController(UserManager<User> userManager, SignInManager<User> signInManager,IEmailService emailService)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _emailService = emailService;
     }
 
     [HttpGet]
@@ -38,7 +40,7 @@ public class AuthController : Controller
                 Name = model.Name,
                 LastName = model.Lastname,
                 Image = Convert.ToBase64String(await System.IO.File.ReadAllBytesAsync("wwwroot/img/user.png")),
-                EmailConfirmed = true,
+                EmailConfirmed = false,
                 LockoutEnabled = false
             };
 
@@ -46,10 +48,16 @@ public class AuthController : Controller
             
             if (result.Succeeded)
             {
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 await _userManager.AddToRoleAsync(user, "User");
+
+                var link = Url.Action(nameof(VerifyEmail), "Auth", new { userId = user.Id, code },Request.Scheme,Request.Host.ToString());
+
+                var message = new Message(new string[] { model.Email }, "Подтверждение почты", link);
+
+                await _emailService.SendEmailAsync(message);
                 
-                await _signInManager.SignInAsync(user, false);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("EmailVerification");
             }
             else
             {
@@ -61,6 +69,27 @@ public class AuthController : Controller
         }
         return View(model);
     }
+
+    public async Task<IActionResult> VerifyEmail(string userId, string code)
+    {
+        var user =await _userManager.FindByIdAsync(userId);
+
+        if (user == null)
+        {
+            return BadRequest();
+        }
+        
+        var result= await _userManager.ConfirmEmailAsync(user, code);
+
+        if (result.Succeeded)
+        {
+            return View();
+        }
+
+        return BadRequest();
+    }
+
+    public IActionResult EmailVerification() => View();
 
     [HttpPost] 
     public async Task<IActionResult> Login(LoginViewModel model)

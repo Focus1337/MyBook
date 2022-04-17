@@ -138,6 +138,7 @@ public class ProfileController : Controller
                     user.Email = model.Email;
                     user.UserName = model.Email;
                     await _signInManager.SignOutAsync();
+                    return RedirectToAction("Index", "Home");
                     ModelState.AddModelError(string.Empty, "Вам необходимо перезайти в аккаунт!");
                 }
                 

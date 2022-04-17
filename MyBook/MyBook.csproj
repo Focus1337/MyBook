@@ -18,12 +18,14 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="NETCore.MailKit" Version="2.0.3" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\MyBook.DataAccess\MyBook.DataAccess.csproj" />
       <ProjectReference Include="..\MyBook.Entity\MyBook.Entity.csproj" />
+      <ProjectReference Include="..\MyBook.Services\MyBook.Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>
