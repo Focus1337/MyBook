@@ -25,23 +25,25 @@ public class SubController : Controller
     public async Task<IActionResult> Index() =>
         View(await _context.Subs.Where(v => !v.Name.Equals("Бесплатно")).ToListAsync());
 
-    public IActionResult Payment()
+    public IActionResult Payment(int subId)
     {
+        ViewData["subId"] = HttpContext.Request.Query["subId"].ToString();
         return View();
     }
 
     [HttpGet]
     [Authorize]
-    public async Task<IActionResult> Pay(int SubId)
+    public async Task<IActionResult> Pay(int subId)
     {
         var curUser = await _userManager.GetUserAsync(HttpContext.User);
 
-        curUser.SubId = SubId;
+        curUser.SubId = subId;
         curUser.SubDateStart = DateTime.Now;
 
         await _userManager.UpdateAsync(curUser);
         await _userManager.AddToRoleAsync(curUser, "UserSub");
         
-        return Ok(); // Redirect
+        
+        return Ok($"Оплачено SubId: {subId}"); // Redirect
     }
 }

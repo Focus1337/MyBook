@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyBook.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220419152403_init")]
+    [Migration("20220419175507_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -348,21 +348,21 @@ namespace MyBook.DataAccess.Migrations
                         new
                         {
                             Id = new Guid("6f17d951-3ad5-49f9-b333-2a37e367333d"),
-                            ConcurrencyStamp = "fff9d752-7826-491f-9db4-a082ed1d15ab",
+                            ConcurrencyStamp = "bb5c4e1f-2bca-4ede-aa8d-9eb20ad2fc06",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("12d534a7-4535-4819-8704-bcfd7553ab46"),
-                            ConcurrencyStamp = "74d5f066-7a52-4489-8e05-c9f1c42e931a",
+                            ConcurrencyStamp = "35b7a14e-d497-4a3d-9e63-2ab128dce4a9",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = new Guid("6dc02633-d464-4f86-8575-4cb190d670a6"),
-                            ConcurrencyStamp = "79603b09-9c27-4b9d-a59d-c2e988f69259",
+                            ConcurrencyStamp = "53b413af-17c2-4f66-8770-088b6439df0a",
                             Name = "UserSub",
                             NormalizedName = "USERSUB"
                         });
@@ -552,11 +552,11 @@ namespace MyBook.DataAccess.Migrations
                             LockoutEnabled = true,
                             Name = "Admin",
                             NormalizedUserName = "ADMIN@MYBOOK.RU",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIxE3sbaJOd1btChaygIe8NG25JWC8WhgTU8WnlBxG14p88D5pOZyAc15fWWLfzDeg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECuCpShiwz3Pg1UowftxAvXfIzb20ybxdEtqDtr4+XkvO6rz+ytZDf/qL1BCIZOZ8w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1564953f-ba3d-4596-b521-3914c5b561c8",
+                            SecurityStamp = "71099892-93ca-4ded-a9ec-c8e59f2de112",
                             SubDateStart = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SubId = 1,
+                            SubId = 4,
                             TwoFactorEnabled = false,
                             UserName = "admin@mybook.ru"
                         });
