@@ -1,5 +1,9 @@
 ﻿@model MyBook.Models.EditProfileViewModel
 
+@{
+    ViewData["Title"] = "Профиль пользователя";
+}
+
 <div class="container rounded-hg bg-white mt-5 mb-8">
     <div class="row">
         <div class="col-md-3 border-right">
@@ -54,12 +58,12 @@
                 <h4 class="text-right font-weight-bold">Подписка</h4>
             </div>
             <div class="form-group">
-                <div class="d-flex justify-content-between align-items-center"><p>Тип подписки:</p>
+                <div class="d-flex align-items-center"><p>Тип подписки:</p>
                     <p class="font-weight-bold pl-2">@Model.Sub.Name</p></div>
                 
                 <div class="d-flex justify-content-between align-items-center">
                     <p>Срок действия:</p>
-                    <p class="font-weight-bold pl-2">@(Model.Sub.Duration == -1 ? "Навсегда" : $"{Model.Sub.Duration / (60*24)} дней")</p>
+                    <p class="font-weight-bold pl-2">@(Model.Sub.Duration == -1 ? "Навсегда" : $"{Model.SubDurationLeft} дней")</p>
                 </div>
             </div>
             @if (User.IsInRole("UserSub"))

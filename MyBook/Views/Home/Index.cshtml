@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<MyBook.Entity.Book>
+
+@{
     ViewData["Title"] = "Электронная библиотека MyBook — читайте книги в онлайн библиотеке. Новинки и бестселлеры литературы в библиотеке электронных книг.";
     Layout = "_Layout";
 }
@@ -23,7 +25,7 @@
                             </li>
                                     
                              <li class="nav-item bg-white rounded-hg mr-2 height-25">
-                                <a href="#" class="nav-link link-black-100 mx-3 px-0 font-size-2 font-weight-medium header-text-color">❤ Топ книг</a>
+                                <a asp-controller="Catalog" asp-action="TopBooks" class="nav-link link-black-100 mx-3 px-0 font-size-2 font-weight-medium header-text-color">❤ Топ книг</a>
                             </li>
                         </ul>
                     </div>
@@ -64,10 +66,10 @@
             <div class="pr-4 pl-5 py-4 position-relative">
                
                 <header class="d-md-flex justify-content-between align-items-center">
-                    <h2 class="font-size-5 mb-0"><b>Лучшие бизнес-книги</b></h2>
+                    <h2 class="font-size-5 mb-0"><b>Лучшие книги по мнению MyBook</b></h2>
                     <a href="#" class="d-flex align-items-center h-primary">Еще<span class="flaticon-next font-size-3 ml-2"></span></a>
                 </header>
-                <p>Деловая и научно-популярная литература издательств «Манн, Иванов и Фербер», «Альпина Паблишер», «Олимп-Бизнес» и других</p>
+                <p>Различные книги, которые были избраны редакцией нашего сайта</p>
                 <ul class="js-slick-carousel products list-unstyled my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
                     data-arrow-left-classes="fas flaticon-back u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas flaticon-next u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="6" data-responsive='[{
                        "breakpoint": 1500,
@@ -90,93 +92,37 @@
                          "slidesToShow": 1
                        }
                     }]'>
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img1.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                    
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Вот оно, счастье</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Найлл Уильямз</b></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img2.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                                        
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Путь: как ускорить продвижение к финансовой свободе</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Тони Роббинс</b></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img3.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                                        
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>12 железных принципов успеха</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Боб Проктор</b></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                    @foreach (var book in Model.OrderByDescending(x => x.Description.Length))
+                    {
+                        <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                            <div class="overflow-hidden px-sm-4d75">
+                                <div class="d-block position-relative">
+                                    <a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id" class="d-block" tabindex="0"><img src="@book.Image" style="width: 120px; height: 180px;" class="d-block mx-auto img-fluid rounded-hg border" alt="image-description"></a>
 
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img4.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                    
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
+                                    <div class="pt-2 bg-white px-lg-2">
+                                        <div class="d-flex font-size-3">
+                                            <div class="text-yellow-darker pl-4">
+                                                @{
+                                                    var i = 1;
+                                                }
+                                                @for (; i <= Math.Round(book.Rating); i++)
+                                                {
+                                                    <small class="fas fa-star"></small>
+                                                }
+                                                @for (var j = 0; j <= 5 - i; j++)
+                                                {
+                                                    <small class="far fa-star"></small>
+                                                }
+
+                                            </div>
                                         </div>
+                                        <h2 class="h6 text-lh-md mb-1 font-size-2 crop-text-2 h-dark text-center font-weight-bold"><a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id">@book.Title</a></h2>
+                                        <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>@book.Author.FullName</b></a></div>
                                     </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#" tabindex="0"><b>Думай и богатей: как прожить достойную жизнь</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1" tabindex="0"><b>Наполеон Хилл</b></a></div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -194,7 +140,7 @@
                     <a href="#" class="d-flex align-items-center h-primary">Еще<span class="flaticon-next font-size-3 ml-2"></span></a>
                 </header>
                 <p>Добавьте лучшее в «Мои книги», чтобы ничего не упустить</p>
-               <ul class="js-slick-carousel products list-unstyled my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
+                <ul class="js-slick-carousel products list-unstyled my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
                     data-arrow-left-classes="fas flaticon-back u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas flaticon-next u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="6" data-responsive='[{
                        "breakpoint": 1500,
                        "settings": {
@@ -216,93 +162,38 @@
                          "slidesToShow": 1
                        }
                     }]'>
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img1.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                    
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Вот оно, счастье</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Найлл Уильямз</b></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
                     
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img2.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                                        
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Путь: как ускорить продвижение к финансовой свободе</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Тони Роббинс</b></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img3.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                                        
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>12 железных принципов успеха</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Боб Проктор</b></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                    @foreach (var book in Model.OrderBy(r => r.Rating).ThenBy(d => d.AddedDate))
+                    {
+                        <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                            <div class="overflow-hidden px-sm-4d75">
+                                <div class="d-block position-relative">
+                                    <a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id" class="d-block" tabindex="0"><img src="@book.Image" style="width: 120px; height: 180px;" class="d-block mx-auto img-fluid rounded-hg border" alt="image-description"></a>
 
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img4.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                    
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
+                                    <div class="pt-2 bg-white px-lg-2">
+                                        <div class="d-flex font-size-3">
+                                            <div class="text-yellow-darker pl-4">
+                                                @{
+                                                    var i = 1;
+                                                }
+                                                @for (; i <= Math.Round(book.Rating); i++)
+                                                {
+                                                    <small class="fas fa-star"></small>
+                                                }
+                                                @for (var j = 0; j <= 5 - i; j++)
+                                                {
+                                                    <small class="far fa-star"></small>
+                                                }
+
+                                            </div>
                                         </div>
+                                        <h2 class="h6 text-lh-md mb-1 font-size-2 crop-text-2 h-dark text-center font-weight-bold"><a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id">@book.Title</a></h2>
+                                        <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>@book.Author.FullName</b></a></div>
                                     </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#" tabindex="0"><b>Думай и богатей: как прожить достойную жизнь</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1" tabindex="0"><b>Наполеон Хилл</b></a></div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -320,7 +211,7 @@
                     <a href="#" class="d-flex align-items-center h-primary">Еще<span class="flaticon-next font-size-3 ml-2"></span></a>
                 </header>
                 <p>Родная классика и проверенные временем бестселлеры</p>
-               <ul class="js-slick-carousel products list-unstyled my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
+                <ul class="js-slick-carousel products list-unstyled my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
                     data-arrow-left-classes="fas flaticon-back u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas flaticon-next u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="6" data-responsive='[{
                        "breakpoint": 1500,
                        "settings": {
@@ -342,93 +233,37 @@
                          "slidesToShow": 1
                        }
                     }]'>
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img1.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                    
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Вот оно, счастье</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Найлл Уильямз</b></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img2.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                                        
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Путь: как ускорить продвижение к финансовой свободе</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Тони Роббинс</b></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img3.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                                        
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>12 железных принципов успеха</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Боб Проктор</b></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                    @foreach (var book in Model.Where(x => x.SubType == 0))
+                    {
+                        <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                            <div class="overflow-hidden px-sm-4d75">
+                                <div class="d-block position-relative">
+                                    <a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id" class="d-block" tabindex="0"><img src="@book.Image" style="width: 120px; height: 180px;" class="d-block mx-auto img-fluid rounded-hg border" alt="image-description"></a>
 
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img4.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                    
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
+                                    <div class="pt-2 bg-white px-lg-2">
+                                        <div class="d-flex font-size-3">
+                                            <div class="text-yellow-darker pl-4">
+                                                @{
+                                                    var i = 1;
+                                                }
+                                                @for (; i <= Math.Round(book.Rating); i++)
+                                                {
+                                                    <small class="fas fa-star"></small>
+                                                }
+                                                @for (var j = 0; j <= 5 - i; j++)
+                                                {
+                                                    <small class="far fa-star"></small>
+                                                }
+
+                                            </div>
                                         </div>
+                                        <h2 class="h6 text-lh-md mb-1 font-size-2 crop-text-2 h-dark text-center font-weight-bold"><a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id">@book.Title</a></h2>
+                                        <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>@book.Author.FullName</b></a></div>
                                     </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#" tabindex="0"><b>Думай и богатей: как прожить достойную жизнь</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1" tabindex="0"><b>Наполеон Хилл</b></a></div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -477,7 +312,7 @@
                     <a href="#" class="d-flex align-items-center h-primary">Еще<span class="flaticon-next font-size-3 ml-2"></span></a>
                 </header>
                 <p>Подбираем книги по темам и рейтингам, держим в курсе книжных новостей</p>
-               <ul class="js-slick-carousel products list-unstyled my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
+                <ul class="js-slick-carousel products list-unstyled my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
                     data-arrow-left-classes="fas flaticon-back u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas flaticon-next u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="6" data-responsive='[{
                        "breakpoint": 1500,
                        "settings": {
@@ -499,93 +334,38 @@
                          "slidesToShow": 1
                        }
                     }]'>
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img1.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                    
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Вот оно, счастье</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Найлл Уильямз</b></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img2.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                                        
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>Путь: как ускорить продвижение к финансовой свободе</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Тони Роббинс</b></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img3.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                                        
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#"><b>12 железных принципов успеха</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>Боб Проктор</b></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+              
+                    @foreach (var book in Model.OrderBy(x=> x.Id))
+                    {
+                        <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
+                            <div class="overflow-hidden px-sm-4d75">
+                                <div class="d-block position-relative">
+                                    <a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id" class="d-block" tabindex="0"><img src="@book.Image" style="width: 120px; height: 180px;" class="d-block mx-auto img-fluid rounded-hg border" alt="image-description"></a>
 
-                    <li class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 199px; height: auto;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13">
-                        <div class="overflow-hidden px-sm-4d75">
-                            <div class="d-block position-relative">
-                                <a href="#" class="d-block" tabindex="0"><img src="/img/120x180/img4.jpg" class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid rounded-hg" alt="image-description"></a>
-                                                    
-                                <div class="pt-2 bg-white px-lg-2">
-                                    <div class="d-flex font-size-3">
-                                        <div class="text-yellow-darker pl-4">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star"></small>
-                                            <small class="far fa-star"></small>
+                                    <div class="pt-2 bg-white px-lg-2">
+                                        <div class="d-flex font-size-3">
+                                            <div class="text-yellow-darker pl-4">
+                                                @{
+                                                    var i = 1;
+                                                }
+                                                @for (; i <= Math.Round(book.Rating); i++)
+                                                {
+                                                    <small class="fas fa-star"></small>
+                                                }
+                                                @for (var j = 0; j <= 5 - i; j++)
+                                                {
+                                                    <small class="far fa-star"></small>
+                                                }
+
+                                            </div>
                                         </div>
+                                        <h2 class="h6 text-lh-md mb-1 font-size-2 crop-text-2 h-dark text-center font-weight-bold"><a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id">@book.Title</a></h2>
+                                        <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1"><b>@book.Author.FullName</b></a></div>
                                     </div>
-                                    <h2 class="h6 text-lh-md mb-1 text-height-2 font-size-2 crop-text-2 h-dark text-center"><a href="#" tabindex="0"><b>Думай и богатей: как прожить достойную жизнь</b></a></h2>
-                                    <div class="font-size-2  mb-1 text-truncate text-center"><a href="#" class="text-red-1" tabindex="0"><b>Наполеон Хилл</b></a></div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
