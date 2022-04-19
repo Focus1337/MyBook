@@ -28,7 +28,7 @@ public partial class Seeds
                 Image = Convert.ToBase64String(File.ReadAllBytes("wwwroot/img/user.png")),
                 LastName = "Admin",
                 Name = "Admin",
-                SubId = 1,
+                SubId = 4,
                 SubDateStart = default(DateTime)
             });
         });

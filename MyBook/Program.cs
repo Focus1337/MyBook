@@ -14,6 +14,7 @@ builder.Services.AddSingleton(builder.Configuration.
 
 builder.Services.AddScoped<IEmailService,EmailService>();
 
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

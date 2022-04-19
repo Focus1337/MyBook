@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
 using MyBook.Entity;
+using MyBook.Entity.Identity;
 
 namespace MyBook.Controllers;
 
@@ -11,11 +12,10 @@ public class SubController : Controller
 {
     private readonly ApplicationContext _context;
 
-    private readonly RoleManager<IdentityRole> _roleManager;
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly RoleManager<Role> _roleManager;
+    private readonly UserManager<User> _userManager;
 
-    public SubController(ApplicationContext context, RoleManager<IdentityRole> roleManager,
-        UserManager<IdentityUser> userManager)
+    public SubController(ApplicationContext context, UserManager<User> userManager, RoleManager<Role> roleManager)
     {
         _context = context;
         _roleManager = roleManager;
@@ -36,14 +36,12 @@ public class SubController : Controller
     {
         var curUser = await _userManager.GetUserAsync(HttpContext.User);
 
-        var user = _context.Users.Find(curUser.Id);
-        user.SubId = SubId;
-        user.SubDateStart = DateTime.Now;
-        _context.Users.Update(user);
-        
+        curUser.SubId = SubId;
+        curUser.SubDateStart = DateTime.Now;
+
+        await _userManager.UpdateAsync(curUser);
         await _userManager.AddToRoleAsync(curUser, "UserSub");
-        await _context.SaveChangesAsync();
         
-        return default;
+        return Ok(); // Redirect
     }
 }
