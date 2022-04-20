@@ -1,4 +1,10 @@
-﻿@model MyBook.Models.EditProfileViewModel
+﻿@using MyBook.Entity
+@using Microsoft.AspNetCore.Identity
+@model MyBook.Models.EditProfileViewModel
+
+@inject SignInManager<User> _signInManager
+@inject UserManager<User> _userManager
+
 
 <div class="container rounded-hg bg-white mt-5 mb-8">
     <div class="row">
@@ -62,10 +68,13 @@
                     <p class="font-weight-bold pl-2">@(Model.Sub.Duration == -1 ? "Навсегда" : $"{Model.Sub.Duration / (60*24)} дней")</p>
                 </div>
             </div>
-            @if (User.IsInRole("UserSub"))
+            @if (User.Identity!.IsAuthenticated && 
+                 await _userManager.IsInRoleAsync(await _userManager.FindByNameAsync(User.Identity!.Name), "UserSub"))
             {
                 <div class="mt-4 d-flex justify-content-md-center">
-                    <button type="submit" class="btn rounded-hg border-width-2 font-weight-bold btn-outline-yellow-darker">Отменить подписку</button>
+                    <button type="submit" class="btn rounded-hg border-width-2 font-weight-bold btn-outline-yellow-darker"
+                    onclick='window.location = "@Url.Action("ResetSub", "Sub")";'
+                            >Отменить подписку</button>
                 </div>
             }
         </div>

@@ -16,11 +16,11 @@ public partial class Seeds
                 //passowrd: qwe123QWE_
                 Id = Guid.Parse("4bee3a36-db98-4071-ad61-a61db810decb"),
                 UserName = "admin@mybook.ru",
+                NormalizedUserName = "ADMIN@MYBOOK.RU",
                 Email = "admin@mybook.ru",
-                EmailConfirmed = false,
+                EmailConfirmed = true,
                 PasswordHash = new PasswordHasher<User>().HashPassword(null, "qwe123QWE_"),
-                SecurityStamp = "6XN27C5W5ARJZESDVSRBUS4NMCN5XCPR",
-                ConcurrencyStamp = "784e7067-3603-4e5e-97ce-b70957a864ae",
+                SecurityStamp = Guid.NewGuid().ToString(),
                 PhoneNumberConfirmed = false,
                 TwoFactorEnabled = false,
                 LockoutEnabled = true,
@@ -28,7 +28,7 @@ public partial class Seeds
                 Image = Convert.ToBase64String(File.ReadAllBytes("wwwroot/img/user.png")),
                 LastName = "Admin",
                 Name = "Admin",
-                SubId = 1,
+                SubId = 4,
                 SubDateStart = default(DateTime)
             });
         });

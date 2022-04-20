@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
 using MyBook.Entity;
 using MyBook.Entity.Identity;
+using MyBook.Middleware;
 using MyBook.Services.EmailServices;
 
 
@@ -13,6 +14,7 @@ builder.Services.AddSingleton(builder.Configuration.
     GetSection("EmailConfiguration").Get<EmailConfiguration>());
 
 builder.Services.AddScoped<IEmailService,EmailService>();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -68,6 +70,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSubscription();
 
 app.MapControllerRoute(
     name: "default",
