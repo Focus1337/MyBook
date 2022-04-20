@@ -56,7 +56,7 @@
            </div>
            <div class="col-md product__body bg-white mb-3 mb-md-0">
             <h2 class="product__title h6 text-lh-md mb-1 crop-text-2 h-dark font-weight-bold"><a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id" tabindex="0">@book.Title</a></h2>
-            <div class="font-size-2 mb-2 text-truncate"><a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id" class="header-text-color">@book.Author.FullName</a></div>
+            <div class="font-size-2 mb-2 text-truncate"><a asp-controller="Catalog" asp-action="AuthorDetails" asp-route-id="@book.Author.Id" class="header-text-color">@book.Author.FullName</a></div>
 
             <div class="font-size-1 mb-2">
              <span class="text-yellow-darker">

@@ -1,9 +1,7 @@
-﻿using System.Text.Encodings.Web;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
-using MyBook.Services;
 
 namespace MyBook.Controllers;
 
@@ -45,11 +43,25 @@ public class CatalogController : Controller
     
     public async Task<IActionResult> BookDetails(Guid id)
     {
-        var book = await _context.Books.Include(a => a.Author).FirstOrDefaultAsync(b => b.Id == id);
+        var book = await _context.Books
+            .Include(a => a.Author)
+            .FirstOrDefaultAsync(b => b.Id == id);
 
         if (book is null)
             return RedirectToAction("PageNotFound", "Home");
         
         return View(book);
+    }
+    
+    public async Task<IActionResult> AuthorDetails(Guid id)
+    {
+        var author = await _context.Authors
+            .Include(a => a.Books)
+            .FirstOrDefaultAsync(b => b.Id == id);
+
+        if (author is null)
+            return RedirectToAction("PageNotFound", "Home");
+        
+        return View(author);
     }
 }
