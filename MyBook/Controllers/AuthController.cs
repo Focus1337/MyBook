@@ -75,14 +75,14 @@ public class AuthController : Controller
         var user = await _userManager.FindByIdAsync(userId);
 
         if (user == null)
-            return View();
+            return RedirectToAction("PageNotFound", "Home");
 
         var result = await _userManager.ConfirmEmailAsync(user, code);
 
         if (result.Succeeded)
             return View();
 
-        return View();
+        return RedirectToAction("PageNotFound", "Home");
     }
 
     public IActionResult EmailVerification() => View();
@@ -105,8 +105,6 @@ public class AuthController : Controller
             }
         }
         return View(model);
-        
-        return RedirectToAction("Index", "Home");
     }
 
     [HttpPost]
