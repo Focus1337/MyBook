@@ -23,7 +23,7 @@ public class SubscriptionMiddleware
 
         if (timePassed.TotalDays >= sub.Duration)
         {
-            curUser.SubDateStart = DateTime.MinValue;
+            curUser.SubDateStart = default;
             curUser.SubId = 4;
             await userManager.RemoveFromRoleAsync(curUser, "UserSub");
         }

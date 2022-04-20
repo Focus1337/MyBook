@@ -50,6 +50,12 @@ public class SubController : Controller
     [HttpGet]
     public async Task<IActionResult> ResetSub()
     {
-        return default;
+        var curUser = await _userManager.GetUserAsync(HttpContext.User);
+
+        curUser.SubDateStart = default;
+        curUser.SubId = 4;
+        await _userManager.RemoveFromRoleAsync(curUser, "UserSub");
+        
+        return Ok("Сброс подписки выполнен успешно"); //Redirect 
     }
 }

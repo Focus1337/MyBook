@@ -65,7 +65,9 @@
             @if (User.IsInRole("UserSub"))
             {
                 <div class="mt-4 d-flex justify-content-md-center">
-                    <button type="submit" class="btn rounded-hg border-width-2 font-weight-bold btn-outline-yellow-darker">Отменить подписку</button>
+                    <button type="submit" class="btn rounded-hg border-width-2 font-weight-bold btn-outline-yellow-darker"
+                    onclick='window.location = "@Url.Action("ResetSub", "Sub")";'
+                            >Отменить подписку</button>
                 </div>
             }
         </div>
