@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
 using MyBook.Entity;
 using MyBook.Entity.Identity;
+using MyBook.Middleware;
 using MyBook.Services.EmailServices;
 
 
@@ -69,6 +70,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSubscription();
 
 app.MapControllerRoute(
     name: "default",

@@ -46,4 +46,10 @@ public class SubController : Controller
         
         return Ok($"Оплачено SubId: {subId}"); // Redirect
     }
+
+    [HttpGet]
+    public async Task<IActionResult> ResetSub()
+    {
+        return default;
+    }
 }
