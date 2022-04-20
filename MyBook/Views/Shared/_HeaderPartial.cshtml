@@ -65,7 +65,8 @@
                                             
                                     <ul class="nav pl-xl-4">
                                         <li class="nav-item">
-                                            @if (User.IsInRole("UserSub"))
+                                            @if (User.Identity!.IsAuthenticated && 
+                                                 await _userManager.IsInRoleAsync(await _userManager.FindByNameAsync(User.Identity!.Name), "UserSub"))
                                             {
                                                 <a asp-controller="Catalog" asp-action="Premium" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
                                                     ♕ PREMIUM
