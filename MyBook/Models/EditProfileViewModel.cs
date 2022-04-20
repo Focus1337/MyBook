@@ -15,4 +15,6 @@ public class EditProfileViewModel
     public string Image { get; set; } = null!;
     
     public Subscription Sub { get; set; } = null!;
+    
+    public double SubDurationLeft { get; set; }
 }

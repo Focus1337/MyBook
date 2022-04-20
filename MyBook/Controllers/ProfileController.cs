@@ -31,11 +31,14 @@ public class ProfileController : Controller
         var user = await _userManager.FindByNameAsync(User.Identity?.Name);
         if (user == null)
             return NotFound();
+        
+        var sub = (await _context.Subs.FirstOrDefaultAsync(x => x.Id == user.SubId))!;
 
         var model = new EditProfileViewModel
         {
             Email = user.Email, Name = user.Name, LastName = user.LastName, Image = user.Image,
-            Sub = (await _context.Subs.FirstOrDefaultAsync(x => x.Id == user.SubId))!
+            Sub = sub,
+            SubDurationLeft = sub.Duration - DateTime.Now.Subtract(user.SubDateStart).Days
         };
         return View(model);
     }
@@ -127,11 +130,13 @@ public class ProfileController : Controller
     {
         ModelState.Remove("Image");
         ModelState.Remove("Sub");
+        ModelState.Remove("SubDurationLeft");
         if (ModelState.IsValid)
         {
             var user = await _userManager.FindByNameAsync(User.Identity?.Name);
             if (user != null)
             {
+                var sub = (await _context.Subs.FirstOrDefaultAsync(x => x.Id == user.SubId))!;
                 var oldEmail = user.Email;
                 if (user.Email != model.Email)
                 {
@@ -139,14 +144,14 @@ public class ProfileController : Controller
                     user.UserName = model.Email;
                     await _signInManager.SignOutAsync();
                     return RedirectToAction("Index", "Home");
-                    ModelState.AddModelError(string.Empty, "Вам необходимо перезайти в аккаунт!");
                 }
                 
                 user.Name = model.Name;
                 user.LastName = model.LastName;
                 //roflan
                 model.Image = user.Image;
-                model.Sub = (await _context.Subs.FirstOrDefaultAsync(x => x.Id == user.SubId))!;
+                model.Sub = sub;
+                model.SubDurationLeft = sub.Duration - DateTime.Now.Subtract(user.SubDateStart).Days;
 
                 var result = await _userManager.UpdateAsync(user);
                 if (result.Succeeded)

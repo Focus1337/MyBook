@@ -33,6 +33,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         }
     );
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = new PathString("/Home/AccessDenied");
+});
+
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
@@ -76,5 +81,9 @@ app.UseSubscription();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// app.MapControllerRoute(
+//     name: "ViewBook",
+//     pattern: "{controller=Catalog}/{action=BookDetails}/{bookName?}");
 
 app.Run();

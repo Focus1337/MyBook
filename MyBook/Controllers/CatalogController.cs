@@ -27,6 +27,12 @@ public class CatalogController : Controller
             .Where(s => s.SubType == 0)
             .ToListAsync());
     
+    [HttpGet]
+    public async Task<IActionResult> TopBooks() =>
+        View(await _context.Books
+            .Include(a => a.Author)
+            .ToListAsync());
+    
     [Authorize(Roles = "UserSub, Admin")]
     [HttpGet]
     public async Task<IActionResult> Premium() =>
@@ -35,6 +41,27 @@ public class CatalogController : Controller
             .Where(s => s.SubType == 1)
             .ToListAsync());
     
-    public IActionResult BookDetails() =>
-        View();
+    public async Task<IActionResult> BookDetails(Guid id)
+    {
+        var book = await _context.Books
+            .Include(a => a.Author)
+            .FirstOrDefaultAsync(b => b.Id == id);
+
+        if (book is null)
+            return RedirectToAction("PageNotFound", "Home");
+        
+        return View(book);
+    }
+    
+    public async Task<IActionResult> AuthorDetails(Guid id)
+    {
+        var author = await _context.Authors
+            .Include(a => a.Books)
+            .FirstOrDefaultAsync(b => b.Id == id);
+
+        if (author is null)
+            return RedirectToAction("PageNotFound", "Home");
+        
+        return View(author);
+    }
 }

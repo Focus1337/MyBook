@@ -10,7 +10,7 @@ public class AuthController : Controller
 {
     private readonly UserManager<User> _userManager;
     private readonly SignInManager<User> _signInManager;
-    private IEmailService _emailService;
+    private readonly IEmailService _emailService;
     public AuthController(UserManager<User> userManager, SignInManager<User> signInManager,IEmailService emailService)
     {
         _userManager = userManager;
@@ -72,21 +72,17 @@ public class AuthController : Controller
 
     public async Task<IActionResult> VerifyEmail(string userId, string code)
     {
-        var user =await _userManager.FindByIdAsync(userId);
+        var user = await _userManager.FindByIdAsync(userId);
 
         if (user == null)
-        {
-            return BadRequest();
-        }
-        
-        var result= await _userManager.ConfirmEmailAsync(user, code);
+            return RedirectToAction("PageNotFound", "Home");
+
+        var result = await _userManager.ConfirmEmailAsync(user, code);
 
         if (result.Succeeded)
-        {
             return View();
-        }
 
-        return BadRequest();
+        return RedirectToAction("PageNotFound", "Home");
     }
 
     public IActionResult EmailVerification() => View();
@@ -109,8 +105,6 @@ public class AuthController : Controller
             }
         }
         return View(model);
-        
-        return RedirectToAction("Index", "Home");
     }
 
     [HttpPost]
