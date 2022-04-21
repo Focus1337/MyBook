@@ -8,13 +8,9 @@ namespace MyBook.Controllers;
 public class CatalogController : Controller
 {
     private readonly ApplicationContext _context;
-    
-    public CatalogController(ApplicationContext context) => 
-        _context = context;
 
-    [HttpGet]
-    public IActionResult Index() => 
-        View();
+    public CatalogController(ApplicationContext context) =>
+        _context = context;
 
     [HttpGet]
     public async Task<IActionResult> Books() =>
@@ -26,13 +22,13 @@ public class CatalogController : Controller
             .Include(a => a.Author)
             .Where(s => s.SubType == 0)
             .ToListAsync());
-    
+
     [HttpGet]
     public async Task<IActionResult> TopBooks() =>
         View(await _context.Books
             .Include(a => a.Author)
             .ToListAsync());
-    
+
     [Authorize(Roles = "UserSub, Admin")]
     [HttpGet]
     public async Task<IActionResult> Premium() =>
@@ -40,7 +36,7 @@ public class CatalogController : Controller
             .Include(a => a.Author)
             .Where(s => s.SubType == 1)
             .ToListAsync());
-    
+
     public async Task<IActionResult> BookDetails(Guid id)
     {
         var book = await _context.Books
@@ -49,10 +45,10 @@ public class CatalogController : Controller
 
         if (book is null)
             return RedirectToAction("PageNotFound", "Home");
-        
+
         return View(book);
     }
-    
+
     public async Task<IActionResult> AuthorDetails(Guid id)
     {
         var author = await _context.Authors
@@ -61,7 +57,35 @@ public class CatalogController : Controller
 
         if (author is null)
             return RedirectToAction("PageNotFound", "Home");
-        
+
         return View(author);
+    }
+    
+    public async Task<IActionResult> Search(int selectId, string? keyword)
+    {
+        if (keyword == null)
+            return RedirectToAction("PageNotFound", "Home");
+        
+        if (selectId == 1)
+        {
+            var books = (await _context.Books
+                    .Include(a => a.Author)
+                    .ToListAsync())
+                .Where(x => string.Concat(x.Title.ToLower().Where(c => !char.IsWhiteSpace(c)))
+                    .Contains(string.Concat(keyword.ToLower().Where(c => !char.IsWhiteSpace(c)))));
+    
+            return View("SearchBook", books);
+        }
+    
+        if (selectId == 2)
+        {
+            var authors = (await _context.Authors.ToListAsync())
+                .Where(x => string.Concat(x.FullName.ToLower().Where(c => !char.IsWhiteSpace(c)))
+                    .Contains(string.Concat(keyword.ToLower().Where(c => !char.IsWhiteSpace(c)))));
+    
+            return View("SearchAuthor", authors);
+        }
+    
+        return RedirectToAction("PageNotFound", "Home");
     }
 }

@@ -13,7 +13,7 @@
             <nav class="font-size-2 header-text-color">
                 <a asp-controller="Home" asp-action="Index" class="header-text-color">MyBook — Электронная библиотека</a>
                 <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>
-                <a asp-controller="Catalog" asp-action="Index" class="header-text-color">Каталог</a>
+                <span class="header-text-color">Каталог</span>
                 <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>@ViewBag.Title
             </nav>
         </div>
@@ -55,7 +55,7 @@
             <a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id" class="d-block"><img src="@book.Image" width="112" class="img-fluid d-block mx-auto rounded-hg border" alt="image-description"></a>
            </div>
            <div class="col-md product__body bg-white mb-3 mb-md-0">
-            <h2 class="product__title h6 text-lh-md mb-1 crop-text-2 h-dark font-weight-bold"><a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id" tabindex="0">@book.Title</a></h2>
+            <h2 class="product__keyword h6 text-lh-md mb-1 crop-text-2 h-dark font-weight-bold"><a asp-controller="Catalog" asp-action="BookDetails" asp-route-id="@book.Id" tabindex="0">@book.Title</a></h2>
             <div class="font-size-2 mb-2 text-truncate"><a asp-controller="Catalog" asp-action="AuthorDetails" asp-route-id="@book.Author.Id" class="header-text-color">@book.Author.FullName</a></div>
 
             <div class="font-size-1 mb-2">
@@ -112,7 +112,7 @@
      <div id="Subscribe" class="widget p-4d875 border rounded-hg bg-white">
       <div id="widgetHeading22" class="widget-head">
        <a class="d-flex align-items-center justify-content-between text-dark" href="#" data-toggle="collapse" data-target="#widgetCollapse22" aria-expanded="true" aria-controls="widgetCollapse22">
-        <h3 class="widget-title mb-0 font-weight-bold font-size-3">Подписка</h3>
+        <h3 class="widget-keyword mb-0 font-weight-bold font-size-3">Подписка</h3>
         <svg class="mins" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="2px">
          <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z"/>
         </svg>

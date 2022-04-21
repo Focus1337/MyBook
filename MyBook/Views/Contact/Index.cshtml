@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model ContactViewModel
 
 @{
  ViewBag.Title = "Связаться";
@@ -59,33 +59,37 @@
         <h6 class="font-weight-bold font-size-7 mb-3 pb-xl-1">Напишите нам на почту</h6>
         
         <form asp-controller="Contact" asp-action="Send" method="post">
+         <div class="alert alert-info alert-dismissible" asp-validation-summary="ModelOnly">
+          <a class="close" data-dismiss="alert">×</a>
+         </div>
+         
          <div class="row">
           <div class="col-sm-6 mb-5">
            <div class="js-form-message">
             <label for="exampleFormControlInput1">Имя</label>
-            <input id="exampleFormControlInput1" type="text" class="form-control rounded-hg" placeholder="Ваше имя" required>
+            <input asp-for="Name" id="exampleFormControlInput1" type="text" class="form-control rounded-hg" placeholder="Ваше имя" required>
            </div>
           </div>
 
           <div class="col-sm-6 mb-5">
            <div class="js-form-message">
             <label for="exampleFormControlInput2">Email</label>
-            <input id="exampleFormControlInput2" type="email" class="form-control rounded-hg" placeholder="Ваша почта" required>
+            <input asp-for="Email" id="exampleFormControlInput2" type="email" class="form-control rounded-hg" placeholder="Ваша почта" required>
            </div>
           </div>
 
           <div class="col-sm-12 mb-5">
            <div class="js-form-message">
             <label for="exampleFormControlInput3">Тема</label>
-            <input id="exampleFormControlInput3" type="text" class="form-control rounded-hg" placeholder="Тема обращения" required>
+            <input asp-for="Subject" id="exampleFormControlInput3" type="text" class="form-control rounded-hg" placeholder="Тема обращения" required>
            </div>
           </div>
-          
+
           <div class="col-sm-12 mb-5">
            <div class="js-form-message">
             <div class="input-group flex-column">
              <label for="exampleFormControlInput4">Распишите в деталях причину вашего обращения</label>
-             <textarea id="exampleFormControlInput4" class="form-control rounded-hg pl-3 font-size-2 placeholder-color-3" rows="6" cols="77" name="text" placeholder="В чем заключается ваша проблема" required></textarea>
+             <textarea asp-for="Message" id="exampleFormControlInput4" class="form-control rounded-hg pl-3 font-size-2 placeholder-color-3" rows="6" cols="77" placeholder="В чем заключается ваша проблема" required></textarea>
             </div>
            </div>
           </div>

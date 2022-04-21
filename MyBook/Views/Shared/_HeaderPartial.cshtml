@@ -41,20 +41,22 @@
                 
                              
                 <div class="site-search ml-xl-0 ml-md-auto w-r-100 flex-grow-1 mr-md-5 mt-2 mt-md-0 order-1 order-md-0">
-                    <form class="form-inline my-2 my-xl-0">
+                    
+                    <form class="form-inline my-2 my-xl-0" asp-controller="Catalog" asp-action="Search" method="get">
                         <div class="input-group input-group-borderless w-100">
                             <div class="input-group-prepend border-right mr-0 d-none d-xl-block">
-                                <select class="custom-select pr-7 pl-4 rounded-right-0 height-5 shadow-none border-0 text-dark" id="inputGroupSelect01">
+                                <select name="selectId" class="custom-select pr-7 pl-4 rounded-right-0 height-5 shadow-none border-0 text-dark" id="inputGroupSelect01">
                                     <option selected value="1">Книги</option>
                                     <option value="2">Авторы</option>
                                 </select>
                             </div>
-                            <input type="text" class="form-control px-3" placeholder="Книга или автор" aria-label="Amount (to the nearest dollar)">
+                            <input name="keyword" type="text" class="form-control px-3" placeholder="Книга или автор">
                             <div class="input-group-append">
                                 <button class="btn bg-white px-3 py-2" type="submit"><i class="mx-1 glph-icon flaticon-loupe"></i></button>
                             </div>
                         </div>
                     </form>
+
                 </div>
                 <div class="d-flex align-items-center mt-lg-3 mt-xl-0">
 

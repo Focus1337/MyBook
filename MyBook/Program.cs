@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
 using MyBook.Entity;
@@ -67,6 +68,13 @@ app.Use(async (context, next) =>
             break;
     }
 });
+
+// URL Rewriting
+var options = new RewriteOptions()
+    .AddRedirect("(.*)/$", "$1")                // удаление концевого слеша
+    .AddRedirect("(?i)catalog[/]?$", "home") // переадресация с catalog на home
+    .AddRedirect("(?i)auth[/]?$", "home"); // переадресация с auth на home
+app.UseRewriter(options);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

@@ -1,9 +1,8 @@
 ﻿@model IEnumerable<MyBook.Entity.Book>
 
 @{
- ViewBag.Title = "Бесплатные книги";
- Layout = "_Layout";
- var random = new Random();
+    ViewBag.Title = "Поиск книги";
+    Layout = "_Layout";
 }
 
 <body class="right-sidebar">
@@ -23,24 +22,11 @@
 <div class="site-content space-bottom-3" id="content">
  <div class="container">
   <div class="pt-4">
-   <h1 class="font-weight-bold">Все бесплатные книги</h1>
-   <p class="text-gray-700 font-size-2">113 000 книг</p>
+   <h1 class="font-weight-bold">Вот что мы нашли по вашему запросу</h1>
   </div>
   
   <div class="row">
    <div id="primary" class="content-area">
-    <div class="d-lg-flex justify-content-between align-items-center mb-4 text-center text-md-left">
-
-     <div class="d-md-flex align-items-center">
-      <h6 class="font-weight-bold mr-3 pt-2">Сортировать</h6>
-      <form class="mb-4 m-md-0" method="get">
-       <select class="js-select selectpicker dropdown-select orderby" name="orderby" data-style="border shadow-none outline-none py-2 rounded-hg bg-white font-weight-bold">
-        <option value="popularity" selected>По популярности</option>
-        <option value="newness">По новизне</option>
-       </select>
-      </form>
-     </div>
-    </div>
 
     <div class="tab-content" id="pills-tabContent">
      <div class="tab-pane fade active show" id="pills-two-example1" role="tabpanel" aria-labelledby="pills-two-example1-tab">
