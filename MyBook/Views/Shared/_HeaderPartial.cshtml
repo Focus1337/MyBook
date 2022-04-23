@@ -96,7 +96,7 @@
                                             var user = User.Identity!.IsAuthenticated ? (User) await _userManager.FindByNameAsync(User.Identity!.Name) : null;
                                             
                                             <li class="nav-item">
-                                                <a href="#" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">Мои книги</a>
+                                                <a asp-controller="Profile" asp-action="Favorites" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">Мои книги</a>
                                             </li>
 
                                             <li class="nav-item dropdown">

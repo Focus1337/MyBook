@@ -87,7 +87,11 @@
                     <div class="py-5 d-flex align-items-center border-top">
                         <ul class="list-unstyled nav">
                             <li class="mr-6 mb-4 mb-md-0">
-                                <a href="#" class="h-primary"><i class="flaticon-heart mr-2"></i>Мои книги</a>
+                                <form asp-controller="Profile" asp-action="AddToFavorites" asp-route-id="@Model.Id" method="post">
+                                    <button class="h-primary border-0 bg-white" data-toggle="modal" data-target=".bd-example-modal-lg"
+                                    ><i class="flaticon-heart mr-2"></i>Мои книги
+                                    </button>
+                                </form>
                             </li>
                             <li class="mr-6">
                                 <a href="#" class="h-primary"><i class="flaticon-share mr-2"></i>Поделиться</a>

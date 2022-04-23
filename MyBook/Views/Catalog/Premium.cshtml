@@ -83,9 +83,11 @@
            </div>
 
            <div class="col-md-auto d-flex align-items-center">
-            <a href="#" class="h-p-bg btn btn-outline-primary border-0">
-             <i class="flaticon-heart"></i>
-            </a>
+            <form asp-controller="Profile" asp-action="AddToFavorites" asp-route-id="@book.Id" method="post">
+             <button type="submit" class="h-p-bg btn btn-outline-primary border-0" data-toggle="modal" data-target=".bd-example-modal-lg">
+              <i class="flaticon-heart"></i>
+             </button>
+            </form>
            </div>
           </div>
          </div>

@@ -168,5 +168,50 @@ public class ProfileController : Controller
 
         return View("Index", model);
     }
-    
+
+    [HttpPost]
+    public async Task<IActionResult> AddToFavorites(Guid id)
+    {
+        var book = await _context.Books.FirstOrDefaultAsync(x => x.Id == id);
+        var user = await _context.Users.Include(x => x.FavoriteBooks)
+            .FirstOrDefaultAsync(x => x.UserName == User.Identity!.Name);
+
+        if (book is not null && user is not null && !user.FavoriteBooks.Contains(book))
+        {
+            user.FavoriteBooks.Add(book);
+            await _context.SaveChangesAsync();
+        }
+
+        return NoContent();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> RemoveFromFavorites(Guid id)
+    {
+        var book = await _context.Books.FirstOrDefaultAsync(x => x.Id == id);
+        var user = await _context.Users.Include(x => x.FavoriteBooks)
+            .FirstOrDefaultAsync(x => x.UserName == User.Identity!.Name);
+
+        if (book is not null || user is not null)
+        {
+            if (user!.FavoriteBooks.Contains(book!))
+                user.FavoriteBooks.Remove(book!);
+            
+            await _context.SaveChangesAsync();
+        }
+
+        return RedirectToAction("Favorites");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Favorites()
+    {
+        var user = await _context.Users.Include(x => x.FavoriteBooks).ThenInclude(x=> x.Author)
+            .FirstOrDefaultAsync(x => x.UserName == User.Identity!.Name);
+        
+        if (user is not null)
+            return View(user.FavoriteBooks);
+
+        return RedirectToAction("PageNotFound", "Home");
+    }
 }
