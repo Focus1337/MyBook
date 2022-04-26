@@ -29,6 +29,12 @@ public class CatalogController : Controller
             .Include(a => a.Author)
             .ToListAsync());
 
+    [HttpGet]
+    public async Task<IActionResult> Novelties() =>
+        View(await _context.Books
+            .Include(a => a.Author)
+            .ToListAsync());
+    
     [Authorize(Roles = "UserSub, Admin")]
     [HttpGet]
     public async Task<IActionResult> Premium() =>
