@@ -6157,6 +6157,16 @@ input[type=button].btn-block {
     white-space: nowrap
 }
 
+.dropdown-header2 {
+    display: block;
+    padding-left: 1.875rem;
+    padding-bottom: 1.875rem;
+    margin-bottom: 0;
+    font-size: .875rem;
+    color: #7f7f83;
+    white-space: nowrap
+}
+
 .dropdown-item-text {
     display: block;
     padding: .375rem 1.875rem;
