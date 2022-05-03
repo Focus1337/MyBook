@@ -22,6 +22,36 @@
 @await Html.PartialAsync("_FooterPartial")
 
 @await Html.PartialAsync("_ScriptsPartial")
+
+<script>
+        const hubConnection = new signalR.HubConnectionBuilder()
+            .withUrl("/chat")
+            .build();
+        
+        let template = document.getElementById('chatbox-template');
+        hubConnection.on("Send", function (data) {                      
+            let elem = document.createElement('div');
+            elem.classList.add('chatbox__body__message', 'chatbox__body__message--right');
+           
+            elem.innerHTML = template.innerHTML;
+            let userMessage = elem.querySelector('#user-message');
+            let userName = elem.querySelector('#user-name');
+            let messageDate = elem.querySelector('#message-date');
+            userMessage.innerHTML = data.toString();
+            // userName.innerHTML = data.toString();
+            messageDate.innerHTML = new Date().toLocaleString();
+
+            const chatroom = document.getElementById('chatroom');
+            chatroom.appendChild(elem);
+        });
+ 
+        document.getElementById("sendBtn").addEventListener("click", function (e) {
+            let message = document.getElementById("message").value;
+            hubConnection.invoke("Send", message);
+        });
+ 
+        hubConnection.start();
+    </script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

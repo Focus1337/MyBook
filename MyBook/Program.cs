@@ -7,6 +7,7 @@ using MyBook.Entity;
 using MyBook.Entity.Identity;
 using MyBook.Middleware;
 using MyBook.Services.EmailServices;
+using MyBook.Services.Hubs;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +34,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
             options.LoginPath = new PathString("/Auth/Login");
         }
     );
+
+builder.Services.AddSignalR();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -89,6 +92,8 @@ app.UseSubscription();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapHub<ChatHub>("/chat");
 
 // app.MapControllerRoute(
 //     name: "ViewBook",

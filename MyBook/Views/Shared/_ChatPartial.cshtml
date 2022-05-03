@@ -1,4 +1,8 @@
-﻿<div class="container">
+﻿@using Microsoft.AspNetCore.Identity
+@using MyBook.Entity
+@inject UserManager<User> _userManager
+
+<div class="container">
 	<div class="row">
 		<div class="chatbox chatbox--tray rounded-hg">
 			<div class="chatbox__title d-flex justify-content-between">
@@ -14,134 +18,75 @@
 					</span>
 				</button>
 			</div>
-			<div class="chatbox__body">
-				<div class="chatbox__body__message chatbox__body__message--left">
-		
-					<div class="chatbox_timing">
-						<ul>
-							<li><a href="#"><i class="fa fa-calendar"></i> 22/11/2018</a></li>
-							<li><a href="#"><i class="fa fa-clock-o"></i> 7:00 PM</a></li>
-						</ul>
+			
+				@if (User.Identity!.IsAuthenticated)
+				{
+					var user = User.Identity!.IsAuthenticated ? (User) await _userManager.FindByNameAsync(User.Identity!.Name) : null;
+					
+					<div class="chatbox__body" id="chatroom">
+						<div class="chatbox__body__message chatbox__body__message--left">
+							<div class="chatbox_timing">
+								<ul>
+									<li><a href="#"><i class="fa fa-calendar"></i> 22/11/2018</a></li>
+									<li><a href="#"><i class="fa fa-clock-o"></i> 7:00 PM</a></li>
+								</ul>
+							</div>
+
+							<img src="https://www.gstatic.com/webp/gallery/2.jpg" alt="Picture" class="rounded-md border border-width-2">
+							<div class="clearfix"></div>
+							<div class="ul_section_full rounded-hg">
+								<ul class="ul_msg">
+									<li><strong>Person Name</strong></li>
+									<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+								</ul>
+								<div class="clearfix"></div>
+								<ul class="ul_msg2">
+									<li><a href="#"><i class="fa fa-pencil"></i> </a></li>
+									<li><a href="#"><i class="fa fa-trash chat-trash"></i></a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div hidden>
+							<div class="chatbox__body__message chatbox__body__message--right" id="chatbox-template">
+								<div class="chatbox_timing">
+									<ul>
+										<li id="message-date">7:00 PM</li>
+									</ul>
+								</div>
+
+								<img src="data:image/png;base64,@(user?.Image)" alt="Picture" class="rounded-md border border-width-2" style="object-fit: cover">
+								<div class="clearfix"></div>
+								<div class="ul_section_full rounded-hg">
+									<ul class="ul_msg">
+										<li class="font-weight-bold" id="user-name">@user!.Email</li>
+										<li id="user-message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+						
 					</div>
-					<img src="https://www.gstatic.com/webp/gallery/2.jpg" alt="Picture" class="rounded-md border border-width-2">
-					<div class="clearfix"></div>
-					<div class="ul_section_full rounded-hg">
-						<ul class="ul_msg">
-							<li><strong>Person Name</strong></li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-						</ul>
-						<div class="clearfix"></div>
-						<ul class="ul_msg2">
-							<li><a href="#"><i class="fa fa-pen"></i> </a></li>
-							<li><a href="#"><i class="fa fa-trash chat-trash"></i></a></li>
-						</ul>
+					
+					<div class="panel-footer">
+						<div class="input-group rounded-hg">
+							<input type="text" id="message" class="form-control rounded-hg" placeholder="Сообщение...">
+							<button type="submit" id="sendBtn" class="btn text-black-50">
+								<i class="fas fa-paper-plane"></i>
+							</button>
+						</div>
 					</div>
-			 
-				</div>
-				<div class="chatbox__body__message chatbox__body__message--right">
-					<div class="chatbox_timing">
-						<ul>
-							<li><a href="#"><i class="fa fa-calendar"></i> 22/11/2018</a></li>
-							<li><a href="#"><i class="fa fa-clock-o"></i> 7:00 PM</a></li>
-						</ul>
+				}
+				else
+				{
+					<div class="chatbox__body" style="border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem;">
+						<div class="text-center">
+							<h6 class="font-size-4 font-weight-medium mb-2">Чтобы написать в поддержку, вы должны авторизоваться</h6>
+							<a asp-controller="Auth" asp-action="Login" class="banner_btn btn btn-wide btn-gradient rounded-hg font-weight-bold">Войти</a>
+						</div>
 					</div>
-	
-					<img src="https://www.gstatic.com/webp/gallery/2.jpg" alt="Picture" class="rounded-md border border-width-2">
-					<div class="clearfix"></div>
-					<div class="ul_section_full rounded-hg">
-						<ul class="ul_msg">
-							<li><strong>Person Name</strong></li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-						</ul>
-						<div class="clearfix"></div>
-						<ul class="ul_msg2">
-							<li><a href="#"><i class="fa fa-pencil"></i> </a></li>
-							<li><a href="#"><i class="fa fa-trash chat-trash"></i></a></li>
-						</ul>
-					</div>
-			 
-				</div>
-				<div class="chatbox__body__message chatbox__body__message--left">
-		
-					<div class="chatbox_timing">
-						<ul>
-							<li><a href="#"><i class="fa fa-calendar"></i> 22/11/2018</a></li>
-							<li><a href="#"><i class="fa fa-clock-o"></i> 7:00 PM</a></li>
-						</ul>
-					</div>
-	
-					<img src="https://www.gstatic.com/webp/gallery/2.jpg" alt="Picture" class="rounded-md border border-width-2">
-					<div class="clearfix"></div>
-					<div class="ul_section_full rounded-hg">
-						<ul class="ul_msg">
-							<li><strong>Person Name</strong></li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-						</ul>
-						<div class="clearfix"></div>
-						<ul class="ul_msg2">
-							<li><a href="#"><i class="fa fa-pencil"></i> </a></li>
-							<li><a href="#"><i class="fa fa-trash chat-trash"></i></a></li>
-						</ul>
-					</div>
-			 
-				</div>
-				<div class="chatbox__body__message chatbox__body__message--right">
-		
-					<div class="chatbox_timing">
-						<ul>
-							<li><a href="#"><i class="fa fa-calendar"></i> 22/11/2018</a></li>
-							<li><a href="#"><i class="fa fa-clock-o"></i> 7:00 PM</a></li>
-						</ul>
-					</div>
-	
-					<img src="https://www.gstatic.com/webp/gallery/2.jpg" alt="Picture" class="rounded-md border border-width-2">
-					<div class="clearfix"></div>
-					<div class="ul_section_full rounded-hg">
-						<ul class="ul_msg">
-							<li><strong>Person Name</strong></li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-						</ul>
-						<div class="clearfix"></div>
-						<ul class="ul_msg2">
-							<li><a href="#"><i class="fa fa-pencil"></i> </a></li>
-							<li><a href="#"><i class="fa fa-trash chat-trash"></i></a></li>
-						</ul>
-					</div>
-			 
-				</div>
-				<div class="chatbox__body__message chatbox__body__message--left">
-		
-					<div class="chatbox_timing">
-						<ul>
-							<li><a href="#"><i class="fa fa-calendar"></i> 22/11/2018</a></li>
-							<li><a href="#"><i class="fa fa-clock-o"></i> 7:00 PM</a></li>
-						</ul>
-					</div>
-	
-					<img src="https://www.gstatic.com/webp/gallery/2.jpg" alt="Picture" class="rounded-md border border-width-2">
-					<div class="clearfix"></div>
-					<div class="ul_section_full rounded-hg">
-						<ul class="ul_msg">
-							<li><strong>Person Name</strong></li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-						</ul>
-						<div class="clearfix"></div>
-						<ul class="ul_msg2">
-							<li><a href="#"><i class="fa fa-pencil"></i> </a></li>
-							<li><a href="#"><i class="fa fa-trash chat-trash"></i></a></li>
-						</ul>
-					</div>
-			 
-				</div>
-			</div>
-			<div class="panel-footer">
-				<div class="input-group rounded-hg">
-					<input type="text" class="form-control rounded-hg" placeholder="Сообщение...">
-					<button type="button" class="btn text-black-50">
-						<i class="fas fa-paper-plane"></i>
-					</button>
-				</div>
-			</div>
+				}
 		</div>
 	</div>
 </div>
