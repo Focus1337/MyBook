@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
     @await Html.PartialAsync("_MetatagsPartial")
-    
+
     <title>@ViewBag.Title | MyBook — электронная библиотека</title>
-    
+
     @await Html.PartialAsync("_StylesheetsPartial")
 </head>
 
@@ -31,38 +31,35 @@
         document.getElementById("sendButton").disabled = true;
         let template = document.getElementById('chatbox-template');       
         
-         hubConnection.on("ReceiveMessage", function (message) {                      
+         hubConnection.on("ReceiveMessage", function (user, image, to, message) {                      
                     let elem = document.createElement('div');
-                    elem.classList.add('chatbox__body__message', 'chatbox__body__message--right');
+                    
+                    if ("@User.Identity!.Name" === user)    
+                        elem.classList.add('chatbox__body__message', 'chatbox__body__message--right');
+                    else
+                        elem.classList.add('chatbox__body__message', 'chatbox__body__message--left');
                    
                     elem.innerHTML = template.innerHTML;
                     let messageTemplate = elem.querySelector('#messageTemplate');
                     let senderTemplate = elem.querySelector('#senderTemplate');
-                    let receiverTemplate = elem.querySelector('#receiverTemplate');
                     let dateTemplate = elem.querySelector('#dateTemplate');
-                    messageTemplate.innerHTML = message.toString();
-                    // userName.innerHTML = data.toString();
+                    let imageTemplate = elem.querySelector('#imageTemplate');
                     
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <text>
-                        receiverTemplate.innerHTML = 'xd';
-                        </text>
-                    }
+                    if (to !== null)
+                        messageTemplate.innerHTML = `<strong>${to},</strong> ${message.toString()}`;
                     else
-                    {
-                        <text>
-                        elem.querySelector('#forTemplate').remove()
-                        receiverTemplate.remove();
-                        </text>
-                    }
+                         messageTemplate.innerHTML = message.toString();
+                    
+                    senderTemplate.innerHTML = user;
+                    imageTemplate.src = `data:image/png;base64,${image}`
+ 
                     dateTemplate.innerHTML = new Date().toLocaleString();
                     document.getElementById('chatroom').appendChild(elem);
          });
 
          hubConnection.on("Notify", function (message) {                      
-                             let elem = document.createElement('p');
-                             elem.classList.add('font-size-4', 'font-weight-medium', 'mb-2');                        
+                             let elem = document.createElement('h6');
+                             elem.classList.add('font-size-2', 'font-weight-medium', 'mb-2');                        
                              elem.innerHTML = message.toString(); 
                              document.getElementById('chatroom').appendChild(elem);
                   });
@@ -74,7 +71,6 @@
          });
         
          document.getElementById("sendButton").addEventListener("click", function (event) {
-             // let sender = document.getElementById("sender").value;
              let message = document.getElementById("messageInput").value;      
              
              @if (User.IsInRole("Admin"))

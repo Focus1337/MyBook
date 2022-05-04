@@ -25,22 +25,24 @@ public class ChatHub : Hub
 
     public async Task SendMessage(string message)
     {
-        await Clients.Group("Admin").SendAsync("ReceiveMessage", message);
+        var sender = await _userManager.FindByEmailAsync(Context.User.Identity.Name);
+        await Clients.Group("Admin").SendAsync("ReceiveMessage", sender.Email, sender.Image, null, message);
 
         if (!Context.User.IsInRole("Admin"))
-            await Clients.Caller.SendAsync("ReceiveMessage", message);
+            await Clients.Caller.SendAsync("ReceiveMessage",sender.Email, sender.Image, null, message);
     }
 
     [Authorize(Roles = "Admin")]
     public async Task SendMessageToGroup(string receiver, string message)
     {
         var user = await _userManager.FindByEmailAsync(receiver);
-
+        var sender = await _userManager.FindByEmailAsync(Context.User.Identity.Name);
+        
         if (user is not null)
-            await Clients.Group(receiver).SendAsync("ReceiveMessage", message);
+            await Clients.Group(receiver).SendAsync("ReceiveMessage",sender.Email, sender.Image, receiver, message);
         else
-            await Clients.Caller.SendAsync("Notify", "Пользователя не существует. Сообщение не доставлено.");
+            await Clients.Caller.SendAsync("Notify", "Пользователь не существует. Сообщение не доставлено.");
 
-        await Clients.Caller.SendAsync("ReceiveMessage", message);
+        await Clients.Caller.SendAsync("ReceiveMessage",sender.Email, sender.Image, receiver, message);
     }
 }
