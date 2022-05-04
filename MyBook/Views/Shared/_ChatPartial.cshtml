@@ -19,74 +19,80 @@
 				</button>
 			</div>
 			
-				@if (User.Identity!.IsAuthenticated)
-				{
-					var user = User.Identity!.IsAuthenticated ? (User) await _userManager.FindByNameAsync(User.Identity!.Name) : null;
+			@if (User.Identity!.IsAuthenticated)
+			{
+				var user = User.Identity!.IsAuthenticated ? (User) await _userManager.FindByNameAsync(User.Identity!.Name) : null;
 					
-					<div class="chatbox__body" id="chatroom">
-						<div class="chatbox__body__message chatbox__body__message--left">
-							<div class="chatbox_timing">
-								<ul>
-									<li><a href="#"><i class="fa fa-calendar"></i> 22/11/2018</a></li>
-									<li><a href="#"><i class="fa fa-clock-o"></i> 7:00 PM</a></li>
-								</ul>
-							</div>
-
-							<img src="https://www.gstatic.com/webp/gallery/2.jpg" alt="Picture" class="rounded-md border border-width-2">
-							<div class="clearfix"></div>
-							<div class="ul_section_full rounded-hg">
-								<ul class="ul_msg">
-									<li><strong>Person Name</strong></li>
-									<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-								</ul>
-								<div class="clearfix"></div>
-								<ul class="ul_msg2">
-									<li><a href="#"><i class="fa fa-pencil"></i> </a></li>
-									<li><a href="#"><i class="fa fa-trash chat-trash"></i></a></li>
-								</ul>
-							</div>
+				<div class="chatbox__body" id="chatroom">
+					<div class="chatbox__body__message chatbox__body__message--left">
+						<div class="chatbox_timing">
+							<ul>
+								<li><a href="#"><i class="fa fa-calendar"></i> 22/11/2018</a></li>
+								<li><a href="#"><i class="fa fa-clock-o"></i> 7:00 PM</a></li>
+							</ul>
 						</div>
 
-						<div hidden>
-							<div class="chatbox__body__message chatbox__body__message--right" id="chatbox-template">
-								<div class="chatbox_timing">
-									<ul>
-										<li id="message-date">7:00 PM</li>
-									</ul>
-								</div>
+						<img src="https://www.gstatic.com/webp/gallery/2.jpg" alt="Picture" class="rounded-md border border-width-2">
+						<div class="clearfix"></div>
+						<div class="ul_section_full rounded-hg">
+							<ul class="ul_msg">
+								<li><strong>Person Name</strong></li>
+								<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+							</ul>
+							<div class="clearfix"></div>
+							<ul class="ul_msg2">
+								<li><a href="#"><i class="fa fa-pencil"></i> </a></li>
+								<li><a href="#"><i class="fa fa-trash chat-trash"></i></a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div hidden>
+						<div class="chatbox__body__message chatbox__body__message--right" id="chatbox-template">
+							<div class="chatbox_timing">
+								<ul>
+									<li id="dateTemplate">24/05/2022</li>
+									<li id="forTemplate">Для: </li>
+									<li id="receiverTemplate"> UserName</li>
+								</ul>
+							</div>
 
 								<img src="data:image/png;base64,@(user?.Image)" alt="Picture" class="rounded-md border border-width-2" style="object-fit: cover">
 								<div class="clearfix"></div>
 								<div class="ul_section_full rounded-hg">
 									<ul class="ul_msg">
-										<li class="font-weight-bold" id="user-name">@user!.Email</li>
-										<li id="user-message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+										<li class="font-weight-bold" id="senderTemplate">@user!.Email</li>
+										<li id="messageTemplate">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
 									</ul>
 									<div class="clearfix"></div>
 								</div>
 							</div>
 						</div>
 						
-					</div>
+				</div>
 					
-					<div class="panel-footer">
-						<div class="input-group rounded-hg">
-							<input type="text" id="message" class="form-control rounded-hg" placeholder="Сообщение...">
-							<button type="submit" id="sendBtn" class="btn text-black-50">
-								<i class="fas fa-paper-plane"></i>
-							</button>
-						</div>
+				<div class="panel-footer">
+					<div class="input-group rounded-hg">
+						@if (User.IsInRole("Admin"))
+						{
+							<input type="text" id="receiverInput" class="form-control rounded-hg" placeholder="Email">
+						}
+						<input type="text" id="messageInput" class="form-control rounded-hg" placeholder="Сообщение">
+						<button type="submit" id="sendButton" class="btn text-black-50">
+							<i class="fas fa-paper-plane"></i>
+						</button>
 					</div>
-				}
-				else
-				{
-					<div class="chatbox__body" style="border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem;">
-						<div class="text-center">
-							<h6 class="font-size-4 font-weight-medium mb-2">Чтобы написать в поддержку, вы должны авторизоваться</h6>
-							<a asp-controller="Auth" asp-action="Login" class="banner_btn btn btn-wide btn-gradient rounded-hg font-weight-bold">Войти</a>
-						</div>
+				</div>
+			}
+			else
+			{
+				<div class="chatbox__body" style="border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem;">
+					<div class="text-center">
+						<h6 class="font-size-4 font-weight-medium mb-2">Чтобы написать в поддержку, вы должны авторизоваться</h6>
+						<a asp-controller="Auth" asp-action="Login" class="banner_btn btn btn-wide btn-gradient rounded-hg font-weight-bold">Войти</a>
 					</div>
-				}
+				</div>
+			}
 		</div>
 	</div>
 </div>

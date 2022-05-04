@@ -28,29 +28,83 @@
             .withUrl("/chat")
             .build();
         
-        let template = document.getElementById('chatbox-template');
-        hubConnection.on("Send", function (data) {                      
-            let elem = document.createElement('div');
-            elem.classList.add('chatbox__body__message', 'chatbox__body__message--right');
-           
-            elem.innerHTML = template.innerHTML;
-            let userMessage = elem.querySelector('#user-message');
-            let userName = elem.querySelector('#user-name');
-            let messageDate = elem.querySelector('#message-date');
-            userMessage.innerHTML = data.toString();
-            // userName.innerHTML = data.toString();
-            messageDate.innerHTML = new Date().toLocaleString();
+        document.getElementById("sendButton").disabled = true;
+        let template = document.getElementById('chatbox-template');       
+        
+         hubConnection.on("ReceiveMessage", function (message) {                      
+                    let elem = document.createElement('div');
+                    elem.classList.add('chatbox__body__message', 'chatbox__body__message--right');
+                   
+                    elem.innerHTML = template.innerHTML;
+                    let messageTemplate = elem.querySelector('#messageTemplate');
+                    let senderTemplate = elem.querySelector('#senderTemplate');
+                    let receiverTemplate = elem.querySelector('#receiverTemplate');
+                    let dateTemplate = elem.querySelector('#dateTemplate');
+                    messageTemplate.innerHTML = message.toString();
+                    // userName.innerHTML = data.toString();
+                    
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <text>
+                        receiverTemplate.innerHTML = 'xd';
+                        </text>
+                    }
+                    else
+                    {
+                        <text>
+                        elem.querySelector('#forTemplate').remove()
+                        receiverTemplate.remove();
+                        </text>
+                    }
+                    dateTemplate.innerHTML = new Date().toLocaleString();
+                    document.getElementById('chatroom').appendChild(elem);
+         });
 
-            const chatroom = document.getElementById('chatroom');
-            chatroom.appendChild(elem);
-        });
- 
-        document.getElementById("sendBtn").addEventListener("click", function (e) {
-            let message = document.getElementById("message").value;
-            hubConnection.invoke("Send", message);
-        });
- 
-        hubConnection.start();
+         hubConnection.on("Notify", function (message) {                      
+                             let elem = document.createElement('p');
+                             elem.classList.add('font-size-4', 'font-weight-medium', 'mb-2');                        
+                             elem.innerHTML = message.toString(); 
+                             document.getElementById('chatroom').appendChild(elem);
+                  });
+         
+         hubConnection.start().then(function () {
+             document.getElementById("sendButton").disabled = false;
+         }).catch(function (err) {
+             return console.error(err.toString());
+         });
+        
+         document.getElementById("sendButton").addEventListener("click", function (event) {
+             // let sender = document.getElementById("sender").value;
+             let message = document.getElementById("messageInput").value;      
+             
+             @if (User.IsInRole("Admin"))
+             {
+                 <text>
+                 let receiver = document.getElementById("receiverInput").value;
+                 if (receiver !== "") {       
+                     hubConnection.invoke("SendMessageToGroup", receiver, message).catch(function (err) {
+                         return console.error(err.toString());
+                     });
+                 }
+                 else {
+                     hubConnection.invoke("SendMessage", message).catch(function (err) {
+                         return console.error(err.toString());
+                     });
+                 }
+                 </text>
+             }
+             else
+             {
+                 <text>
+                 hubConnection.invoke("SendMessage", message).catch(function (err) {
+                     return console.error(err.toString());
+                 });
+                  </text>
+             }
+
+             event.preventDefault();
+         });
+        
     </script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>

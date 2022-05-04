@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
 using MyBook.Entity;
 using MyBook.Entity.Identity;
+using MyBook.Hubs;
 using MyBook.Middleware;
 using MyBook.Services.EmailServices;
-using MyBook.Services.Hubs;
 
 
 var builder = WebApplication.CreateBuilder(args);
