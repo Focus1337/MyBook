@@ -9,16 +9,12 @@ using MyBook.Hubs;
 using MyBook.Middleware;
 using MyBook.Services.EmailServices;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton(builder.Configuration.
     GetSection("EmailConfiguration").Get<EmailConfiguration>());
-
 builder.Services.AddScoped<IEmailService,EmailService>();
 
-
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationContext>(opts =>
@@ -36,6 +32,18 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     );
 
 builder.Services.AddSignalR();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policyBuilder =>
+        {
+            // policyBuilder.WithOrigins("https://mybook.somee.com");
+            policyBuilder.AllowAnyOrigin();
+            policyBuilder.AllowAnyHeader();
+            policyBuilder.AllowAnyMethod();
+        });
+});
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -88,6 +96,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseSubscription();
+
+app.UseCors("AllowAll");
 
 app.MapControllerRoute(
     name: "default",
