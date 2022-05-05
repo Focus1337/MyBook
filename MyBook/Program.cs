@@ -1,5 +1,7 @@
+using System.IO.Compression;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
@@ -11,15 +13,16 @@ using MyBook.Services.EmailServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Email service
 builder.Services.AddSingleton(builder.Configuration.
     GetSection("EmailConfiguration").Get<EmailConfiguration>());
 builder.Services.AddScoped<IEmailService,EmailService>();
 
 builder.Services.AddControllersWithViews();
-
+// Database context
 builder.Services.AddDbContext<ApplicationContext>(opts =>
     opts.UseNpgsql(builder.Configuration.GetConnectionString("sqlConnection")));
-
+// Identity
 builder.Services.AddIdentity<User, Role>(option=>option.SignIn.RequireConfirmedEmail=true)
     .AddEntityFrameworkStores<ApplicationContext>()
     .AddDefaultTokenProviders();
@@ -31,8 +34,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         }
     );
 
+// SignalR
 builder.Services.AddSignalR();
-
+// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -44,6 +48,12 @@ builder.Services.AddCors(options =>
             policyBuilder.AllowAnyMethod();
         });
 });
+// сжатие ответов
+builder.Services.AddResponseCompression(options=>options.EnableForHttps = true);
+builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.Optimal;
+});
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -54,13 +64,14 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
 
-
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-// Configure the HTTP request pipeline.
+
+// сжатие ответов
+app.UseResponseCompression();
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -97,12 +108,14 @@ app.UseAuthorization();
 
 app.UseSubscription();
 
+// CORS
 app.UseCors("AllowAll");
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+// SignalR
 app.MapHub<ChatHub>("/chat");
 
 // app.MapControllerRoute(
