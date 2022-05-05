@@ -124,7 +124,7 @@ public class ProfileController : Controller
 
         return RedirectToAction("Index");
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> EditProfile(EditProfileViewModel model)
     {
@@ -138,22 +138,25 @@ public class ProfileController : Controller
             {
                 var sub = (await _context.Subs.FirstOrDefaultAsync(x => x.Id == user.SubId))!;
                 var oldEmail = user.Email;
-                if (user.Email != model.Email)
-                {
-                    user.Email = model.Email;
-                    user.UserName = model.Email;
-                    await _signInManager.SignOutAsync();
-                    return RedirectToAction("Index", "Home");
-                }
-                
+   
+                user.Email = model.Email;
+                user.UserName = model.Email;
                 user.Name = model.Name;
                 user.LastName = model.LastName;
+                
                 //roflan
                 model.Image = user.Image;
                 model.Sub = sub;
                 model.SubDurationLeft = sub.Duration - DateTime.Now.Subtract(user.SubDateStart).Days;
 
                 var result = await _userManager.UpdateAsync(user);
+                
+                if (oldEmail != user.Email)
+                {
+                    await _signInManager.SignOutAsync();
+                    return RedirectToAction("Index", "Home");
+                }
+
                 if (result.Succeeded)
                 {
                     ModelState.AddModelError(string.Empty, "Изменения сохранены!");

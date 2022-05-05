@@ -1,28 +1,28 @@
+using System.IO.Compression;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
 using MyBook.Entity;
 using MyBook.Entity.Identity;
+using MyBook.Hubs;
 using MyBook.Middleware;
 using MyBook.Services.EmailServices;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
+// Email service
 builder.Services.AddSingleton(builder.Configuration.
     GetSection("EmailConfiguration").Get<EmailConfiguration>());
-
 builder.Services.AddScoped<IEmailService,EmailService>();
 
-
-// Add services to the container.
 builder.Services.AddControllersWithViews();
-
+// Database context
 builder.Services.AddDbContext<ApplicationContext>(opts =>
     opts.UseNpgsql(builder.Configuration.GetConnectionString("sqlConnection")));
-
+// Identity
 builder.Services.AddIdentity<User, Role>(option=>option.SignIn.RequireConfirmedEmail=true)
     .AddEntityFrameworkStores<ApplicationContext>()
     .AddDefaultTokenProviders();
@@ -34,6 +34,27 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         }
     );
 
+// SignalR
+builder.Services.AddSignalR();
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policyBuilder =>
+        {
+            // policyBuilder.WithOrigins("https://mybook.somee.com");
+            policyBuilder.AllowAnyOrigin();
+            policyBuilder.AllowAnyHeader();
+            policyBuilder.AllowAnyMethod();
+        });
+});
+// сжатие ответов
+builder.Services.AddResponseCompression(options=>options.EnableForHttps = true);
+builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.Optimal;
+});
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.AccessDeniedPath = new PathString("/Home/AccessDenied");
@@ -43,13 +64,14 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
 
-
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-// Configure the HTTP request pipeline.
+
+// сжатие ответов
+app.UseResponseCompression();
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -86,9 +108,15 @@ app.UseAuthorization();
 
 app.UseSubscription();
 
+// CORS
+app.UseCors("AllowAll");
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// SignalR
+app.MapHub<ChatHub>("/chat");
 
 // app.MapControllerRoute(
 //     name: "ViewBook",

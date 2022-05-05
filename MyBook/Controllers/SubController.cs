@@ -42,9 +42,8 @@ public class SubController : Controller
 
         await _userManager.UpdateAsync(curUser);
         await _userManager.AddToRoleAsync(curUser, "UserSub");
-        
-        
-        return Ok($"Оплачено SubId: {subId}"); // Redirect
+
+        return RedirectToAction("PaymentResult", new {message = "Оплата прошла успешно!"});
     }
 
     [HttpGet]
@@ -56,6 +55,12 @@ public class SubController : Controller
         curUser.SubId = 4;
         await _userManager.RemoveFromRoleAsync(curUser, "UserSub");
         
-        return Ok("Сброс подписки выполнен успешно"); //Redirect 
+        return RedirectToAction("PaymentResult", new {message = "Сброс подписки выполнен успешно"});
+    }
+
+    public IActionResult PaymentResult(string message)
+    {
+        ViewData["result"] = message;
+        return View();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
@@ -6,6 +7,7 @@ using MyBook.Models;
 
 namespace MyBook.Controllers;
 
+[EnableCors("AllowAll")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
