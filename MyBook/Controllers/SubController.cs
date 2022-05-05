@@ -58,9 +58,9 @@ public class SubController : Controller
         return RedirectToAction("PaymentResult", new {message = "Сброс подписки выполнен успешно"});
     }
 
-    public IActionResult PaymentResult(string Message)
+    public IActionResult PaymentResult(string message)
     {
-        ViewData["result"] = Message;
+        ViewData["result"] = message;
         return View();
     }
 }
