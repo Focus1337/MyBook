@@ -66,6 +66,28 @@ var app = builder.Build();
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
+using (var scope = app.Services.CreateScope())
+{
+    #region migrations
+
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
+    db.Database.Migrate();
+
+    #endregion
+
+    #region roles
+
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    if (!roleManager.Roles.Any())
+    {
+        await roleManager.CreateAsync(new IdentityRole("Admin"));
+        await roleManager.CreateAsync(new IdentityRole("User"));
+        await roleManager.CreateAsync(new IdentityRole("UserSub"));
+    }
+
+    #endregion
+}
+
 // сжатие ответов
 app.UseResponseCompression();
 
