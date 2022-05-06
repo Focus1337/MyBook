@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook.Services", "MyBook.S
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MyBook.FSharpServices", "MyBook.FSharpServices\MyBook.FSharpServices.fsproj", "{5152CF64-0FCC-434C-8368-FD89BE8DAC2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgresMigrations", "PostgresMigrations\PostgresMigrations.csproj", "{F4D13AC6-557A-4132-BAFB-2A8B6BD09A20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerMigrations", "SqlServerMigrations\SqlServerMigrations.csproj", "{65253886-E512-450C-A380-B54F7556CF5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,13 @@ Global
 		{5152CF64-0FCC-434C-8368-FD89BE8DAC2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5152CF64-0FCC-434C-8368-FD89BE8DAC2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5152CF64-0FCC-434C-8368-FD89BE8DAC2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D13AC6-557A-4132-BAFB-2A8B6BD09A20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D13AC6-557A-4132-BAFB-2A8B6BD09A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D13AC6-557A-4132-BAFB-2A8B6BD09A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D13AC6-557A-4132-BAFB-2A8B6BD09A20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65253886-E512-450C-A380-B54F7556CF5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65253886-E512-450C-A380-B54F7556CF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65253886-E512-450C-A380-B54F7556CF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65253886-E512-450C-A380-B54F7556CF5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

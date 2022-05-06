@@ -24,9 +24,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MyBook.DataAccess\MyBook.DataAccess.csproj" />
       <ProjectReference Include="..\MyBook.Entity\MyBook.Entity.csproj" />
       <ProjectReference Include="..\MyBook.Services\MyBook.Services.csproj" />
+      <ProjectReference Include="..\PostgresMigrations\PostgresMigrations.csproj" />
+      <ProjectReference Include="..\SqlServerMigrations\SqlServerMigrations.csproj" />
     </ItemGroup>
 
     <ItemGroup>

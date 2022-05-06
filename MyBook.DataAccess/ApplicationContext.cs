@@ -56,3 +56,8 @@ public class ApplicationContext : IdentityDbContext<User, Role, Guid, IdentityUs
         });
     }
 }
+//
+// public class ApplicationContextMssql : ApplicationContext
+// {
+//     public ApplicationContextMssql(DbContextOptions options) : base(options) { }
+// }

@@ -20,13 +20,36 @@ builder.Services.AddScoped<IEmailService,EmailService>();
 
 builder.Services.AddControllersWithViews();
 // Database context
-builder.Services.AddDbContext<ApplicationContext>(opts =>
-{
-    if (builder.Environment.IsDevelopment())
-        opts.UseNpgsql(builder.Configuration.GetConnectionString("sqlConnection"));
-    else
-        opts.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection"));
-});
+
+var provider = builder.Configuration.GetValue("Provider", "Mssql");
+
+builder.Services.AddDbContext<ApplicationContext>(
+    options => _ = provider switch
+    {
+        "Pgsql" => options.UseNpgsql(
+            builder.Configuration.GetConnectionString("sqlConnection"),
+            x => x.MigrationsAssembly("PostgresMigrations")),
+
+        "Mssql" => options.UseSqlServer(
+            builder.Configuration.GetConnectionString("sqlConnection"),
+            x => x.MigrationsAssembly("SqlServerMigrations")),
+
+        _ => throw new Exception($"Unsupported provider: {provider}")
+    });
+
+//
+// if (builder.Environment.IsDevelopment())
+//     builder.Services.AddDbContext<ApplicationContext>(opts =>
+//     {
+//         opts.UseNpgsql(builder.Configuration.GetConnectionString("sqlConnection"),
+//             x => x.MigrationsAssembly("PostgresMigrations"));
+//     });
+// else
+//     builder.Services.AddDbContext<ApplicationContextMssql>(opts =>
+//     {
+//         opts.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection"),
+//             x => x.MigrationsAssembly("MssqlMigrations"));
+//     });
 
 // Identity
 builder.Services.AddIdentity<User, Role>(option=>option.SignIn.RequireConfirmedEmail=true)
