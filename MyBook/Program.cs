@@ -21,7 +21,13 @@ builder.Services.AddScoped<IEmailService,EmailService>();
 builder.Services.AddControllersWithViews();
 // Database context
 builder.Services.AddDbContext<ApplicationContext>(opts =>
-    opts.UseNpgsql(builder.Configuration.GetConnectionString("sqlConnection")));
+{
+    if (!builder.Environment.IsDevelopment())
+        opts.UseNpgsql(builder.Configuration.GetConnectionString("sqlConnection"));
+    else
+        opts.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection"));
+});
+
 // Identity
 builder.Services.AddIdentity<User, Role>(option=>option.SignIn.RequireConfirmedEmail=true)
     .AddEntityFrameworkStores<ApplicationContext>()
