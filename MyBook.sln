@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook.Entity", "MyBook.Ent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook.Services", "MyBook.Services\MyBook.Services.csproj", "{B6D5DCB1-B2EC-4882-AD56-44C2FC92A15E}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MyBook.FSharp", "MyBook.FSharp\MyBook.FSharp.fsproj", "{5152CF64-0FCC-434C-8368-FD89BE8DAC2A}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MyBook.FSharpServices", "MyBook.FSharpServices\MyBook.FSharpServices.fsproj", "{5152CF64-0FCC-434C-8368-FD89BE8DAC2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
