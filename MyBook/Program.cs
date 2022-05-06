@@ -22,7 +22,7 @@ builder.Services.AddControllersWithViews();
 // Database context
 builder.Services.AddDbContext<ApplicationContext>(opts =>
 {
-    if (!builder.Environment.IsDevelopment())
+    if (builder.Environment.IsDevelopment())
         opts.UseNpgsql(builder.Configuration.GetConnectionString("sqlConnection"));
     else
         opts.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection"));
@@ -83,12 +83,12 @@ using (var scope = app.Services.CreateScope())
 
     #region roles
 
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<Role>>();
     if (!roleManager.Roles.Any())
     {
-        await roleManager.CreateAsync(new IdentityRole("Admin"));
-        await roleManager.CreateAsync(new IdentityRole("User"));
-        await roleManager.CreateAsync(new IdentityRole("UserSub"));
+        await roleManager.CreateAsync(new Role {Name = "Admin"});
+        await roleManager.CreateAsync(new Role {Name = "User"});
+        await roleManager.CreateAsync(new Role {Name = "UserSub"});
     }
 
     #endregion
