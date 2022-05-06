@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <RootNamespace>MyBook.FSharp</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Services\Message.fs" />
+        <Compile Include="Services\IEmailService.fs" />
+        <Compile Include="Services\EmailService.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="NETCore.MailKit" Version="2.0.3" />
+    </ItemGroup>
+
+</Project>
