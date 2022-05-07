@@ -6,21 +6,21 @@
     <title>@ViewBag.Title | MyBook — электронная библиотека</title>
 
     @await Html.PartialAsync("_StylesheetsPartial")
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-migrate/dist/jquery-migrate.min.js"></script>
 </head>
 
 <body>
 @await Html.PartialAsync("_HeaderPartial")
 @await Html.PartialAsync("_SidebarPartial")
-<!-- Вызов модального окна -->
-@* <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> *@
 @await Html.PartialAsync("_ModalPartial")
 
 @RenderBody()
 
 @await Html.PartialAsync("_ChatPartial")
-
 @await Html.PartialAsync("_FooterPartial")
-
 @await Html.PartialAsync("_ScriptsPartial")
 
 <script>

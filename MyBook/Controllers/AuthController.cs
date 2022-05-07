@@ -69,7 +69,7 @@ public class AuthController : Controller
         }
         return View(model);
     }
-
+    
     public async Task<IActionResult> VerifyEmail(string userId, string code)
     {
         var user = await _userManager.FindByIdAsync(userId);
@@ -85,6 +85,7 @@ public class AuthController : Controller
         return RedirectToAction("PageNotFound", "Home");
     }
 
+    [HttpGet]
     public IActionResult EmailVerification() => View();
 
     [HttpPost] 

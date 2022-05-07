@@ -43,6 +43,7 @@ public class CatalogController : Controller
             .Where(s => s.SubType == 1)
             .ToListAsync());
 
+    [HttpGet]
     public async Task<IActionResult> BookDetails(Guid id)
     {
         var book = await _context.Books
@@ -55,6 +56,7 @@ public class CatalogController : Controller
         return View(book);
     }
 
+    [HttpGet]
     public async Task<IActionResult> AuthorDetails(Guid id)
     {
         var author = await _context.Authors
@@ -67,6 +69,7 @@ public class CatalogController : Controller
         return View(author);
     }
     
+    [HttpGet]
     public async Task<IActionResult> Search(int selectId, string? keyword)
     {
         if (keyword == null)
