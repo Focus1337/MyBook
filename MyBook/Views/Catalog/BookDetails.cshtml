@@ -1,4 +1,7 @@
 ﻿@model MyBook.Entity.Book
+@using Microsoft.AspNetCore.Identity
+@using MyBook.Entity
+@inject UserManager<User> UserManager
 
 @{
     ViewBag.Title = $"\"{Model.Title}\"";
@@ -65,10 +68,33 @@
                         <span class="ml-2 text-gray-600">@(random.Next(12, 19).ToString("D"))+</span>
                     </div>
 
-                    
                     <div class="mb-4">
-                        <a type="button" href="https://mybook.ru/author/nikolaj-vasilevich-gogol/vij-2/reader/"
-                           class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать онлайн</a>
+                        @if (User.Identity!.IsAuthenticated)
+                        {
+                            if (Model.SubType == 1)
+                            {
+                                if (await UserManager.IsInRoleAsync(await UserManager.FindByNameAsync(User.Identity!.Name), "UserSub"))
+                                {
+                                    <a type="button" href="https://mybook.ru/author/nikolaj-vasilevich-gogol/vij-2/reader/"
+                                       class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать онлайн</a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Sub" asp-action="Index" type="button"
+                                       class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать онлайн</a>
+                                }
+                            }
+                            else
+                            {
+                                <a type="button" href="https://mybook.ru/author/nikolaj-vasilevich-gogol/vij-2/reader/"
+                                   class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать онлайн</a>
+                            }
+                        }
+                        else
+                        {
+                            <a asp-controller="Auth" asp-action="Login" type="button"
+                               class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать онлайн</a>
+                        }
                     </div>
 
                     <div class="mb-5 border-bottom">

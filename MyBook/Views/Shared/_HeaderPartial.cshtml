@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using MyBook.Entity
-@inject UserManager<User> _userManager
+@inject UserManager<User> UserManager
 
 <header id="site-header" class="site-header__v9 site-header__white-text">
     <div class="masthead">
@@ -66,16 +66,24 @@
                                             
                                     <ul class="nav pl-xl-4">
                                         <li class="nav-item">
-                                            @if (User.Identity!.IsAuthenticated && 
-                                                 await _userManager.IsInRoleAsync(await _userManager.FindByNameAsync(User.Identity!.Name), "UserSub"))
+                                            @if (User.Identity!.IsAuthenticated)
                                             {
-                                                <a asp-controller="Catalog" asp-action="Premium" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
-                                                    ♕ PREMIUM
-                                                </a>
+                                                if (await UserManager.IsInRoleAsync(await UserManager.FindByNameAsync(User.Identity!.Name), "UserSub"))
+                                                {
+                                                    <a asp-controller="Catalog" asp-action="Premium" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
+                                                        ♕ PREMIUM
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a asp-controller="Sub" asp-action="Index" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
+                                                        ♕ PREMIUM
+                                                    </a>
+                                                }
                                             }
                                             else
                                             {
-                                                <a asp-controller="Sub" asp-action="Index" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
+                                                <a asp-controller="Auth" asp-action="Login" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold text-yellow-darker">
                                                     ♕ PREMIUM
                                                 </a>
                                             }
@@ -92,7 +100,7 @@
                                         }
                                         else
                                         {
-                                            var user = User.Identity!.IsAuthenticated ? (User) await _userManager.FindByNameAsync(User.Identity!.Name) : null;
+                                            var user = User.Identity!.IsAuthenticated ? (User) await UserManager.FindByNameAsync(User.Identity!.Name) : null;
                                             
                                             <li class="nav-item">
                                                 <a asp-controller="Profile" asp-action="Favorites" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">Мои книги</a>
