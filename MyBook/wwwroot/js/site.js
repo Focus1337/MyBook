@@ -14,7 +14,7 @@ function AddDeleteFavorites(actionUrl)
                 $('#modalText').text(data.msg);
             },
             error: function() {
-                alert("Ошибка")
+                $('#modalText').text("Ошибка");
             }
         });
     });
