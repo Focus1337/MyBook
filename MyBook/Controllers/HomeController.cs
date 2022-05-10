@@ -19,12 +19,15 @@ public class HomeController : Controller
         _context = context;
     }
 
+    [HttpGet]
     public async Task<IActionResult> Index() =>
         View(await _context.Books.Include(a => a.Author).ToListAsync());
 
+    [HttpGet]
     public IActionResult PageNotFound() => 
         View();
 
+    [HttpGet]
     public IActionResult AccessDenied() =>
         View();
 

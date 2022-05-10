@@ -22,6 +22,7 @@ public class SubController : Controller
         _userManager = userManager;
     }
 
+    [HttpGet]
     public async Task<IActionResult> Index() =>
         View(await _context.Subs.Where(v => !v.Name.Equals("Бесплатно")).ToListAsync());
 

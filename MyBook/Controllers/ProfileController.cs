@@ -171,7 +171,7 @@ public class ProfileController : Controller
 
         return View("Index", model);
     }
-
+    
     [HttpPost]
     public async Task<IActionResult> AddToFavorites(Guid id)
     {
@@ -179,13 +179,22 @@ public class ProfileController : Controller
         var user = await _context.Users.Include(x => x.FavoriteBooks)
             .FirstOrDefaultAsync(x => x.UserName == User.Identity!.Name);
 
-        if (book is not null && user is not null && !user.FavoriteBooks.Contains(book))
+        string result;
+        if (book is not null && user is not null)
         {
-            user.FavoriteBooks.Add(book);
-            await _context.SaveChangesAsync();
+            if (!user.FavoriteBooks.Contains(book))
+            {
+                user.FavoriteBooks.Add(book);
+                await _context.SaveChangesAsync();
+                result = "Книга успешно добавлена в \"мои книги\"";
+            }
+            else
+                result = "Книга уже была добавлена в \"мои книги\"";
         }
-
-        return NoContent();
+        else
+            result = "Что-то пошло не так";
+        
+        return Json(new {msg = result});
     }
 
     [HttpPost]
@@ -195,16 +204,24 @@ public class ProfileController : Controller
         var user = await _context.Users.Include(x => x.FavoriteBooks)
             .FirstOrDefaultAsync(x => x.UserName == User.Identity!.Name);
 
+        string result;
         if (book is not null || user is not null)
         {
             if (user!.FavoriteBooks.Contains(book!))
+            {
                 user.FavoriteBooks.Remove(book!);
-            
-            await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
+                result = "Книга успешно удалена из \"моих книг\"";
+            }
+            else
+                result = "Книга не находится в \"моих книгах\"";
         }
+        else
+            result = "Что-то пошло не так";
 
-        return RedirectToAction("Favorites");
+        return Json(new {msg = result});
     }
+
 
     [HttpGet]
     public async Task<IActionResult> Favorites()

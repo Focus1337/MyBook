@@ -1,4 +1,7 @@
 ﻿@model MyBook.Entity.Book
+@using Microsoft.AspNetCore.Identity
+@using MyBook.Entity
+@inject UserManager<User> UserManager
 
 @{
     ViewBag.Title = $"\"{Model.Title}\"";
@@ -65,10 +68,33 @@
                         <span class="ml-2 text-gray-600">@(random.Next(12, 19).ToString("D"))+</span>
                     </div>
 
-                    
                     <div class="mb-4">
-                        <a type="button" href="https://mybook.ru/author/nikolaj-vasilevich-gogol/vij-2/reader/"
-                           class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать онлайн</a>
+                        @if (User.Identity!.IsAuthenticated)
+                        {
+                            if (Model.SubType == 1)
+                            {
+                                if (await UserManager.IsInRoleAsync(await UserManager.FindByNameAsync(User.Identity!.Name), "UserSub"))
+                                {
+                                    <a type="button" href="https://mybook.ru/author/nikolaj-vasilevich-gogol/vij-2/reader/"
+                                       class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать онлайн</a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Sub" asp-action="Index" type="button"
+                                       class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать онлайн</a>
+                                }
+                            }
+                            else
+                            {
+                                <a type="button" href="https://mybook.ru/author/nikolaj-vasilevich-gogol/vij-2/reader/"
+                                   class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать онлайн</a>
+                            }
+                        }
+                        else
+                        {
+                            <a asp-controller="Auth" asp-action="Login" type="button"
+                               class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать онлайн</a>
+                        }
                     </div>
 
                     <div class="mb-5 border-bottom">
@@ -88,11 +114,9 @@
                     <div class="py-5 d-flex align-items-center border-top">
                         <ul class="list-unstyled nav">
                             <li class="mr-6 mb-4 mb-md-0">
-                                <form asp-controller="Profile" asp-action="AddToFavorites" asp-route-id="@Model.Id" method="post">
-                                    <button class="h-primary border-0 bg-white" data-toggle="modal" data-target=".bd-example-modal-lg"
-                                    ><i class="flaticon-heart mr-2"></i>Мои книги
-                                    </button>
-                                </form>
+                                <button type="submit" id="btnSubmit" onclick="AddDeleteFavorites('@Url.Action("AddToFavorites", "Profile")/@Model.Id')" class="h-primary border-0 bg-white" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                    <i class="flaticon-heart mr-2"></i>
+                                </button>
                             </li>
                             <li class="mr-6">
                                 <a href="#" class="h-primary"><i class="flaticon-share mr-2"></i>Поделиться</a>
