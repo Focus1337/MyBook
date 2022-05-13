@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyBook.DataAccess;
+using MyBook.Entity;
 
 namespace MyBook.Controllers;
 
@@ -12,9 +13,13 @@ public class CatalogController : Controller
     public CatalogController(ApplicationContext context) =>
         _context = context;
 
+    
+    /*
     [HttpGet]
     public async Task<IActionResult> Books() =>
-        View(await _context.Books.Include(a => a.Author).ToListAsync());
+         View(await _context.Books.Include(a => a.Author).ToListAsync());
+         */
+         
 
     [HttpGet]
     public async Task<IActionResult> FreeBooks() =>
@@ -93,5 +98,40 @@ public class CatalogController : Controller
         }
     
         return RedirectToAction("PageNotFound", "Home");
+    }
+    [HttpGet]
+    public async Task<IActionResult> Books(string sortOrder, string subType)
+    {
+        ViewData["YearSort"] = sortOrder == "Year" ? "Year_desc" : "Year";
+        ViewData["RatingSort"] = sortOrder == "Rating" ? "Rating_desc" : "Rating";
+        ViewData["Filter"] = subType == "Primary" ? "Free" : "Primary";
+        IQueryable<Book> books =  _context.Books.Include(x => x.Author);
+        switch (sortOrder)
+        {
+            case "Year_desc":
+                books = books.OrderByDescending(x=>x.Year);
+                break;
+            case "Year":
+                books = books.OrderByDescending(x=>x.Year);
+                break;
+            case "Rating":
+                books=books.OrderByDescending(x=>x.Rating);
+                break;
+            case "Rating_desc":
+                books=books.OrderByDescending(x=>x.Rating);
+                break;
+            default:
+                books=books.OrderBy(x=>x.Author);
+                break;
+        }
+
+        books = subType switch
+        {
+            "Free" => books.Where(x => x.SubType == 0),
+            "Primary" => books.Where(x => x.SubType == 1),
+            _ => books
+        };
+
+        return View(await books.AsNoTracking().ToListAsync());
     }
 }
