@@ -8,7 +8,7 @@ public class RegisterViewModel
     public string Name { get; set; } = null!;
 
     [Required(ErrorMessage = "Укажите фамилию")]
-    public string Lastname { get; set; } = null!;
+    public string LastName { get; set; } = null!;
 
     [Required(ErrorMessage = "Укажите пароль")]
     public string Password { get; set; } = null!;

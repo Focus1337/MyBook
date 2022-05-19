@@ -56,10 +56,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll",
         policyBuilder =>
         {
-            // policyBuilder.WithOrigins("https://mybook.somee.com");
-            policyBuilder.AllowAnyOrigin();
-            policyBuilder.AllowAnyHeader();
-            policyBuilder.AllowAnyMethod();
+             policyBuilder.WithOrigins("https://outsiders.somee.com");
         });
 });
 // сжатие ответов
