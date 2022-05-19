@@ -347,21 +347,21 @@ namespace SqlServerMigrations.Migrations
                         new
                         {
                             Id = new Guid("6f17d951-3ad5-49f9-b333-2a37e367333d"),
-                            ConcurrencyStamp = "0eb01b02-f49a-4fc7-a8e1-0cd3f3c909ee",
+                            ConcurrencyStamp = "f44b9879-962c-41e5-bfd6-50bafbdd490a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("12d534a7-4535-4819-8704-bcfd7553ab46"),
-                            ConcurrencyStamp = "37986c5a-6f94-408b-8442-6b70d69d0eba",
+                            ConcurrencyStamp = "52f3d841-dd0a-4167-8b1a-0588330e92c7",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = new Guid("6dc02633-d464-4f86-8575-4cb190d670a6"),
-                            ConcurrencyStamp = "2f39ca84-a7e4-45e5-b2d2-809ce62e8b54",
+                            ConcurrencyStamp = "be3d4b43-3bba-47ce-8f02-56bb381b3550",
                             Name = "UserSub",
                             NormalizedName = "USERSUB"
                         });
@@ -552,9 +552,9 @@ namespace SqlServerMigrations.Migrations
                             LockoutEnabled = true,
                             Name = "Admin",
                             NormalizedUserName = "ADMIN@MYBOOK.RU",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA9IEQQsbv82v6O7NwMbk/J/wZvROLRx9gQ78asU5YW/0/Jzn4xeCJ0rh1H9BrlitA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEObaeErx+EDZgeykm0LvqP/aYuelcm/eKRPHVIUsN9Bym7ESlOURizMEPFYkzDojUg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "16746af1-734d-4a74-b0f9-1af4209dd244",
+                            SecurityStamp = "28998af8-6c8b-4629-97c0-e3cf4d553b0e",
                             SubDateStart = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SubId = 4,
                             TwoFactorEnabled = false,

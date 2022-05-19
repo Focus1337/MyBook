@@ -7,8 +7,9 @@ using MyBook.Entity.Identity;
 
 namespace MyBook.DataAccess;
 
-//dotnet ef migrations add [Название комита] -s .\MyBook\ -p .\MyBook.DataAccess\
-//dotnet ef database update -s .\MyBook\ -p .\MyBook.DataAccess\
+// dotnet ef migrations add [название коммита] -s ./MyBook  --project SqlServerMigrations -- --provider Mssql
+// dotnet ef migrations add [название коммита] -s ./MyBook  --project PostgresMigrations -- --provider Pgsql
+// dotnet ef database update -s ./MyBook -p ./MyBook.DataAccess
 
 public class ApplicationContext : IdentityDbContext<User, Role, Guid, IdentityUserClaim<Guid>,
     UserRole, IdentityUserLogin<Guid>, IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>

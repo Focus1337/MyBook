@@ -21,8 +21,7 @@ builder.Services.AddScoped<IEmailService,EmailService>();
 builder.Services.AddControllersWithViews();
 // Database context
 
-var provider = builder.Configuration.GetValue("Provider", "Mssql");
-
+var provider = builder.Configuration.GetValue("Provider", "Pgsql");
 builder.Services.AddDbContext<ApplicationContext>(
     options => _ = provider switch
     {
@@ -81,27 +80,28 @@ var app = builder.Build();
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
-using (var scope = app.Services.CreateScope())
-{
-    #region migrations
-
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
-    db.Database.Migrate();
-
-    #endregion
-
-    #region roles
-
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<Role>>();
-    if (!roleManager.Roles.Any())
-    {
-        await roleManager.CreateAsync(new Role {Name = "Admin"});
-        await roleManager.CreateAsync(new Role {Name = "User"});
-        await roleManager.CreateAsync(new Role {Name = "UserSub"});
-    }
-
-    #endregion
-}
+// Auto-migrations
+// using (var scope = app.Services.CreateScope())
+// {
+//     #region migrations
+//
+//     var db = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
+//     db.Database.Migrate();
+//
+//     #endregion
+//
+//     #region roles
+//
+//     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<Role>>();
+//     if (!roleManager.Roles.Any())
+//     {
+//         await roleManager.CreateAsync(new Role {Name = "Admin"});
+//         await roleManager.CreateAsync(new Role {Name = "User"});
+//         await roleManager.CreateAsync(new Role {Name = "UserSub"});
+//     }
+//
+//     #endregion
+// }
 
 // сжатие ответов
 app.UseResponseCompression();
