@@ -34,7 +34,7 @@ public class CatalogController : Controller
         View(await _context.Books
             .Include(a => a.Author)
             .ToListAsync());
-    
+
     [Authorize(Roles = "UserSub, Admin")]
     [HttpGet]
     public async Task<IActionResult> Premium() =>
@@ -68,33 +68,40 @@ public class CatalogController : Controller
 
         return View(author);
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> Search(int selectId, string? keyword)
     {
         if (keyword == null)
             return RedirectToAction("PageNotFound", "Home");
-        
+
         if (selectId == 1)
         {
-            var books = (await _context.Books
-                    .Include(a => a.Author)
-                    .ToListAsync())
+            var allBooks = await _context.Books
+                .Include(a => a.Author)
+                .ToListAsync();
+
+            var books = allBooks
                 .Where(x => string.Concat(x.Title.ToLower().Where(c => !char.IsWhiteSpace(c)))
-                    .Contains(string.Concat(keyword.ToLower().Where(c => !char.IsWhiteSpace(c)))));
-    
+                    .Contains(string.Concat(keyword.ToLower().Where(c => !char.IsWhiteSpace(c)))))
+                .ToList();
+
+            books.AddRange(allBooks
+                .Where(x => string.Concat(x.Author.FullName.ToLower().Where(c => !char.IsWhiteSpace(c)))
+                    .Contains(string.Concat(keyword.ToLower().Where(c => !char.IsWhiteSpace(c))))));
+
             return View("SearchBook", books);
         }
-    
+
         if (selectId == 2)
         {
             var authors = (await _context.Authors.ToListAsync())
                 .Where(x => string.Concat(x.FullName.ToLower().Where(c => !char.IsWhiteSpace(c)))
                     .Contains(string.Concat(keyword.ToLower().Where(c => !char.IsWhiteSpace(c)))));
-    
+
             return View("SearchAuthor", authors);
         }
-    
+
         return RedirectToAction("PageNotFound", "Home");
     }
 }

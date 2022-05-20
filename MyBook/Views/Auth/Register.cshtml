@@ -6,7 +6,7 @@
 }
 
 <div class="registration-form">
-	<form asp-controller="Auth" asp-action="Register" method="post">
+	<form class="restoreaccess-form" asp-controller="Auth" asp-action="Register" method="post">
 		<div class="pr-7 pb-3">
 			<a asp-controller="Home" asp-action="Index" class="d-block mb-1">
 				<svg width="32" height="33" fill="none">
@@ -52,12 +52,4 @@
 			</div>
 			<p>Уже зарегистрированы? <a asp-controller="Auth" asp-action="Login">Войти в аккаунт</a></p>
 	</form>
-	<div class="social-media">
-		<h5>Или войдите с помощью соц. сети</h5>
-		<div class="social-icons">
-			<a href="#"><i class="fab fa-vk" title="Vk"></i></a>
-			<a class="text-chili" href="#"><i class="fab fa-google" title="Google"></i></a>
-			<a class="text-red-1" href="#"><i class="fab fa-yandex" title="Yandex"></i></a>
-		</div>
-	</div>
 </div>
