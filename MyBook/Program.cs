@@ -46,7 +46,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         {
             options.LoginPath = new PathString("/Auth/Login");
         }
-    );
+    )
+    .AddGoogle(options =>
+    {
+        options.ClientId = "555333035392-hlv99ej08vggopmquhg3m8cvgfoukb75.apps.googleusercontent.com";
+        options.ClientSecret = "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";
+    });
 
 // SignalR
 builder.Services.AddSignalR();
@@ -56,10 +61,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll",
         policyBuilder =>
         {
-            // policyBuilder.WithOrigins("https://mybook.somee.com");
-            policyBuilder.AllowAnyOrigin();
-            policyBuilder.AllowAnyHeader();
-            policyBuilder.AllowAnyMethod();
+             policyBuilder.WithOrigins("https://outsiders.somee.com");
         });
 });
 // сжатие ответов

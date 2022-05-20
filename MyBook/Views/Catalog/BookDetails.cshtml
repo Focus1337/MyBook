@@ -92,7 +92,7 @@
                         }
                         else
                         {
-                            <a asp-controller="Auth" asp-action="Login" type="button"
+                            <a asp-controller="Auth" asp-action="Login" asp-route-returnUrl="@Context.Request.Path" type="button"
                                class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать онлайн</a>
                         }
                     </div>

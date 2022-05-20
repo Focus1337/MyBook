@@ -12,6 +12,11 @@
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
 }
 
+.registration-form-none{
+    padding: 0 0  !important;
+    box-shadow: none !important;
+}
+
 .registration-form .form-icon{
     text-align: center;
     background-color: #5891ff;
@@ -72,6 +77,25 @@
 }
 
 .registration-form .social-icons a:hover{
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+.registration-form .social-icons button{
+    font-size: 23px;
+    margin: 0 3px;
+    color: #5691ff;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 45px;
+    display: inline-block;
+    height: 45px;
+    text-align: center;
+    background-color: #fff;
+    line-height: 45px;
+}
+
+.registration-form .social-icons button:hover{
     text-decoration: none;
     opacity: 0.6;
 }

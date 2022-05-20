@@ -33,7 +33,7 @@ public class ContactController : Controller
             }
             catch (MailKit.Net.Smtp.SmtpProtocolException)
             {
-                ModelState.AddModelError("", "Сервис по отправке обращий временно не работает.");
+                ModelState.AddModelError("", "Сервис по отправке обращений временно не работает.");
             }
         }
 
