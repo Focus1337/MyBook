@@ -49,10 +49,22 @@
     </form>
     <div class="social-media">
         <h5>Или войдите с помощью соц. сети</h5>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-vk" title="Vk"></i></a>
-            <a class="text-chili" href="#"><i class="fab fa-google" title="Google"></i></a>
-            <a class="text-red-1" href="#"><i class="fab fa-yandex" title="Yandex"></i></a>
-        </div>
+        @{
+            if (Model.ExternalLogins.Count == 0)
+            {
+                <div>Внешние сервисы недоступны</div>
+            }
+            else
+            {
+                <form class="registration-form-none " asp-controller="Auth" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    @foreach (var provider in Model.ExternalLogins)
+                    {
+                        <div class="social-icons">
+                            <button type="submit" class="text-chili" name="provider" value="@provider.Name"><i class="fab fa-google" title="Google"></i></button> 
+                        </div>
+                    }
+                </form>
+            }
+        }
     </div>
 </div>

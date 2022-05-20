@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyBook.Entity;
 using MyBook.Models;
@@ -23,10 +25,6 @@ public class AuthController : Controller
     public IActionResult Register() =>
         View();
 
-    [HttpGet]
-    public IActionResult Login() =>
-        View();
-
     [HttpPost]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
@@ -35,7 +33,7 @@ public class AuthController : Controller
             var user = new User
             {
                 SubId = 4,
-                SubDateStart = default(DateTime),
+                SubDateStart = default,
                 Email = model.Email,
                 UserName = model.Email,
                 Name = model.Name,
@@ -69,7 +67,7 @@ public class AuthController : Controller
 
         return View(model);
     }
-
+    
     public async Task<IActionResult> VerifyEmail(string userId, string code)
     {
         var user = await _userManager.FindByIdAsync(userId);
@@ -84,28 +82,142 @@ public class AuthController : Controller
 
         return RedirectToAction("PageNotFound", "Home");
     }
+    
+    [HttpGet]
+    [AllowAnonymous]
+    public async Task<IActionResult> Login(string returnUrl) =>
+        View(new LoginViewModel
+        {
+            ReturnUrl = returnUrl,
+            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList()
+        });
 
     [HttpPost]
-    public async Task<IActionResult> Login(LoginViewModel model)
+    public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
     {
+        model.ReturnUrl = returnUrl ?? Url.Content("~/");
+        model.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+        
+        ModelState.Remove("ExternalLogins");
+        ModelState.Remove("ReturnUrl");
         if (ModelState.IsValid)
         {
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, true, false);
 
             if (result.Succeeded)
-                return RedirectToAction("Index", "Home");
+            {
+                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    return Redirect(returnUrl);
+                else
+                    return RedirectToAction("Index", "Home");
+            }
             else
                 ModelState.AddModelError("", "Неправильный логин и (или) пароль");
         }
 
         return View(model);
     }
-
+    
     [HttpPost]
     public async Task<IActionResult> Logout()
     {
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
+    }
+    
+    [AllowAnonymous]
+    [HttpPost]
+    public IActionResult ExternalLogin(string provider, string returnUrl)
+    {
+        var redirectUrl = Url.Action("ExternalLoginCallback", "Auth",
+            new { ReturnUrl = returnUrl });
+
+        var properties =
+            _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+
+        return new ChallengeResult(provider, properties);
+    }
+
+    [AllowAnonymous]
+    public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
+    {
+        returnUrl = returnUrl ?? Url.Content("~/");
+
+        var loginViewModel = new LoginViewModel
+        {
+            ReturnUrl = returnUrl,
+            ExternalLogins =
+                (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList()
+        };
+
+        if (remoteError != null)
+        {
+            ModelState.AddModelError(string.Empty, $"Ошибка со внешнего провайдера: {remoteError}");
+            return View("Login", loginViewModel);
+        }
+
+        // Get the login information about the user from the external login provider
+        var info = await _signInManager.GetExternalLoginInfoAsync();
+        if (info == null)
+        {
+            ModelState.AddModelError(string.Empty, "Ошибка при загрузке внешней информации для входа.");
+            return View("Login", loginViewModel);
+        }
+
+        // If the user already has a login (i.e if there is a record in AspNetUserLogins
+        // table) then sign-in the user with this external login provider
+        var signInResult = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider,
+            info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+
+        if (signInResult.Succeeded)
+        {
+            return LocalRedirect(returnUrl);
+        }
+        // If there is no record in AspNetUserLogins table, the user may not have
+        // a local account
+        else
+        {
+            // Get the email claim value
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+
+            if (email != null)
+            {
+                // Create a new user without password if we do not have a user already
+                var user = await _userManager.FindByEmailAsync(email);
+
+                if (user == null)
+                {
+                    user = new User
+                    {
+                        SubId = 4,
+                        SubDateStart = default,
+                        Email = info.Principal.FindFirstValue(ClaimTypes.Email),
+                        UserName = info.Principal.FindFirstValue(ClaimTypes.Email),
+                        Name = info.Principal.FindFirstValue(ClaimTypes.GivenName),
+                        LastName = info.Principal.FindFirstValue(ClaimTypes.Surname),
+                        Image = Convert.ToBase64String(await System.IO.File.ReadAllBytesAsync("wwwroot/img/user.png")),
+                        EmailConfirmed = true,
+                        LockoutEnabled = false
+                    };
+
+                    var result = await _userManager.CreateAsync(user);
+                    if (result.Succeeded)
+                        await _userManager.AddToRoleAsync(user, "User");
+                }
+
+                // Add a login (i.e insert a row for the user in AspNetUserLogins table)
+                await _userManager.AddLoginAsync(user, info);
+                await _signInManager.SignInAsync(user, isPersistent: false);
+
+                return LocalRedirect(returnUrl);
+            }
+
+            // If we cannot find the user email we cannot continue
+            ViewBag.ErrorTitle = $"Email не получен со внешнего провайдера: {info.LoginProvider}";
+            ViewBag.ErrorMessage = "Пожалуйста, обратитесь к нам на почту: support@mybook.ru";
+
+            return View("Error");
+        }
     }
 
     [HttpPost]
@@ -127,7 +239,7 @@ public class AuthController : Controller
                 await _emailService.SendEmailAsync(message);
                 return View("AuthStatus", "Письмо с инструкцией отправлена на вашу почту");
             }
-            catch (MailKit.Net.Smtp.SmtpProtocolException)
+            catch (Exception)
             {
                 return View("AuthStatus", "Сервис временно не работает.");
             }
@@ -139,6 +251,15 @@ public class AuthController : Controller
     [HttpGet]
     public IActionResult RestoreAccess() =>
         View();
+
+
+    [HttpGet]
+    public IActionResult PasswordReset(string email, string token) =>
+        View(new ResetPasswordViewModel
+        {
+            Email = email,
+            Token = token
+        });
 
     [HttpPost]
     public async Task<IActionResult> PasswordReset(ResetPasswordViewModel model)
@@ -159,20 +280,6 @@ public class AuthController : Controller
             else
                 ModelState.AddModelError("", "Такого пользователя не существует");
         }
-
-        return View(model);
-    }
-
-    [HttpGet]
-    public IActionResult PasswordReset(string email, string token)
-    {
-        var model = new ResetPasswordViewModel
-        {
-            Email = email,
-            Password = "",
-            ConfirmPassword = "",
-            Token = token
-        };
 
         return View(model);
     }
