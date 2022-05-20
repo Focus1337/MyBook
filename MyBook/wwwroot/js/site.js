@@ -19,3 +19,19 @@ function AddDeleteFavorites(actionUrl)
         });
     });
 }
+
+$(function() {
+    $('#inputGroupSelect01').change(function() {
+        sessionStorage.setItem('searchSelect', this.value);
+    });
+    if(sessionStorage.getItem('searchSelect')){
+        $('#inputGroupSelect01').val(sessionStorage.getItem('searchSelect'));
+    }
+
+    $('#searchKeyword').change(function() {
+        sessionStorage.setItem('searchKeyword', this.value);
+    });
+    if(sessionStorage.getItem('searchKeyword')){
+        $('#searchKeyword').val(sessionStorage.getItem('searchKeyword'));
+    }
+});

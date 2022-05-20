@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <a type="button" href="#"
+                        <a type="button" asp-controller="Catalog" asp-action="Search" asp-route-selectId="1" asp-route-keyword="@Model.FullName"
                            class="btn btn-block btn-gradient transition-3d-hover rounded-hg font-weight-bold">Читать книги онлайн</a>
                     </div>
 
@@ -65,7 +65,7 @@
                    
                     <header class="d-md-flex justify-content-between align-items-center">
                         <h2 class="font-size-5 mb-0 font-weight-bold">Книги <span class="text-red-1">@Model.Books.Count</span></h2>
-                        <a href="#" class="d-flex align-items-center h-primary">Еще<span class="flaticon-next font-size-3 ml-2"></span></a>
+                        <a asp-controller="Catalog" asp-action="Search" asp-route-selectId="1" asp-route-keyword="@Model.FullName" class="d-flex align-items-center h-primary">Еще<span class="flaticon-next font-size-3 ml-2"></span></a>
                     </header>
                     <ul class="js-slick-carousel products list-unstyled my-0" data-pagi-classes="d-xl-none text-center u-slick__pagination mb-0 mt-3 mt-lg-5" data-arrows-classes="d-none d-lg-block u-slick__arrow u-slick__arrow-centered--y border-0 h-dark-white"
                         data-arrow-left-classes="fas flaticon-back u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas flaticon-next u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="6" data-responsive='[{
