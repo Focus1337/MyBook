@@ -55,7 +55,7 @@
                                      }
                                     @if (!User.Identity!.IsAuthenticated)
                                     {
-                                        <li class="list-group-item px-0 py-2 border-0"><a asp-controller="Auth" asp-action="Login" class="h-primary font-weight-bold">Войти</a></li>
+                                        <li class="list-group-item px-0 py-2 border-0"><a asp-controller="Auth" asp-action="Login" asp-route-returnUrl="@Context.Request.Path" class="h-primary font-weight-bold">Войти</a></li>
                                     }
                                     else
                                     {

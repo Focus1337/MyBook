@@ -83,14 +83,17 @@ public class AuthController : Controller
         return RedirectToAction("PageNotFound", "Home");
     }
     
+    
     [HttpGet]
     [AllowAnonymous]
-    public async Task<IActionResult> Login(string returnUrl) =>
-        View(new LoginViewModel
+    public async Task<IActionResult> Login(string returnUrl)
+    {
+        return View(new LoginViewModel
         {
             ReturnUrl = returnUrl,
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList()
         });
+    }
 
     [HttpPost]
     public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)

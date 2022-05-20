@@ -92,7 +92,7 @@
                                         @if (!User.Identity!.IsAuthenticated)
                                         {
                                             <li class="nav-item">
-                                                <a asp-controller="Auth" asp-action="Login" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">
+                                                <a asp-controller="Auth" asp-action="Login" asp-route-returnUrl="@Context.Request.Path" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold header-text-color">
                                                     <i class="flaticon-user"></i>
                                                     Войти
                                                 </a>
