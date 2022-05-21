@@ -1,0 +1,53 @@
+﻿@model MyBook.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Создание пользователя - ADMIN";
+    Layout = "_Layout1";
+}
+
+
+<div class="container rounded-hg bg-white mt-5 mb-8">
+    <div class="">
+        <div class="border-right">
+            <div class="p-5 py-5">
+                <a asp-controller="Admin" asp-action="Index">К модерированию пользователей</a>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right font-weight-bold">Создание пользователя</h4>
+                </div>
+
+                <form asp-action="CreateUser" asp-controller="Admin" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="alert alert-info alert-dismissible" asp-validation-summary="ModelOnly">
+                        <a class="close" data-dismiss="alert">×</a>
+                    </div>
+                    
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label>Имя</label><input asp-for="Name" type="text" class="form-control rounded-hg" placeholder="Имя">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label>Фамилия</label><input asp-for="LastName" type="text" class="form-control rounded-hg" placeholder="Фамилия">
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label>Email</label><input asp-for="Email" type="text" class="form-control rounded-hg" placeholder="Email">
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label>Пароль</label><input asp-for="Password" type="password" class="form-control rounded-hg" placeholder="Email">
+                        </div>
+                    </div>
+                    
+                    <div class="my-4 d-flex justify-content-md-center">
+                        <button type="submit" class="btn rounded-hg border-width-2 font-weight-bold btn-outline-yellow-darker">Создать</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

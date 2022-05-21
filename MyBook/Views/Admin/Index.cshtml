@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MyBook.Entity.User>
+@{
+    ViewBag.Title = "Пользователи - ADMIN";
+    var counter = 0;
+    Layout = "_Layout1";
+}
+
+<div class="container">
+    <div class="row mt">
+        <div class="col-lg-6 col-lg-offset-3 centered">
+            <h3>Модерация пользователей</h3>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12 d-flex justify-content-between">
+                            <a asp-controller="Admin" asp-action="CreateUser" class="btn btn-sm btn-primary pull-left">
+                                <i class="glyphicon glyphicon3 glyphicon-plus-sign"></i> Добавить нового пользователя
+                            </a>
+                            
+                            <div>
+                                <a asp-controller="Admin" asp-action="BooksModeration" class="btn btn-sm btn-primary pull-right">
+                                    <i class="glyphicon glyphicon3 glyphicon-check"></i> Модерация книг
+                                </a>
+                                <a asp-controller="Admin" asp-action="AuthorsModeration" class="btn btn-sm btn-primary pull-right">
+                                    <i class="glyphicon glyphicon3 glyphicon-check"></i> Модерация авторов
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Email</th>
+                            <th>Действия</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@(counter++)</td>
+                                <td>@user.Email</td>
+                                <td>
+                                    <form asp-controller="Admin" asp-action="DeleteUser" asp-route-id="@user.Id" method="post">
+                                        <a class="btn btn-sm btn-primary" asp-controller="Admin" asp-action="EditUser" asp-route-id="@user.Id">Изменить</a>
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            Удалить
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

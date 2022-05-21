@@ -1,0 +1,46 @@
+﻿@model MyBook.Models.AdminEditUserViewModel
+@{
+    ViewBag.Title = "Изменение пользователя - ADMIN";
+    Layout = "_Layout1";
+}
+
+<div class="container rounded-hg bg-white mt-5 mb-8">
+    <div class="">
+        <div class="border-right">
+            <div class="p-5 py-5">
+                <a asp-controller="Admin" asp-action="Index">К модерированию пользователей</a>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right font-weight-bold">Изменение пользователя @Model.Email</h4>
+                </div>
+
+                <form asp-action="EditUser" asp-controller="Admin" asp-route-id="@Model.Id" method="post">
+                    <div class="alert alert-info alert-dismissible" asp-validation-summary="ModelOnly">
+                        <a class="close" data-dismiss="alert">×</a>
+                    </div>
+
+                    <input asp-for="Id" hidden/>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label>Имя</label>
+                            <input asp-for="Name" type="text" class="form-control rounded-hg" placeholder="Имя" value="@Model.Name">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Фамилия</label>
+                            <input asp-for="LastName" type="text" class="form-control rounded-hg" value="@Model.LastName" placeholder="Фамилия">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label>Email</label><input asp-for="Email" type="text" class="form-control rounded-hg" placeholder="Email" value="@Model.Email">
+                        </div>
+                    </div>
+                    <div class="my-4 d-flex justify-content-md-center">
+                        <button type="submit" class="btn rounded-hg border-width-2 font-weight-bold btn-outline-yellow-darker">Сохранить</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
