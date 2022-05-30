@@ -70,7 +70,7 @@
                                             <li class="nav-item">
                                                 @if (await UserManager.IsInRoleAsync(await UserManager.FindByNameAsync(User.Identity!.Name), "Admin"))
                                                 {
-                                                <a asp-controller="Admin" asp-action="Index" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold text-carolina">
+                                                <a href="http://localhost:3000" class="nav-link mx-3 px-0 py-3 font-size-2 font-weight-bold text-carolina">
                                                     Админка
                                                 </a>
                                                 }

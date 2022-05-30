@@ -105,17 +105,38 @@ public class AuthController : Controller
         ModelState.Remove("ReturnUrl");
         if (ModelState.IsValid)
         {
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, true, false);
+            var user = await _userManager.FindByEmailAsync(model.Email);
 
-            if (result.Succeeded)
+            if (user != null && BCrypt.Net.BCrypt.Verify(model.Password, user.PasswordHash))
             {
+                await _signInManager.SignInAsync(user, isPersistent: true);
+             
                 if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                     return Redirect(returnUrl);
                 else
                     return RedirectToAction("Index", "Home");
             }
             else
-                ModelState.AddModelError("", "Неправильный логин и (или) пароль");
+            {
+                try
+                {
+                    var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, true, false);
+
+                    if (result.Succeeded)
+                    {
+                        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                            return Redirect(returnUrl);
+                        else
+                            return RedirectToAction("Index", "Home");
+                    }
+                    else
+                        ModelState.AddModelError("", "Неправильный логин и (или) пароль");
+                }
+                catch (FormatException)
+                {
+                    ModelState.AddModelError("", "Неправильный логин и (или) пароль");
+                }
+            }
         }
 
         return View(model);
